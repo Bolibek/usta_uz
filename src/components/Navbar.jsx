@@ -5,30 +5,50 @@ import {
 	faSearch,
 	faCaretDown,
 	faSun,
+	faMoon,
+	faSignOut,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Navbar() {
+	const [displayCity, setDisplayCity] = useState("hidden");
+	const [displayPost, setDisplayPost] = useState("hidden");
 	const [displayLang, setDisplayLang] = useState("hidden");
-	const [displayType, setDisplayType] = useState("hidden");
-	const displayFunc = () => {
+	const [displayTheme, setDisplayTheme] = useState("hidden");
+	const [displayLogOut, setDisplayLogOut] = useState("hidden");
+	const displayCityFunc = () => {
+		setDisplayCity("");
+	};
+	const hideCityFunc = () => {
+		setDisplayCity("hidden");
+	};
+	const displayLangFunc = () => {
 		setDisplayLang("");
 	};
-	const hideFunc = () => {
+	const hideLangFunc = () => {
 		setDisplayLang("hidden");
 	};
-	const displayTypeFunc = () => {
-		setDisplayType("");
+	const displayPostFunc = () => {
+		setDisplayPost("absolute");
 	};
-	const hideTypeFunc = () => {
-		setDisplayType("hidden");
+	const hidePostFunc = () => {
+		setDisplayPost("hidden");
+	};
+	const displayThemeFunc = () => {
+		setDisplayTheme("absolute");
+	};
+	const hideThemeFunc = () => {
+		setDisplayTheme("hidden");
+	};
+	const displayLogOutFunc = () => {
+		setDisplayLogOut("absolute");
+	};
+	const hideLogOutFunc = () => {
+		setDisplayLogOut("hidden");
 	};
 	return (
-		<div
-			className="z-60 fixed top-0 w-full text-slate-900"
-			onClick={displayType === "" ? hideTypeFunc : null}
-		>
+		<div className="z-50 fixed top-0 w-full text-slate-900 bg-[#fdfdfd]">
 			<div>
-				<div className=" border-b-[.1rem] border-[#ddd]  flex flex-row items-center justify-between px-40 h-[3.6rem] text-slate-900 bg-slate-100 bg-opacity-80">
+				<div className=" border-b-[.1rem] border-[#ddd]  flex flex-row items-center justify-between px-[12.2%] h-[3.6rem] text-slate-900  bg-opacity-80">
 					<div className="flex flex-row justify-between">
 						<Link to="/">
 							<div className="mt-1 w-9">
@@ -39,87 +59,167 @@ export default function Navbar() {
 							<h1>Ustalar</h1>
 						</div>
 					</div>
-					<div className="flex flex-row w-[28rem] h-[1.6em] mt-1">
+					<div className="flex flex-row w-[28rem] h-[1.6em] mt-1 border-[0.09rem] border-green-600 rounded-sm">
 						<div
-							className="w-10  bg-slate-200  rounded-l-sm text-[0.6em] flex flex-row justify-around p-1 pt-[.6em]"
-							onClick={displayTypeFunc}
+							onMouseOver={displayCityFunc}
+							onMouseOut={hideCityFunc}
+							className="w-10 text-[#0f8bff] bg-[#ffffff] text-[0.6em] flex flex-row justify-around border-r-[0.09rem] border-green-300"
 						>
-							<span>All</span>
-							<span>
+							<img
+								className="pl-1 w-6 h-6"
+								src="https://img.icons8.com/color/100/null/city.png"
+							/>
+							<span className="pt-1.5">
 								<FontAwesomeIcon icon={faCaretDown} />
 							</span>
 						</div>
-						<select
-							className={`${displayType} z-50 absolute top-[3rem] left-[20rem]`}
-							id="category"
-							name="category"
-							size="11"
+						<div
+							onMouseOver={displayCityFunc}
+							onMouseOut={hideCityFunc}
+							className={`${displayCity} w-[30%] pl-10 text-xs  font-medium bg-[#ffffff] p-1 z-50 absolute top-[2.66rem] left-[10rem] shadow-md shadow-slate-300 rounded-sm grid grid-cols-3 grid-flow-row `}
 						>
-							<option value="reklama">Reklama</option>
-							<option value="reklama1">Reklama</option>
-							<option value="reklama3">Reklama</option>
-							<option value="reklama4">Reklama</option>
-							<option value="reklama5">Reklama</option>
-							<option value="reklama6">Reklama</option>
-							<option value="reklama7">Reklama</option>
-							<option value="reklama8">Reklama</option>
-							<option value="reklama9">Reklama</option>
-							<option value="reklama10">Reklama</option>
-						</select>
+							<span className="mx-2 cursor-pointer">Toshkent</span>
+							<span className="mx-2 cursor-pointer">Samarqand</span>
+							<span className="mx-2 cursor-pointer">Buxoro</span>
+							<span className="mx-2 cursor-pointer">Xorazm</span>
+							<span className="mx-2 cursor-pointer">Andijon</span>
+							<span className="mx-2 cursor-pointer">Farg'ona</span>
+							<span className="mx-2 cursor-pointer">Namangan</span>
+							<span className="mx-2 cursor-pointer">Qarshi</span>
+							<span className="mx-2 cursor-pointer">Termiz</span>
+							<span className="mx-2 cursor-pointer">Navoiy</span>
+							<span className="mx-2 cursor-pointer">Jizzax</span>
+							<span className="mx-2 cursor-pointer">Guliston</span>
+						</div>
+
 						<input
 							type="text"
 							placeholder="Qidirish..."
-							className="w-[23rem] pl-2 text-gray-900 text-[0.7em] font-semibold outline-none"
+							className="w-[84%] pl-2 text-gray-900 text-[0.7em] font-semibold outline-none"
 						/>
-						<div className="w-8 bg-[#f1c161] text-gray-900 rounded-r-sm text-[0.9em] flex flex-row justify-around p-1">
+						<div className="w-[8%] bg-green-600 text-white text-[0.9em] flex flex-row justify-around py-1 mr-[-1px] rounded-xs">
 							<FontAwesomeIcon icon={faSearch} />
 						</div>
 					</div>
 
 					<div className="flex flex-row">
-						<div className="flex flex-row text-sm font-medium ">
+						<div className="flex flex-row text-xs font-medium ">
 							<Link to="/">
-								<div className=" border-b-[0.09rem] border-transparent mx-2 pt-2 hover:border-gray-900 transition-border duration-700 ease-in-out">
+								<div className=" border-b-[0.09rem] border-transparent mx-2 pt-2 hover:border-green-600 transition-border duration-700 ease-in-out">
 									<h2>Yangiliklar</h2>
 								</div>
 							</Link>
 							<Link to="/">
-								<div className="border-b-[0.09rem] border-transparent mx-2 pt-2 hover:border-gray-900 transition-border duration-700 ease-in-out">
+								<div
+									className=" mt-1 p-1 border-b-[0.09rem] border-transparent mx-2 bg-green-600 text-white rounded-sm"
+									onMouseOver={displayPostFunc}
+									onMouseOut={hidePostFunc}
+								>
 									<h2>E'lon joylash</h2>
+								</div>
+								<div
+									className={`${displayPost} top-[7vh] right-[26%] py-2 border-b-[0.09rem] bg-white rounded-sm`}
+									onMouseOver={displayPostFunc}
+									onMouseOut={hidePostFunc}
+								>
+									<div className=" mt-1 p-1 border-b-[0.09rem] border-transparent mx-2 hover:bg-green-200  rounded-sm">
+										Ish e'loni
+									</div>
+									<div className=" mt-1 p-1 border-b-[0.09rem] border-transparent mx-2 hover:bg-green-200  rounded-sm">
+										Ishchi e'loni
+									</div>
 								</div>
 							</Link>
 
 							<Link to="/">
 								<div
-									onMouseEnter={displayFunc}
-									onMouseLeave={hideFunc}
-									className="border-b-[0.09rem] border-transparent mx-2 pt-2 hover:border-gray-900 transition-border duration-700 ease-in-out"
+									onMouseOver={displayLangFunc}
+									onMouseOut={hideLangFunc}
+									className="border-b-[0.09rem] border-transparent mx-2 pt-2 hover:border-green-600 transition-border duration-700 ease-in-out"
 								>
-									<span className="">Til</span> <span className="">UZ</span>
-									<FontAwesomeIcon icon={faCaretDown} />{" "}
-									<select
-										className={`${displayLang} absolute top-[3rem] right-[14rem] scroll-none`}
-										size="2 "
+									<span className=" mr-0.5">O'zbek</span>
+									<FontAwesomeIcon
+										className=" text-[0.8em]"
+										icon={faCaretDown}
+									/>{" "}
+									<div
+										className={`${displayLang} absolute top-[2.4rem] right-[16.5rem] h-[4rem] py-2 scroll-none flex flex-col justify-around text-xs  font-medium bg-[#ffffff] shadow-md shadow-slate-300 rounded-md`}
+										onMouseOver={displayLangFunc}
+										onMouseOut={hideLangFunc}
 									>
-										<option className="hidden" value="uz">
-											UZBEK
-										</option>
-										<option value="en">ENLISH</option>
-										<option value="ru">RUSSIAN</option>
-									</select>
+										<span className="hidden mx-2 cursor-pointer flex-row hover:scale-105 hover:bg-green-100 px-2">
+											<img
+												className=" w-4 h-4"
+												src="https://img.icons8.com/color/48/null/uzbekistan.png"
+											/>
+											UZ
+										</span>
+										<span className="mx-2 cursor-pointer flex flex-row hover:scale-105 hover:bg-green-100 px-2">
+											<img
+												className=" w-4 h-4"
+												src="https://img.icons8.com/color/48/null/usa.png"
+											/>{" "}
+											EN
+										</span>
+										<span className="mx-2 cursor-pointer flex flex-row hover:scale-105 hover:bg-green-100 px-2">
+											<img
+												className=" w-4 h-4"
+												src="https://img.icons8.com/color/48/null/russian-federation.png"
+											/>{" "}
+											RU
+										</span>
+									</div>
 								</div>
 							</Link>
 							<Link to="/">
-								<div className="border-b-[0.09rem] border-transparent mx-2 pt-2 hover:border-gray-900 transition-border duration-700 ease-in-out">
+								<div
+									className="border-b-[0.09rem] border-transparent mx-2 pt-2 hover:border-green-600 transition-border duration-700 ease-in-out"
+									onMouseOver={displayThemeFunc}
+									onMouseOut={hideThemeFunc}
+								>
 									<h2>
-										Rejim <FontAwesomeIcon icon={faSun} />
+										Kun{" "}
+										<FontAwesomeIcon
+											className="text-[#ff710ba0]"
+											icon={faSun}
+										/>
 									</h2>
+								</div>
+								<div></div>
+							</Link>
+							<Link to="/">
+								<div
+									className="flex flex-row border-b-[0.09rem] border-transparent mx-2 pt-2 hover:border-green-600 transition-border duration-700 ease-in-out"
+									onMouseOver={displayLogOutFunc}
+									onMouseOut={hideLogOutFunc}
+								>
+									<h2>Profil</h2>
+									<img
+										className=" w-4 h-4"
+										src="https://img.icons8.com/color/48/null/user.png"
+									/>
 								</div>
 							</Link>
 						</div>
 					</div>
 				</div>
 			</div>
+			<div
+				className={` ${displayTheme} right-[17%] top-[6.5vh] px-2 py-0.5 bg-[#000000a3] cursor-pointer text-white text-xs font-semibold rounded-sm`}
+				onMouseOver={displayThemeFunc}
+				onMouseOut={hideThemeFunc}
+			>
+				<span>Tun </span>
+				<FontAwesomeIcon className="text-[#f2e9e3]" icon={faMoon} />
+			</div>
+			{/* <div
+				className={` ${displayLogOut} right-[11%] top-[6.5vh] px-2 py-0.5 bg-[#fff] cursor-pointer text-black text-xs font-semibold rounded-sm`}
+				onMouseOver={displayLogOutFunc}
+				onMouseOut={hideLogOutFunc}
+			>
+				<span>Chiqish </span>
+				<FontAwesomeIcon className="text-[#000]" icon={faSignOut} />
+			</div> */}
 		</div>
 	);
 }
