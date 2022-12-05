@@ -9,12 +9,18 @@ import {
 	faSignOut,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function Navbar() {
+export default function Navbar({
+	status,
+	display,
+	handleStatus,
+	setDisplayNavbar,
+}) {
 	const [displayCity, setDisplayCity] = useState("hidden");
 	const [displayPost, setDisplayPost] = useState("hidden");
 	const [displayLang, setDisplayLang] = useState("hidden");
 	const [displayTheme, setDisplayTheme] = useState("hidden");
 	const [displayLogOut, setDisplayLogOut] = useState("hidden");
+	const [isSignIn, setIsSignIn] = useState(false);
 	const displayCityFunc = () => {
 		setDisplayCity("");
 	};
@@ -46,7 +52,7 @@ export default function Navbar() {
 		setDisplayLogOut("hidden");
 	};
 	return (
-		<div className="z-50 fixed top-0 w-full text-slate-900 bg-[#fdfdfd]">
+		<div className={` z-10 fixed top-0 w-full text-slate-900 bg-[#fdfdfd]`}>
 			<div>
 				<div className=" border-b-[.1rem] border-[#ddd]  flex flex-row items-center justify-between px-[12.2%] h-[3.6rem] text-slate-900  bg-opacity-80">
 					<div className="flex flex-row justify-between">
@@ -59,6 +65,7 @@ export default function Navbar() {
 							<h1>Ustalar</h1>
 						</div>
 					</div>
+
 					<div className="flex flex-row w-[28rem] h-[1.6em] mt-1 border-[0.09rem] border-green-600 rounded-sm">
 						<div
 							onMouseOver={displayCityFunc}
@@ -73,6 +80,7 @@ export default function Navbar() {
 								<FontAwesomeIcon icon={faCaretDown} />
 							</span>
 						</div>
+
 						<div
 							onMouseOver={displayCityFunc}
 							onMouseOut={hideCityFunc}
@@ -187,19 +195,35 @@ export default function Navbar() {
 								</div>
 								<div></div>
 							</Link>
-							<Link to="/">
-								<div
-									className="flex flex-row border-b-[0.09rem] border-transparent mx-2 pt-2 hover:border-green-600 transition-border duration-700 ease-in-out"
-									onMouseOver={displayLogOutFunc}
-									onMouseOut={hideLogOutFunc}
-								>
-									<h2>Profil</h2>
-									<img
-										className=" w-4 h-4"
-										src="https://img.icons8.com/color/48/null/user.png"
-									/>
-								</div>
-							</Link>
+							{status ? (
+								<Link to="/">
+									<div
+										className="flex flex-row border-b-[0.09rem] border-transparent mx-2 pt-2 hover:border-green-600 transition-border duration-700 ease-in-out"
+										onMouseOver={displayLogOutFunc}
+										onMouseOut={hideLogOutFunc}
+									>
+										<h2>Profil</h2>
+										<img
+											className=" w-4 h-4"
+											src="https://img.icons8.com/color/48/null/user.png"
+										/>
+									</div>
+								</Link>
+							) : (
+								<Link to="/signin">
+									<div
+										className="flex flex-row border-b-[0.09rem] border-transparent mx-2 pt-2 hover:border-green-600 transition-border duration-700 ease-in-out"
+										onMouseOver={displayLogOutFunc}
+										onMouseOut={hideLogOutFunc}
+									>
+										<h2>Kirish</h2>
+										<img
+											className=" w-4 h-4"
+											src="https://img.icons8.com/color/48/null/user.png"
+										/>
+									</div>
+								</Link>
+							)}
 						</div>
 					</div>
 				</div>
