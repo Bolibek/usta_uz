@@ -117,15 +117,15 @@ export default function Navbar({
 									<h2>Yangiliklar</h2>
 								</div>
 							</Link>
-							<Link to="/">
+							<Link to="/posts">
 								<div
 									className=" mt-1 p-1 border-b-[0.09rem] border-transparent mx-2 bg-green-600 text-white rounded-sm"
-									onMouseOver={displayPostFunc}
-									onMouseOut={hidePostFunc}
+									// onMouseOver={displayPostFunc}
+									// onMouseOut={hidePostFunc}
 								>
 									<h2>E'lon joylash</h2>
 								</div>
-								<div
+								{/* <div
 									className={`${displayPost} top-[7vh] right-[26%] py-2 border-b-[0.09rem] bg-white rounded-sm`}
 									onMouseOver={displayPostFunc}
 									onMouseOut={hidePostFunc}
@@ -136,7 +136,7 @@ export default function Navbar({
 									<div className=" mt-1 p-1 border-b-[0.09rem] border-transparent mx-2 hover:bg-green-200  rounded-sm">
 										Ishchi e'loni
 									</div>
-								</div>
+								</div> */}
 							</Link>
 
 							<Link to="/">
@@ -229,7 +229,7 @@ export default function Navbar({
 				</div>
 			</div>
 			<div
-				className={` ${displayTheme} right-[17%] top-[6.5vh] px-2 py-0.5 bg-[#000000a3] cursor-pointer text-white text-xs font-semibold rounded-sm`}
+				className={` ${displayTheme} right-[17%] top-[6.2vh] px-2 py-0.5 bg-[#000000a3] cursor-pointer text-white text-xs font-semibold rounded-sm`}
 				onMouseOver={displayThemeFunc}
 				onMouseOut={hideThemeFunc}
 			>
