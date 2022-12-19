@@ -4,7 +4,7 @@ import WorkerPostForm from "../components/Posts/WorkerPostForm";
 
 export default function PostsFormPage() {
 	const [isWorker, setIsWorker] = useState(true);
-  const buttonStyle = 'bg-green-600 text-white'
+  const buttonStyle = 'bg-green-600 text-white border-green-600';
 	return (
 		<div className=" mt-[5rem] flex flex-col items-center">
 			<h1>E'lonlar</h1>
