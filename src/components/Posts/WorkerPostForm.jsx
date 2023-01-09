@@ -32,8 +32,8 @@ export default function WorkerPostForm() {
       //   window.location.reload(false)
       // } else {
         await addWorkerPost({
-          id: newInvoiceId,
-          status: defaultStatus,
+          // id: newInvoiceId,
+          // status: defaultStatus,
           senderAddress: {
             street: e.target[0].value,
             city: e.target[1].value,
@@ -48,19 +48,19 @@ export default function WorkerPostForm() {
             postCode: e.target[8].value,
             country: e.target[9].value,
           },
-          paymentDue: formatDate(e.target[10].value),
-          createdAt: formatDate(new Date()),
+          // paymentDue: formatDate(e.target[10].value),
+          // createdAt: formatDate(new Date()),
           paymentTerms: e.target[11].value,
           description: e.target[12].value,
-          items: itemsRow,
+          // items: itemsRow,
         }).unwrap()
-        setDefaultStatus('pending')
-        setDraft('Mark as draft')
+        // setDefaultStatus('pending')
+        // setDraft('Mark as draft')
       // }
     } catch (err) {
-      setError(err)
+      // setError(err)
     }
-    setOpenWindow(false)
+    // setOpenWindow(false)
   }
 
   return (
