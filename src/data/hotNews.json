@@ -1,0 +1,134 @@
+{
+	"articles": [
+		{
+			"source": {
+				"id": "techcrunch",
+				"name": "TechCrunch"
+			},
+			"author": "Manish Singh",
+			"title": "India launches 75 digital banking units across rural areas in financial inclusion push",
+			"description": "India has launched 75 digital banking units in villages and small town in a move to deliver financial services and literacy to more citizens.",
+			"url": "https://techcrunch.com/2022/10/16/india-launches-75-digital-banking-units-in-rural-areas-in-financial-inclusion-push/",
+			"urlToImage": "https://techcrunch.com/wp-content/uploads/2022/08/GettyImages-1236881430.jpg?resize=1200,800",
+			"publishedAt": "2022-10-16T08:33:22Z",
+			"content": "India on Sunday launched 75 digital banking units in villages and small towns across the country in a move that it said will help bring financial services and literacy to more citizens.\r\nThe digital … [+2316 chars]"
+		},
+		{
+			"source": {
+				"id": "techcrunch",
+				"name": "TechCrunch"
+			},
+			"author": "Greg Kumparak",
+			"title": "Meta announces legs, Hulu raises prices, and Microsoft embraces DALL-E 2",
+			"description": "Week in Review is a weekly recap of TechCrunch’s most read stories. This weeks topics include VR newness from Meta, Hulu price hikes, and Microsoft adding DALL-E 2 to its products.",
+			"url": "https://techcrunch.com/2022/10/15/meta-announces-legs-hulu-raises-prices-and-microsoft-embraces-dall-e-2/",
+			"urlToImage": "https://techcrunch.com/wp-content/uploads/2022/10/zuckatar.jpg?resize=1200,749",
+			"publishedAt": "2022-10-15T15:41:59Z",
+			"content": "Hi, friends! It’s time for another edition of Week in Review, the newsletter where we quickly recap the most read TechCrunch stories from the past seven days.\r\nWant it in your inbox every Saturday mo… [+2843 chars]"
+		},
+		{
+			"source": {
+				"id": "techcrunch",
+				"name": "TechCrunch"
+			},
+			"author": "Amanda Silberling",
+			"title": "An Apple Store in Oklahoma City votes to unionize",
+			"description": "The second Apple Store to win union representation in the U.S., the workers voted 56-32 in favor of forming a union.",
+			"url": "https://techcrunch.com/2022/10/15/an-apple-store-in-oklahoma-city-votes-to-unionize/",
+			"urlToImage": "https://techcrunch.com/wp-content/uploads/2022/07/GettyImages-1235254642.jpg?resize=1200,800",
+			"publishedAt": "2022-10-15T14:22:14Z",
+			"content": "A majority of retail workers at the Apple Store at Penn Square in Oklahoma City have voted to unionize. The second Apple Store to win union representation in the U.S., the workers voted 56-32 in favo… [+3030 chars]"
+		},
+		{
+			"source": {
+				"id": "techcrunch",
+				"name": "TechCrunch"
+			},
+			"author": "Devin Coldewey",
+			"title": "Starlink isn't a charity, but the Ukraine war isn't a business opportunity",
+			"description": "What began as seemingly a charitable act has turned into an international disagreement: who should pay for Ukraine's Starlink terminals?",
+			"url": "https://techcrunch.com/2022/10/15/starlink-isnt-a-charity-but-the-ukraine-war-isnt-a-business-opportunity/",
+			"urlToImage": "https://techcrunch.com/wp-content/uploads/2020/07/Starlink_UT_sunset.jpg?resize=1200,675",
+			"publishedAt": "2022-10-14T23:05:17Z",
+			"content": "What appeared earlier this year to be a selfless act of technotopianism, the widespread deployment of Starlink terminals in Ukraine, has soured as SpaceX and governments disagree on who ultimately sh… [+5464 chars]"
+		},
+		{
+			"source": {
+				"id": "techcrunch",
+				"name": "TechCrunch"
+			},
+			"author": "Anita Ramaswamy",
+			"title": "Former Everyrealm execs sue company for sexual harassment, race discrimination",
+			"description": "The a16z-backed metaverse real estate startup is facing new harassment allegations in lawsuits from two of its former executives",
+			"url": "https://techcrunch.com/2022/10/14/everyrealm-execs-metaverse-lawsuit-harassment-discrimination-crypto/",
+			"urlToImage": "https://techcrunch.com/wp-content/uploads/2017/09/gettyimages-128420286.jpg?resize=1200,786",
+			"publishedAt": "2022-10-14T21:42:12Z",
+			"content": "Everyrealm, a metaverse real estate company that spun out of Republics crypto arm in February, is facing two lawsuits first filed in August from former directors at the company who allege they each f… [+7672 chars]"
+		},
+		{
+			"source": {
+				"id": "techcrunch",
+				"name": "TechCrunch"
+			},
+			"author": "Sarah Perez",
+			"title": "This Week in Apps: Play Store revamp, Google antitrust suit updates, BeReal's real traction",
+			"description": "This Week in Apps offers a way to keep up with the latest from the world of apps, including news, updates, startup fundings, M&As, and much more.",
+			"url": "https://techcrunch.com/2022/10/15/this-week-in-apps-play-store-revamp-google-antitrust-suit-updates-bereals-real-traction/",
+			"urlToImage": "https://techcrunch.com/wp-content/uploads/2022/07/this-week-in-apps-splash-2022.webp?resize=1200,637",
+			"publishedAt": "2022-10-14T21:03:43Z",
+			"content": "Welcome back to This Week in Apps, the weekly TechCrunch series that recaps the latest in mobile OS news, mobile applications and the overall app economy.\r\nGlobal app spending reached $65 billion in … [+21326 chars]"
+		},
+		{
+			"source": {
+				"id": "techcrunch",
+				"name": "TechCrunch"
+			},
+			"author": "Christine Hall",
+			"title": "Daily Crunch: Andreessen Horowitz backs Synonym’s development of ‘fermentation farms’",
+			"description": "Hello, friends, and welcome to Daily Crunch, bringing you the most important startup, tech and venture capital news in a single package.",
+			"url": "https://techcrunch.com/2022/10/14/daily-crunch-andreessen-horowitz-backs-synonyms-development-of-fermentation-farms/",
+			"urlToImage": "https://techcrunch.com/wp-content/uploads/2016/11/growthpots.jpg?resize=1200,800",
+			"publishedAt": "2022-10-14T20:34:43Z",
+			"content": "To get a roundup of TechCrunchs biggest and most important stories delivered to your inbox every day at 3 p.m. PDT,subscribe here.\r\nHot damn, its happening: A bunch of the TechCrunch team are on airp… [+3966 chars]"
+		},
+		{
+			"source": {
+				"id": "techcrunch",
+				"name": "TechCrunch"
+			},
+			"author": "Natasha Mascarenhas",
+			"title": "Zombie startups",
+			"description": "Welcome to Startups Weekly, a fresh human-first take on this week’s startup news and trends. To get this in your inbox, subscribe here. People leave jobs for all kinds of reasons, but when it’s a CFO departing a richly valued company as the company itself con…",
+			"url": "https://techcrunch.com/2022/10/15/zombie-startups/",
+			"urlToImage": "https://techcrunch.com/wp-content/uploads/2022/06/startups-weekly-featured1.jpg?resize=1200,675",
+			"publishedAt": "2022-10-14T19:06:59Z",
+			"content": "Welcome to Startups Weekly, a fresh human-first take on this weeks startup news and trends. To get this in your inbox, subscribe here.\r\nPeople leave jobs for all kinds of reasons, but when it’s a CFO… [+6120 chars]"
+		},
+		{
+			"source": {
+				"id": "techcrunch",
+				"name": "TechCrunch"
+			},
+			"author": "Natasha Mascarenhas",
+			"title": "Are CFOs OK? (Answer: Yes, but CEOs? That’s complicated)",
+			"description": "The CFOs from OpenSea, Brex and Noom are changing teams. Here's what that says about executive turnover in the high-growth startup world.",
+			"url": "https://techcrunch.com/2022/10/15/are-cfos-ok-answer-yes-but-ceos-thats-complicated/",
+			"urlToImage": "https://techcrunch.com/wp-content/uploads/2022/08/GettyImages-1279693276.jpg?resize=1200,750",
+			"publishedAt": "2022-10-14T14:37:08Z",
+			"content": "Theres no one who knows a companys inner workings like a chief financial officer. So, when three high-profile CFOs leave their jobs at richly valued, late-stage startups in quick succession, we notic… [+1051 chars]"
+		},
+		{
+			"source": {
+				"id": "techcrunch",
+				"name": "TechCrunch"
+			},
+			"author": "Anna Heim",
+			"title": "Pay as you drive, or pay how you drive?",
+			"description": "On a surface level, usage-based insurance makes a lot of sense. But differentiating users also raises all sorts of questions on what's fair, and where usage-based insurance is heading next.",
+			"url": "https://techcrunch.com/2022/10/15/pay-as-you-drive-or-pay-how-you-drive/",
+			"urlToImage": "https://techcrunch.com/wp-content/uploads/2020/06/NSussman_Techcrunch_Exchange-multicolor.jpg?resize=1200,900",
+			"publishedAt": "2022-10-13T23:09:52Z",
+			"content": "Welcome to The TechCrunch Exchange, a weekly startups-and-markets newsletter. Its inspired by the daily TechCrunch+ column where it gets its name. Want it in your inbox every Saturday? Sign up here.\r… [+1357 chars]"
+		}
+	]
+}

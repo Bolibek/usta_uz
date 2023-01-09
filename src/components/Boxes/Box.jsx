@@ -8,8 +8,8 @@ import {
   faAngleDoubleRight,
 } from '@fortawesome/free-solid-svg-icons'
 
-export default function Box({box}) {
-  const {name, contacts, field, profImg, workSamples, skills, badges} = box
+export default function Box(props) {
+  const {name, contacts, field, profImg, workSamples, skills, badges} = props.box
 
   return (
     <div className="w-full h-[15rem] mx-auto bg-white border-2 border-green-300 p-[0.7rem] rounded-md transform  ">

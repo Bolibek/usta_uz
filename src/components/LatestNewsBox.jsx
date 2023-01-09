@@ -14,7 +14,7 @@ export default function LatestNewsBox({
 
   const shortTitle = title.length > 30 ? `${title.slice(0, 30)}...` : title
   const shortDescription =
-    description.length > 50
+    description?.length > 50
       ? `${
           description.includes('<ol>')
             ? description.slice(8, 50)

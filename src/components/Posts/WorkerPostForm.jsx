@@ -1,7 +1,7 @@
 export default function WorkerPostForm() {
   return (
     <div className="flex flex-col items-center">
-      <h1>Ishchi e'lonini to'ldirish</h1>
+      <h1>Ishchi e&lsquo;lonini to&lsquo;ldirish</h1>
       <div className="mt-5 p-5 border-[0.1rem] border-green-600 rounded-md">
         <div>
           <div className="flex flex-col">
@@ -14,7 +14,7 @@ export default function WorkerPostForm() {
           <div className=" flex flex-col">
             <div className=" flex flex-row  justify-between">
               <div className=" flex flex-col w-[48%]">
-                <label htmlFor="">Bo'lim</label>
+                <label htmlFor="">Bo&lsquo;lim</label>
                 <select
                   name=""
                   id=""
@@ -95,7 +95,7 @@ export default function WorkerPostForm() {
               />
             </div>
             <div className=" flex flex-col w-[52%]">
-              <label htmlFor="">Qo'shimcha ma'lumot (ixtiyoriy)</label>
+              <label htmlFor="">Qo&lsquo;shimcha ma&lsquo;lumot (ixtiyoriy)</label>
               <textarea
                 type="text"
                 className=" border-green-600 border-[0.1rem] rounded-sm outline-none"
@@ -125,7 +125,7 @@ export default function WorkerPostForm() {
             </label>
           </div>
           <div className="flex flex-col">
-            <label htmlFor="">Qaysi vaqtda aloqaga chiqqan ma'qul?</label>
+            <label htmlFor="">Qaysi vaqtda aloqaga chiqqan ma&lsquo;qul?</label>
             <select
               name=""
               id=""
@@ -142,7 +142,7 @@ export default function WorkerPostForm() {
             </select>
           </div>
           <div className="flex flex-col ">
-            <label htmlFor="">Xizmat uchun minimal to'lov</label>
+            <label htmlFor="">Xizmat uchun minimal to&lsquo;lov</label>
             <input
               type="number"
               className="w-[45%] border-green-600 border-[0.1rem] rounded-sm outline-none "
@@ -158,7 +158,7 @@ export default function WorkerPostForm() {
             />
           </div>
           <div className="flex flex-col">
-            <label htmlFor="">Mo'ljal (ixtiyoriy)</label>
+            <label htmlFor="">Mo&lsquo;ljal (ixtiyoriy)</label>
             <input
               type="text"
               className="border-green-600 border-[0.1rem] rounded-sm outline-none "
@@ -172,7 +172,7 @@ export default function WorkerPostForm() {
             />
           </div>
           <div className="flex flex-col">
-            <label htmlFor="">Qo'shimcha talablar (ixtiyoriy)</label>
+            <label htmlFor="">Qo&lsquo;shimcha talablar (ixtiyoriy)</label>
             <textarea
               className="border-green-600 border-[0.1rem] rounded-sm outline-none "
               type="text"
