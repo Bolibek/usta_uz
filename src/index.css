@@ -30,8 +30,7 @@
   --breakpoint-lg: 970px;
   --breakpoint-xl: 1200px;
   --font-family-sans-serif: 'Gotham A', 'Gotham B', Arial;
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
-    'Liberation Mono', 'Courier New', monospace;
+  --font-family-monospace: "SFMono-Regular", "Menlo", "Monaco", "Consolas", 'Liberation Mono', 'Courier New', monospace;
 }
 
 body {
@@ -41,10 +40,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ffffff;
+  background-color: var(--dark);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+ input, select, textarea{
+  background-color: var(--dark)
+ }
+.navbar{
+  background-color: var(--dark)
 }

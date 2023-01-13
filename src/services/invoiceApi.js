@@ -48,6 +48,16 @@ export const invoiceApi = createApi({
 
       invalidatesTags: ['Worker Post'],
     }),
+    addEmployerPost: builder.mutation({
+      query: workerPost => ({
+        url: '/createemployerpost',
+        method: 'POST',
+        headers: {Authorization: `Bekki ${localStorage.getItem('jwt')}`},
+        body: workerPost,
+      }),
+
+      invalidatesTags: ['Employer Post'],
+    }),
     updateInvoice: builder.mutation({
       query: ({id, ...rest}) => ({
         url: `/invoice/${id}`,
@@ -75,6 +85,7 @@ export const {
   useMyProfileQuery,
   useAddUserMutation,
   useAddWorkerPostMutation,
+  useAddEmployerPostMutation,
   useUpdateInvoiceMutation,
   useDeleteInvoiceMutation,
 } = invoiceApi

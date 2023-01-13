@@ -14,9 +14,9 @@ export default function WorkerPostForm() {
       //       postCode: e.target[2].value,
       //       country: e.target[3].value,
       //     },
-      //     clientName: e.target[4].value,
-      //     clientEmail: e.target[5].value,
-      //     clientAddress: {
+      //     employerName: e.target[4].value,
+      //     employerEmail: e.target[5].value,
+      //     employerAddress: {
       //       street: e.target[6].value,
       //       city: e.target[7].value,
       //       postCode: e.target[8].value,
@@ -40,9 +40,9 @@ export default function WorkerPostForm() {
             postCode: e.target[2].value,
             country: e.target[3].value,
           },
-          clientName: e.target[4].value,
-          clientEmail: e.target[5].value,
-          clientAddress: {
+          jobName: e.target[4].value,
+          employerEmail: e.target[5].value,
+          employerAddress: {
             street: e.target[6].value,
             city: e.target[7].value,
             postCode: e.target[8].value,
@@ -69,7 +69,7 @@ export default function WorkerPostForm() {
       <div className="mt-5 p-5 border-[0.1rem] border-green-600 rounded-md">
         <div>
           <div className="flex flex-col">
-            <label htmlFor="">Ism</label>
+            <label htmlFor="">Mutaxassislik nomi</label>
             <input
               className="border-green-600 border-[0.1rem] rounded-sm outline-none "
               type="text"

@@ -52,7 +52,7 @@ export default function Navbar({
     setDisplayLogOut('hidden')
   }
   return (
-    <div className={` z-10 fixed top-0 w-full text-slate-900 bg-[#fdfdfd]`}>
+    <div className={`navbar z-10 fixed top-0 w-full text-slate-900 bg-[#fdfdfd]`}>
       <div>
         <div className=" border-b-[.1rem] border-[#ddd]  flex flex-row items-center justify-between px-[12.2%] h-[3.6rem] text-slate-900  bg-opacity-80">
           <div className="flex flex-row justify-between">
@@ -117,7 +117,7 @@ export default function Navbar({
                   <h2>Yangiliklar</h2>
                 </div>
               </Link>
-              <Link to="/posts">
+              <Link to="/postforms">
                 <div
                   className=" mt-1 p-1 border-b-[0.09rem] border-transparent mx-2 bg-green-600 text-white rounded-sm"
                   // onMouseOver={displayPostFunc}
