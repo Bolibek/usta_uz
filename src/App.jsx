@@ -25,7 +25,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/signin" element={<SignInPage />} />
-        <Route path="/posts" element={<PostsFormPage />} />
+        <Route path="/postforms" element={<PostsFormPage />} />
+        <Route path="/posts/:newJobPostId" element={<PostsFormPage />} />
         <Route path="/news" element={<LatestNews />} />
       </Routes>
     </div>

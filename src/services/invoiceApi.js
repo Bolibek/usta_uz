@@ -38,15 +38,25 @@ export const invoiceApi = createApi({
       }),
     }),
 
-    addInvoice: builder.mutation({
-      query: invoice => ({
-        url: '/createinvoice',
+    addWorkerPost: builder.mutation({
+      query: workerPost => ({
+        url: '/createworkerpost',
         method: 'POST',
         headers: {Authorization: `Bekki ${localStorage.getItem('jwt')}`},
-        body: invoice,
+        body: workerPost,
       }),
 
-      invalidatesTags: ['Invoice'],
+      invalidatesTags: ['Worker Post'],
+    }),
+    addEmployerPost: builder.mutation({
+      query: workerPost => ({
+        url: '/createemployerpost',
+        method: 'POST',
+        headers: {Authorization: `Bekki ${localStorage.getItem('jwt')}`},
+        body: workerPost,
+      }),
+
+      invalidatesTags: ['Employer Post'],
     }),
     updateInvoice: builder.mutation({
       query: ({id, ...rest}) => ({
@@ -74,7 +84,8 @@ export const {
   useInvoiceItemDetailsQuery,
   useMyProfileQuery,
   useAddUserMutation,
-  useAddInvoiceMutation,
+  useAddWorkerPostMutation,
+  useAddEmployerPostMutation,
   useUpdateInvoiceMutation,
   useDeleteInvoiceMutation,
 } = invoiceApi

@@ -1,11 +1,75 @@
+import { useAddWorkerPostMutation } from "../../services/invoiceApi"
 export default function WorkerPostForm() {
+    const [addWorkerPost] = useAddWorkerPostMutation()
+   const handle = async e => {
+    e.preventDefault()
+    try {
+      // if (kindModal === 'editLight') {
+      //   const newData = {
+      //     ...data,
+      //     status,
+      //     senderAddress: {
+      //       street: e.target[0].value,
+      //       city: e.target[1].value,
+      //       postCode: e.target[2].value,
+      //       country: e.target[3].value,
+      //     },
+      //     employerName: e.target[4].value,
+      //     employerEmail: e.target[5].value,
+      //     employerAddress: {
+      //       street: e.target[6].value,
+      //       city: e.target[7].value,
+      //       postCode: e.target[8].value,
+      //       country: e.target[9].value,
+      //     },
+      //     paymentDue: formatDate(e.target[10].value),
+      //     paymentTerms: e.target[11].value,
+      //     description: e.target[12].value,
+      //     items: itemsRow,
+      //   }
+      //   updateInvoice({_id, ...newData}).unwrap()
+      //   navigate(`/invoice/${invoiceId}`)
+      //   window.location.reload(false)
+      // } else {
+        await addWorkerPost({
+          // id: newInvoiceId,
+          // status: defaultStatus,
+          senderAddress: {
+            street: e.target[0].value,
+            city: e.target[1].value,
+            postCode: e.target[2].value,
+            country: e.target[3].value,
+          },
+          jobName: e.target[4].value,
+          employerEmail: e.target[5].value,
+          employerAddress: {
+            street: e.target[6].value,
+            city: e.target[7].value,
+            postCode: e.target[8].value,
+            country: e.target[9].value,
+          },
+          // paymentDue: formatDate(e.target[10].value),
+          // createdAt: formatDate(new Date()),
+          paymentTerms: e.target[11].value,
+          description: e.target[12].value,
+          // items: itemsRow,
+        }).unwrap()
+        // setDefaultStatus('pending')
+        // setDraft('Mark as draft')
+      // }
+    } catch (err) {
+      // setError(err)
+    }
+    // setOpenWindow(false)
+  }
+
   return (
     <div className="flex flex-col items-center">
       <h1>Ishchi e&lsquo;lonini to&lsquo;ldirish</h1>
       <div className="mt-5 p-5 border-[0.1rem] border-green-600 rounded-md">
         <div>
           <div className="flex flex-col">
-            <label htmlFor="">Ism</label>
+            <label htmlFor="">Mutaxassislik nomi</label>
             <input
               className="border-green-600 border-[0.1rem] rounded-sm outline-none "
               type="text"
