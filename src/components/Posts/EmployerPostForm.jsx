@@ -4,9 +4,13 @@ import { useAddEmployerPostMutation } from "../../services/invoiceApi";
 
 export default function EmployerPostForm() {
 	const [section, setSection] = useState("");
+  const [category, setCategory] = useState("")
 	const handleSection = (e) => {
 		setSection(e.target.value);
 	};
+  const handleCategory = (e) => {
+    setCategory(e.target.value);
+  }
 	const newJobPostId = useId();
 	const [addEmployerPost] = useAddEmployerPostMutation();
 	const handle = async (e) => {
@@ -47,7 +51,7 @@ export default function EmployerPostForm() {
 				employerAddress: e.target[3].value,
 				orientating: e.target[4].value,
 				section: e.target[5].value,
-				// category: e.target[2].value,
+				category: e.target[6].value,
 				// categoryType: e.target[3].value,
 				// material: e.target[4].value,
 				// photoLinks: e.target[5].value,
@@ -279,7 +283,7 @@ export default function EmployerPostForm() {
 						/> */}
 						<label htmlFor="">Bo'lim</label>
 						<select
-							value={"Qurilish1"}
+							value={section}
 							onChange={handleSection}
 							name="section"
 							id=""
@@ -293,6 +297,25 @@ export default function EmployerPostForm() {
 							<option value="Qurilish6">Qurilish6</option>
 							<option value="Qurilish7">Qurilish7</option>
 							<option value="Qurilish8">Qurilish8</option>
+						</select>
+					</div>
+					<div className=" flex flex-col w-[48%]">
+						<label htmlFor="">Kategoriya</label>
+						<select
+							value={category}
+              onChange={handleCategory}
+							name=""
+							id=""
+							className="border-green-600 border-[0.1rem] rounded-sm outline-none "
+						>
+							<option value="Suvoq1">Suvoq1</option>
+							<option value="Suvoq2">Suvoq2</option>
+							<option value="Suvoq3">Suvoq3</option>
+							<option value="Suvoq4">Suvoq4</option>
+							<option value="Suvoq5">Suvoq5</option>
+							<option value="Suvoq6">Suvoq6</option>
+							<option value="Suvoq7">Suvoq7</option>
+							<option value="Suvoq8">Suvoq8</option>
 						</select>
 					</div>
 				</div>
