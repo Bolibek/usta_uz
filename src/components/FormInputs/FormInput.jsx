@@ -26,7 +26,7 @@ const FormInput = ({
 			className={
 				isRegInput
 					? `flex flex-col my-1`
-					: `font-spartan ${className} text-xs flex flex-col text-gray-400 font-medium`
+					: `font-spartan ${className} text-xs flex flex-col text-gray-900 font-medium`
 			}
 		>
 			{labelText}
@@ -39,12 +39,12 @@ const FormInput = ({
 					className={
 						isRegInput
 							? `${className} my-1`
-							: `rounded mt-[0.625rem] p-3 border border-gray-200 outline-0 focus:outline-1 outline-gray-400 text-xs box-border text-gray-600 font-bold`
+							: `rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold`
 					}
 				/>
 			) : (
 				<DatePicker
-					className={`mt-[0.625rem] p-3 border ${className} border-gray-200 outline-0 focus:outline-1 outline-gray-400 text-xs box-border text-gray-600 font-bold`}
+					className={`mt-[0.625rem] p-3 border ${className} border-green-600 outline-0 focus:outline-1 focus:outline-green-400 text-xs box-border text-gray-900 font-bold`}
 					selected={startDate}
 					onChange={(date) => setStartDate(date)}
 				/>

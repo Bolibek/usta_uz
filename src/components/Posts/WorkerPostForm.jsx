@@ -9,15 +9,14 @@ export default function WorkerPostForm() {
 	const [category, setCategory] = useState("");
 	const [categoryType, setCategoryType] = useState("");
 	const [material, setMaterial] = useState("");
-	const [extraInfo, setExtraInfo] = useState("");
 	const [comingHours, setComingHours] = useState("");
-	const [extraWishes, setExtraWishes] = useState("");
+	const [extraSkills, setExtraSkills] = useState("");
 	const [startingTime, setStartingTime] = useState("bugun");
 	const [image, setImage] = useState("");
 	const [url, setUrl] = useState("");
 
 	const [addWorkerPost] = useAddWorkerPostMutation();
-  
+
 	const handleSection = (e) => {
 		setSection(e.target.value);
 	};
@@ -30,14 +29,11 @@ export default function WorkerPostForm() {
 	const handleMaterial = (e) => {
 		setMaterial(e.target.value);
 	};
-	const handleExtraInfo = (e) => {
-		setExtraInfo(e.target.value);
-	};
 	const handleComingHours = (e) => {
 		setComingHours(e.target.value);
 	};
-	const handleExtraWishes = (e) => {
-		setExtraWishes(e.target.value);
+	const handleExtraSkills = (e) => {
+		setExtraSkills(e.target.value);
 	};
 
 	const handle = async (e) => {
@@ -88,20 +84,17 @@ export default function WorkerPostForm() {
 
 			await addWorkerPost({
 				id: uuidv4(),
-				jobName: e.target[0].value,
+				serviceName: e.target[0].value,
 				section: e.target[1].value,
 				category: e.target[2].value,
 				categoryType: e.target[3].value,
 				material: e.target[4].value,
 				photoLinks: url,
-				extraInfo: e.target[6].value,
+				extraSkills: e.target[6].value,
 				startDate: startingTime,
 				comingHours: e.target[11].value,
 				wage: e.target[12].value,
-				employerAddress: e.target[13].value,
-				orientating: e.target[14].value,
-				phoneNumber: e.target[15].value,
-				extraConditions: e.target[16].value,
+				phoneNumber: e.target[13].value,
 			}).unwrap();
 
 			window.location.reload(false);
@@ -118,25 +111,30 @@ export default function WorkerPostForm() {
 			<h1>Ishchi e'lonini to'ldirish</h1>
 			<form
 				onSubmit={handle}
-				className="mt-5 p-5 border-[0.1rem] border-green-600 rounded-md"
+				className="mt-5 p-5 border-[0.1rem] border-green-600 rounded-md w-[45vw]"
 			>
-				<div>
+				<div >
 					<div className="flex flex-col">
 						<FormInput
-							labelText={"Ish nomi"}
+							labelText={"Servis nomi"}
 							className={"mt-1"}
 							inputType={"text"}
 							inputValue={""}
 						/>
 					</div>
 					<div className=" flex flex-col">
-						<div className=" flex flex-row  justify-between">
+						<div className=" flex flex-row justify-between mt-3 ">
 							<div className=" flex flex-col w-[48%]">
-								<label htmlFor="">Bo'lim</label>
+								<label
+									htmlFor=""
+									className="font-spartan text-xs flex flex-col text-gray-900 font-medium"
+								>
+									Bo'lim
+								</label>
 								<select
 									value={section}
 									onChange={handleSection}
-									className="border-green-600 border-[0.1rem] rounded-sm "
+									className="rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold "
 								>
 									<option value="Qurilish1">Qurilish1</option>
 									<option value="Qurilish2">Qurilish2</option>
@@ -149,11 +147,16 @@ export default function WorkerPostForm() {
 								</select>
 							</div>
 							<div className=" flex flex-col w-[48%]">
-								<label htmlFor="">Kategoriya</label>
+								<label
+									htmlFor=""
+									className="font-spartan text-xs flex flex-col text-gray-900 font-medium"
+								>
+									Kategoriya
+								</label>
 								<select
 									value={category}
 									onChange={handleCategory}
-									className="border-green-600 border-[0.1rem] rounded-sm "
+									className="rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold "
 								>
 									<option value="Suvoq1">Suvoq1</option>
 									<option value="Suvoq2">Suvoq2</option>
@@ -166,13 +169,18 @@ export default function WorkerPostForm() {
 								</select>
 							</div>
 						</div>
-						<div className=" flex flex-row justify-between ">
+						<div className=" flex flex-row justify-between mt-3 ">
 							<div className=" flex flex-col w-[48%]">
-								<label htmlFor="">Kategoriya turi</label>
+								<label
+									htmlFor=""
+									className="font-spartan text-xs flex flex-col text-gray-900 font-medium"
+								>
+									Kategoriya turi
+								</label>
 								<select
 									value={categoryType}
 									onChange={handleCategoryType}
-									className="border-green-600 border-[0.1rem] rounded-sm outline-none "
+									className="rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold "
 								>
 									<option value="Qum suvoq1">Qum suvoq1</option>
 									<option value="Qum suvoq2">Qum suvoq2</option>
@@ -185,11 +193,16 @@ export default function WorkerPostForm() {
 								</select>
 							</div>
 							<div className=" flex flex-col w-[48%]">
-								<label htmlFor="">Material turi (ixtiyoriy)</label>
+								<label
+									htmlFor=""
+									className="font-spartan text-xs flex flex-col text-gray-900 font-medium"
+								>
+									Material turi (ixtiyoriy)
+								</label>
 								<select
 									value={material}
 									onChange={handleMaterial}
-									className="border-green-600 border-[0.1rem] rounded-sm outline-none "
+									className="rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold  "
 								>
 									<option value="Kliniz1">Kliniz1</option>
 									<option value="Kliniz2">Kliniz2</option>
@@ -203,29 +216,37 @@ export default function WorkerPostForm() {
 							</div>
 						</div>
 					</div>
-					<div className=" flex flex-row">
-						<div className=" flex flex-col">
+					<div className=" flex flex-row justify-between mt-3">
+						<div className=" flex flex-col w-[48%]">
 							<FormInput
-								labelText={"Qilinadigan ish rasmi (ixtiyoriy)"}
-								className={"mt-1 w-[83.7%]"}
+								labelText={"Qilingan ish rasmi (ixtiyoriy)"}
+								className={"mt-1.5 "}
 								inputType={"file"}
 								inputValue={""}
 								setImage={setImage}
 							/>
 						</div>
-						<div className=" flex flex-col w-[52%]">
-							<label htmlFor="">Qo'shimcha ma'lumot (ixtiyoriy)</label>
+						<div className="flex flex-col w-[48%] ">
+							<label
+								htmlFor=""
+								className="font-spartan text-xs flex flex-col text-gray-900 font-medium mb-1"
+							>
+								Mahoratlar/Skillar (ixtiyoriy)
+							</label>
 							<textarea
-								value={extraInfo}
-								onChange={handleExtraInfo}
-								className=" border-green-600 border-[0.1rem] rounded-sm outline-none"
+								value={extraSkills}
+								onChange={handleExtraSkills}
+								placeholder="Vergul bilan ajratib yozing! M: Suvoqchi, Bo'yoqchi"
+								className="rounded p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold "
 							/>
 						</div>
 					</div>
 				</div>
-
 				<div>
-					<div className=" flex flex-row">
+					<label className="font-spartan text-xs flex flex-col text-gray-900 font-medium mb-1 mt-3">
+						Qachondan boshlay olasiz?
+					</label>
+					<div className=" flex flex-row font-spartan text-xs text-gray-900 font-medium">
 						<RadioInput
 							label="Bugun"
 							value="bugun"
@@ -239,8 +260,8 @@ export default function WorkerPostForm() {
 							setter={setStartingTime}
 						/>
 						<RadioInput
-							label="Ustaning vaqtiga qarab"
-							value="ustaning-vaqtiga-qarab"
+							label="Xo'jayinning vaqtiga qarab"
+							value="Xojayinning-vaqtiga-qarab"
 							checked={startingTime}
 							setter={setStartingTime}
 						/>
@@ -251,12 +272,17 @@ export default function WorkerPostForm() {
 							setter={setStartingTime}
 						/>
 					</div>
-					<div className="flex flex-col">
-						<label htmlFor="">Usta qaysi vaqtda kelgan ma'qul?</label>
+					<div className="flex flex-col mt-3">
+						<label
+							htmlFor=""
+							className="font-spartan text-xs flex flex-col text-gray-900 font-medium"
+						>
+							Ishga qaysi vaqtda kelasiz?
+						</label>
 						<select
 							value={comingHours}
 							onChange={handleComingHours}
-							className=" w-[45%] border-green-600 border-[0.1rem] rounded-sm outline-none"
+							className=" w-[48%] rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold "
 						>
 							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
 							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
@@ -268,52 +294,29 @@ export default function WorkerPostForm() {
 							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
 						</select>
 					</div>
-					<div className="flex flex-col ">
-						<FormInput
-							labelText={"Xizmat uchun qancha to'lamoqchisiz?"}
-							className={"mt-1 w-[45%]"}
-							inputType={"text"}
-							inputValue={""}
-						/>
-					</div>
-					<div className="flex flex-col">
-						<FormInput
-							labelText={"Telefon raqam"}
-							className={"mt-1 w-[45%]"}
-							inputType={"text"}
-							inputValue={""}
-						/>
-					</div>
-				</div>
-				<div>
-					<div className="flex flex-col">
-						<FormInput
-							labelText={"Manzil"}
-							className={"mt-1 "}
-							inputType={"text"}
-							inputValue={""}
-						/>
-					</div>
-					<div className="flex flex-col">
-						<FormInput
-							labelText={"Mo'ljal (ixtiyoriy)"}
-							className={"mt-1 "}
-							inputType={"text"}
-							inputValue={""}
-						/>
-					</div>
-					<div className="flex flex-col">
-						<label htmlFor="">Qo'shimcha talablar (ixtiyoriy)</label>
-						<textarea
-							value={extraWishes}
-							onChange={handleExtraWishes}
-							className="border-green-600 border-[0.1rem] rounded-sm "
-						/>
+					<div className=" flex flex-row justify-between mt-3">
+						<div className="flex flex-col w-[48%]">
+							<FormInput
+								labelText={"Xizmat uchun qancha olmoqchisiz?"}
+								className={"mt-1 "}
+								inputType={"text"}
+								inputValue={""}
+							/>
+						</div>
+						<div className="flex flex-col w-[48%]">
+							<FormInput
+								labelText={"Telefon raqam"}
+								className={"mt-1 "}
+								inputType={"text"}
+								inputValue={""}
+							/>
+						</div>
 					</div>
 				</div>
+
 				<div classNames="">
 					<button
-						className="mt-3 px-5 py-1 border-green-600 border-[0.1rem] rounded-sm"
+						className="mt-3 px-5 rounded  py-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold"
 						type="submit"
 					>
 						Submit

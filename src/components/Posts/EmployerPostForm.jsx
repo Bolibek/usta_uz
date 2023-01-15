@@ -17,7 +17,7 @@ export default function EmployerPostForm() {
 	const [url, setUrl] = useState("");
 
 	const [addEmployerPost] = useAddEmployerPostMutation();
-	
+
 	const handleSection = (e) => {
 		setSection(e.target.value);
 	};
@@ -55,7 +55,9 @@ export default function EmployerPostForm() {
 				}
 			)
 				.then((res) => res.json())
-				.then((imageData) => {setUrl(imageData.url);});
+				.then((imageData) => {
+					setUrl(imageData.url);
+				});
 			// if (kindModal === 'editLight') {
 			//   const newData = {
 			//     ...data,
@@ -110,15 +112,15 @@ export default function EmployerPostForm() {
 		}
 		// setOpenWindow(false)
 	};
-	console.log(url)
+	console.log(url);
 	return (
-		<div className="flex flex-col items-center">
+		<div className="flex flex-col items-center ">
 			<h1>Ishchi e'lonini to'ldirish</h1>
 			<form
 				onSubmit={handle}
-				className="mt-5 p-5 border-[0.1rem] border-green-600 rounded-md"
+				className="mt-5 p-5 border-[0.1rem] border-green-600 rounded-md w-[45vw]"
 			>
-				<div>
+				<div className="mb-1.5">
 					<div className="flex flex-col">
 						<FormInput
 							labelText={"Ish nomi"}
@@ -128,13 +130,18 @@ export default function EmployerPostForm() {
 						/>
 					</div>
 					<div className=" flex flex-col">
-						<div className=" flex flex-row  justify-between">
+						<div className=" flex flex-row justify-between mt-3 ">
 							<div className=" flex flex-col w-[48%]">
-								<label htmlFor="">Bo'lim</label>
+								<label
+									htmlFor=""
+									className="font-spartan text-xs flex flex-col text-gray-900 font-medium"
+								>
+									Bo'lim
+								</label>
 								<select
 									value={section}
 									onChange={handleSection}
-									className="border-green-600 border-[0.1rem] rounded-sm "
+									className="rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold "
 								>
 									<option value="Qurilish1">Qurilish1</option>
 									<option value="Qurilish2">Qurilish2</option>
@@ -147,11 +154,16 @@ export default function EmployerPostForm() {
 								</select>
 							</div>
 							<div className=" flex flex-col w-[48%]">
-								<label htmlFor="">Kategoriya</label>
+								<label
+									htmlFor=""
+									className="font-spartan text-xs flex flex-col text-gray-900 font-medium"
+								>
+									Kategoriya
+								</label>
 								<select
 									value={category}
 									onChange={handleCategory}
-									className="border-green-600 border-[0.1rem] rounded-sm "
+									className="rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold "
 								>
 									<option value="Suvoq1">Suvoq1</option>
 									<option value="Suvoq2">Suvoq2</option>
@@ -164,13 +176,18 @@ export default function EmployerPostForm() {
 								</select>
 							</div>
 						</div>
-						<div className=" flex flex-row justify-between ">
+						<div className=" flex flex-row justify-between mt-3 ">
 							<div className=" flex flex-col w-[48%]">
-								<label htmlFor="">Kategoriya turi</label>
+								<label
+									htmlFor=""
+									className="font-spartan text-xs flex flex-col text-gray-900 font-medium"
+								>
+									Kategoriya turi
+								</label>
 								<select
 									value={categoryType}
 									onChange={handleCategoryType}
-									className="border-green-600 border-[0.1rem] rounded-sm outline-none "
+									className="rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold "
 								>
 									<option value="Qum suvoq1">Qum suvoq1</option>
 									<option value="Qum suvoq2">Qum suvoq2</option>
@@ -183,11 +200,16 @@ export default function EmployerPostForm() {
 								</select>
 							</div>
 							<div className=" flex flex-col w-[48%]">
-								<label htmlFor="">Material turi (ixtiyoriy)</label>
+								<label
+									htmlFor=""
+									className="font-spartan text-xs flex flex-col text-gray-900 font-medium"
+								>
+									Material turi (ixtiyoriy)
+								</label>
 								<select
 									value={material}
 									onChange={handleMaterial}
-									className="border-green-600 border-[0.1rem] rounded-sm outline-none "
+									className="rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold  "
 								>
 									<option value="Kliniz1">Kliniz1</option>
 									<option value="Kliniz2">Kliniz2</option>
@@ -201,29 +223,37 @@ export default function EmployerPostForm() {
 							</div>
 						</div>
 					</div>
-					<div className=" flex flex-row">
-						<div className=" flex flex-col">
+					<div className=" flex flex-row justify-between">
+						<div className=" flex flex-col w-[48%] mt-3">
 							<FormInput
 								labelText={"Qilinadigan ish rasmi (ixtiyoriy)"}
-								className={"mt-1 w-[83.7%]"}
+								className={"mt-1.5"}
 								inputType={"file"}
 								inputValue={""}
 								setImage={setImage}
 							/>
 						</div>
-						<div className=" flex flex-col w-[52%]">
-							<label htmlFor="">Qo'shimcha ma'lumot (ixtiyoriy)</label>
+						<div className=" flex flex-col w-[48%]">
+							<label
+								htmlFor=""
+								className="font-spartan text-xs text-gray-900 font-medium mb-1"
+							>
+								Qo'shimcha ma'lumot (ixtiyoriy)
+							</label>
 							<textarea
 								value={extraInfo}
 								onChange={handleExtraInfo}
-								className=" border-green-600 border-[0.1rem] rounded-sm outline-none"
+								className=" rounded p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold"
 							/>
 						</div>
 					</div>
 				</div>
 
 				<div>
-					<div className=" flex flex-row">
+					<label className="font-spartan text-xs text-gray-900 font-medium">
+						Qachondan boshlasa ma'qul?
+					</label>
+					<div className=" flex flex-row font-spartan text-xs text-gray-900 font-medium mt-0.5">
 						<RadioInput
 							label="Bugun"
 							value="bugun"
@@ -250,11 +280,16 @@ export default function EmployerPostForm() {
 						/>
 					</div>
 					<div className="flex flex-col">
-						<label htmlFor="">Usta qaysi vaqtda kelgan ma'qul?</label>
+						<label
+							htmlFor=""
+							className="font-spartan text-xs text-gray-900 font-medium mb-2.5 mt-3"
+						>
+							Usta qaysi vaqtda kelgan ma'qul?
+						</label>
 						<select
 							value={comingHours}
 							onChange={handleComingHours}
-							className=" w-[45%] border-green-600 border-[0.1rem] rounded-sm outline-none"
+							className=" w-[48%] rounded p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold"
 						>
 							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
 							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
@@ -266,28 +301,30 @@ export default function EmployerPostForm() {
 							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
 						</select>
 					</div>
-					<div className="flex flex-col ">
-						<FormInput
-							labelText={"Xizmat uchun qancha to'lamoqchisiz?"}
-							className={"mt-1 w-[45%]"}
-							inputType={"text"}
-							inputValue={""}
-						/>
-					</div>
-					<div className="flex flex-col">
-						<FormInput
-							labelText={"Telefon raqam"}
-							className={"mt-1 w-[45%]"}
-							inputType={"text"}
-							inputValue={""}
-						/>
+					<div className=" flex flex-row justify-between mt-3">
+						<div className="flex flex-col w-[48%]">
+							<FormInput
+								labelText={"Xizmat uchun qancha olmoqchisiz?"}
+								className={"mt-1 "}
+								inputType={"text"}
+								inputValue={""}
+							/>
+						</div>
+						<div className="flex flex-col w-[48%]">
+							<FormInput
+								labelText={"Telefon raqam"}
+								className={"mt-1 "}
+								inputType={"text"}
+								inputValue={""}
+							/>
+						</div>
 					</div>
 				</div>
 				<div>
 					<div className="flex flex-col">
 						<FormInput
 							labelText={"Manzil"}
-							className={"mt-1 "}
+							className={"mt-3 "}
 							inputType={"text"}
 							inputValue={""}
 						/>
@@ -295,23 +332,25 @@ export default function EmployerPostForm() {
 					<div className="flex flex-col">
 						<FormInput
 							labelText={"Mo'ljal (ixtiyoriy)"}
-							className={"mt-1 "}
+							className={"mt-3 "}
 							inputType={"text"}
 							inputValue={""}
 						/>
 					</div>
 					<div className="flex flex-col">
-						<label htmlFor="">Qo'shimcha talablar (ixtiyoriy)</label>
+						<label htmlFor="" className="font-spartan text-xs text-gray-900 font-medium mt-3 mb-1">
+							Talab qilinadigan Mahoratlar/Skillar (ixtiyoriy)
+						</label>
 						<textarea
 							value={extraWishes}
 							onChange={handleExtraWishes}
-							className="border-green-600 border-[0.1rem] rounded-sm "
+							className="rounded p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold "
 						/>
 					</div>
 				</div>
 				<div classNames="">
 					<button
-						className="mt-3 px-5 py-1 border-green-600 border-[0.1rem] rounded-sm"
+						className="mt-3 px-5 rounded  py-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold"
 						type="submit"
 					>
 						Submit
