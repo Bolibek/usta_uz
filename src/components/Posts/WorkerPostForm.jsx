@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FormInput from "../FormInputs/FormInput";
 import RadioInput from "../FormInputs/RadioInput";
 import { useAddWorkerPostMutation } from "../../services/invoiceApi";
 import { v4 as uuidv4 } from "uuid";
+import { formatDate } from "../../utils/index";
 
 export default function WorkerPostForm() {
 	const [section, setSection] = useState("");
@@ -13,9 +15,10 @@ export default function WorkerPostForm() {
 	const [extraSkills, setExtraSkills] = useState("");
 	const [startingTime, setStartingTime] = useState("bugun");
 	const [image, setImage] = useState("");
-	const [url, setUrl] = useState("");
 
-	const [addWorkerPost] = useAddWorkerPostMutation();
+	const navigate = useNavigate();
+
+	const [addWorkerPost, isSuccess] = useAddWorkerPostMutation();
 
 	const handleSection = (e) => {
 		setSection(e.target.value);
@@ -52,7 +55,29 @@ export default function WorkerPostForm() {
 			)
 				.then((res) => res.json())
 				.then((imageData) => {
-					setUrl(imageData.url);
+					let imageUrl = imageData.url;
+					imageUrl &&
+						addWorkerPost({
+							id: uuidv4(),
+							createdAt: formatDate(new Date()),
+							lifeStamp: new Date().getTime().toLocaleString(),
+							serviceName: e.target[0].value,
+							section: e.target[1].value,
+							category: e.target[2].value,
+							categoryType: e.target[3].value,
+							material: e.target[4].value,
+							photoLinks: imageUrl,
+							extraSkills: e.target[6].value,
+							startDate: startingTime,
+							comingHours: e.target[11].value,
+							wage: e.target[12].value,
+							phoneNumber: e.target[13].value,
+						}).unwrap();
+				})
+				.catch((err) => {
+					console.log(err);
+				}).finally(() => {
+					navigate("/");
 				});
 			// if (kindModal === 'editLight') {
 			//   const newData = {
@@ -81,31 +106,14 @@ export default function WorkerPostForm() {
 			//   navigate(`/invoice/${invoiceId}`)
 			//   window.location.reload(false)
 			// } else {
-
-			await addWorkerPost({
-				id: uuidv4(),
-				serviceName: e.target[0].value,
-				section: e.target[1].value,
-				category: e.target[2].value,
-				categoryType: e.target[3].value,
-				material: e.target[4].value,
-				photoLinks: url,
-				extraSkills: e.target[6].value,
-				startDate: startingTime,
-				comingHours: e.target[11].value,
-				wage: e.target[12].value,
-				phoneNumber: e.target[13].value,
-			}).unwrap();
-
-			window.location.reload(false);
-
 			// }
 		} catch (err) {
 			// setError(err)
+			console.log(err);
 		}
-		// setOpenWindow(false)
+
 	};
-	console.log(url);
+	// console.log(new Date('16 Jan 2023').getTime());
 	return (
 		<div className="flex flex-col items-center">
 			<h1>Ishchi e'lonini to'ldirish</h1>
@@ -113,7 +121,7 @@ export default function WorkerPostForm() {
 				onSubmit={handle}
 				className="mt-5 p-5 border-[0.1rem] border-green-600 rounded-md w-[45vw]"
 			>
-				<div >
+				<div>
 					<div className="flex flex-col">
 						<FormInput
 							labelText={"Servis nomi"}
