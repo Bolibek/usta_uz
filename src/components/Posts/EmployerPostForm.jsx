@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FormInput from "../FormInputs/FormInput";
 import RadioInput from "../FormInputs/RadioInput";
 import { useAddEmployerPostMutation } from "../../services/invoiceApi";
 import { v4 as uuidv4 } from "uuid";
+import { formatDate } from "../../utils/index";
 
 export default function EmployerPostForm() {
 	const [section, setSection] = useState("");
@@ -15,6 +17,8 @@ export default function EmployerPostForm() {
 	const [startingTime, setStartingTime] = useState("bugun");
 	const [image, setImage] = useState("");
 	const [url, setUrl] = useState("");
+
+	const navigate = useNavigate();
 
 	const [addEmployerPost] = useAddEmployerPostMutation();
 
@@ -56,7 +60,32 @@ export default function EmployerPostForm() {
 			)
 				.then((res) => res.json())
 				.then((imageData) => {
-					setUrl(imageData.url);
+					let imageUrl = imageData.url;
+					addEmployerPost({
+						id: uuidv4(),
+						createdAt: formatDate(new Date()),
+						lifeStamp: new Date().getTime().toLocaleString(),
+						jobName: e.target[0].value,
+						section: e.target[1].value,
+						category: e.target[2].value,
+						categoryType: e.target[3].value,
+						material: e.target[4].value,
+						photoLinks: imageUrl,
+						extraInfo: e.target[6].value,
+						startDate: startingTime,
+						comingHours: e.target[11].value,
+						wage: e.target[12].value,
+						employerAddress: e.target[13].value,
+						orientating: e.target[14].value,
+						phoneNumber: e.target[15].value,
+						extraConditions: e.target[16].value,
+					}).unwrap();
+				})
+				.catch((err) => {
+					console.log(err);
+				})
+				.finally(() => {
+					navigate("/");
 				});
 			// if (kindModal === 'editLight') {
 			//   const newData = {
@@ -86,30 +115,13 @@ export default function EmployerPostForm() {
 			//   window.location.reload(false)
 			// } else {
 
-			await addEmployerPost({
-				id: uuidv4(),
-				jobName: e.target[0].value,
-				section: e.target[1].value,
-				category: e.target[2].value,
-				categoryType: e.target[3].value,
-				material: e.target[4].value,
-				photoLinks: url,
-				extraInfo: e.target[6].value,
-				startDate: startingTime,
-				comingHours: e.target[11].value,
-				wage: e.target[12].value,
-				employerAddress: e.target[13].value,
-				orientating: e.target[14].value,
-				phoneNumber: e.target[15].value,
-				extraConditions: e.target[16].value,
-			}).unwrap();
-
-			window.location.reload(false);
-
 			// }
 		} catch (err) {
 			// setError(err)
+			console.log(err);
 		}
+		setUrl("");
+		window.location.reload(false);
 		// setOpenWindow(false)
 	};
 	console.log(url);
@@ -338,7 +350,10 @@ export default function EmployerPostForm() {
 						/>
 					</div>
 					<div className="flex flex-col">
-						<label htmlFor="" className="font-spartan text-xs text-gray-900 font-medium mt-3 mb-1">
+						<label
+							htmlFor=""
+							className="font-spartan text-xs text-gray-900 font-medium mt-3 mb-1"
+						>
 							Talab qilinadigan Mahoratlar/Skillar (ixtiyoriy)
 						</label>
 						<textarea

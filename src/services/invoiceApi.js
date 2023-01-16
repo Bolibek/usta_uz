@@ -23,12 +23,19 @@ export const invoiceApi = createApi({
       }),
       providesTags: ['User'],
     }),
-    invoices: builder.query({
+    workerPosts: builder.query({
       query: () => ({
-        url: '/invoice',
+        url: '/workerposts',
         headers: {Authorization: `Bekki ${localStorage.getItem('jwt')}`},
       }),
-      providesTags: ['Invoice'],
+      providesTags: ['Worker Posts'],
+    }),
+    employerPosts: builder.query({
+      query: () => ({
+        url: '/employerposts',
+        headers: {Authorization: `Bekki ${localStorage.getItem('jwt')}`},
+      }),
+      providesTags: ['Employer Posts'],
     }),
 
     invoiceItemDetails: builder.query({
@@ -80,7 +87,8 @@ export const invoiceApi = createApi({
 })
 
 export const {
-  useInvoicesQuery,
+  useWorkerPostsQuery,
+  useEmployerPostsQuery,
   useInvoiceItemDetailsQuery,
   useMyProfileQuery,
   useAddUserMutation,
