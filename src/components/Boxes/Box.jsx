@@ -9,41 +9,41 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 export default function Box(props) {
-  const {name, contacts, field, profImg, workSamples, skills, badges} = props.box
-
+  const {userName, category, photoLinks, wage, extraConditions, extraSkills} = props
+  const skill = extraConditions? extraConditions.slice(0,4) : extraSkills.slice(0,4)
   return (
     <div className="w-full h-[15rem] mx-auto bg-white border-2 border-green-300 p-[0.7rem] rounded-md transform  ">
       <div className=" flex flex-row w-full relative">
         <div>
           <img
             className="w-[4rem] h-[4rem] rounded-full border-[0.1em]"
-            src={profImg}
+            src={photoLinks}
             alt="Profile image"
           />
         </div>
         <div className="ml-5 text-xs">
-          <h1 className=" font-bold">{name}</h1>
-          <div className="text-xs font-semibold">{field}</div>
+          <h1 className=" font-bold">{userName}</h1>
+          <div className="text-xs font-semibold">{category}</div>
           <div className=" flex flex-row mb-1">
             <img
               className=" w-3 h-3"
-              src="https://img.icons8.com/ios-glyphs/100/C9C9C9/star--v1.png"
+              src={"https://img.icons8.com/ios-glyphs/100/C9C9C9/star--v1.png"}
             />
             <img
               className=" w-3 h-3"
-              src="https://img.icons8.com/ios-glyphs/100/C9C9C9/star--v1.png"
+              src={"https://img.icons8.com/ios-glyphs/100/C9C9C9/star--v1.png"}
             />
             <img
               className=" w-3 h-3"
-              src="https://img.icons8.com/ios-glyphs/100/C9C9C9/star--v1.png"
+              src={"https://img.icons8.com/ios-glyphs/100/C9C9C9/star--v1.png"}
             />
             <img
               className=" w-3 h-3"
-              src="https://img.icons8.com/ios-glyphs/100/C9C9C9/star--v1.png"
+              src={"https://img.icons8.com/ios-glyphs/100/C9C9C9/star--v1.png"}
             />
             <img
               className=" w-3 h-3"
-              src="https://img.icons8.com/ios-glyphs/100/C9C9C9/star--v1.png"
+              src={"https://img.icons8.com/ios-glyphs/100/C9C9C9/star--v1.png"}
             />
           </div>
           <div className=" text-white">
@@ -67,11 +67,11 @@ export default function Box(props) {
         </div>
       </div>
       <div className="mt-5 text-xs">
-        {skills.length ? (
-          skills.map((skill, index) => (
+        {skill ? (
+          [skill, skill, skill, skill].map((skill, index) => (
             <span key={index} className="  ">
               <span className="mx-[3.2%] cursor-pointer bg-cyan-700 text-white py-1 px-3 rounded-md">
-                {skill.skill}
+                {skill}
               </span>
             </span>
           ))
@@ -79,7 +79,7 @@ export default function Box(props) {
           <h3>No skills mentioned</h3>
         )}
         <div className="my-2 text-xs font-semibold">
-          {skills.length ? (
+          {skill ? (
             <span>
               <FontAwesomeIcon
                 className="text-[#308b0f]"
@@ -93,12 +93,12 @@ export default function Box(props) {
 								className="text-[#308b0f]"
 								icon={faMoneyCheckDollar}
 							/>{" "} */}
-              +{skills[0].price},000 so'mdan
+              +{wage} so'mdan
             </span>
           ) : null}
         </div>
 
-        {workSamples.length && (
+        {photoLinks && (
           <div className="flex flex-row justify-between">
             <span className="bg-blue-500 text-white px-1 py-0.5 cursor-pointer rounded-sm">
               Ko'proq...
@@ -115,8 +115,8 @@ export default function Box(props) {
       </div>
 
       <div className=" flex flex-row w-full h-[4rem] justify-between ">
-        {workSamples.length ? (
-          workSamples
+        {photoLinks ? (
+          [photoLinks, photoLinks, photoLinks]
             .slice(0, 3)
             .map((sample, index) => (
               <img
