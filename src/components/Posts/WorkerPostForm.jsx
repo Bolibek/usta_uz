@@ -111,9 +111,9 @@ export default function WorkerPostForm() {
 			// setError(err)
 			console.log(err);
 		}
-
 	};
 	// console.log(new Date('16 Jan 2023').getTime());
+	// console.log(startingTime);
 	return (
 		<div className="flex flex-col items-center">
 			<h1>Ishchi e'lonini to'ldirish</h1>

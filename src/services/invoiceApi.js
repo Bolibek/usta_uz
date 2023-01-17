@@ -28,14 +28,14 @@ export const invoiceApi = createApi({
         url: '/workerposts',
         headers: {Authorization: `Bekki ${localStorage.getItem('jwt')}`},
       }),
-      providesTags: ['Worker Posts'],
+      // providesTags: ['Worker Posts'],
     }),
     employerPosts: builder.query({
       query: () => ({
         url: '/employerposts',
         headers: {Authorization: `Bekki ${localStorage.getItem('jwt')}`},
       }),
-      providesTags: ['Employer Posts'],
+      // providesTags: ['Employer Posts'],
     }),
 
     invoiceItemDetails: builder.query({

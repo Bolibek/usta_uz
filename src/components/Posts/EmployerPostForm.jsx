@@ -120,9 +120,6 @@ export default function EmployerPostForm() {
 			// setError(err)
 			console.log(err);
 		}
-		setUrl("");
-		window.location.reload(false);
-		// setOpenWindow(false)
 	};
 	console.log(url);
 	return (
