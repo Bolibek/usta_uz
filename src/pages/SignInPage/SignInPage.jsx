@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import SignIn from '../../components/SignIn'
 import SignUp from '../../components/SignUp'
-export default function SignInPage() {
+export default function SignInPage({handleStatus}) {
   const [isRegistered, setIsRegistered] = useState(false)
   useEffect(() => {
     setIsRegistered(isRegistered)
@@ -10,7 +10,7 @@ export default function SignInPage() {
   return (
     <div className=" mt-14">
       {isRegistered ? (
-        <SignIn setIsRegistered={setIsRegistered} />
+        <SignIn setIsRegistered={setIsRegistered} handleStatus={handleStatus} />
       ) : (
         <SignUp setIsRegistered={setIsRegistered} />
       )}
