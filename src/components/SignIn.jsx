@@ -1,11 +1,14 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export default function SignIn({ setIsRegistered }) {
+export default function SignIn({ setIsRegistered, handleStatus }) {
 	const [logEmail, setLogEmail] = useState("");
 	const [logPassword, setLogPassword] = useState("");
 	const navigate = useNavigate();
-
+	// const handleSignin =()=>{
+	// 	setIsRegistered(true);
+	// 	handleStatus(true);
+	// };
 	const handle = async (e) => {
 		try {
 			//  fetch('https://invoice-api-5h9l.onrender.com/signinuser', {
@@ -24,8 +27,9 @@ export default function SignIn({ setIsRegistered }) {
 					data && localStorage.setItem("jwt", data.token);
 					data && localStorage.setItem("userId", JSON.stringify(data.userId));
 					data && localStorage.setItem("isLoggedIn", JSON.stringify(true));
+					// data && handleStatus(true);
 					data && navigate("/");
-					data && window.location.reload(false);
+					// data && window.location.reload(false);
 				});
 		} catch (err) {
 			// eslint-disable-next-line
@@ -68,6 +72,7 @@ export default function SignIn({ setIsRegistered }) {
 						onClick={(e) => {
 							e.preventDefault();
 							handle();
+							// handleStatus(true);
 						}}
 					>
 						Sign in

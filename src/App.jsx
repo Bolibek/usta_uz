@@ -5,10 +5,11 @@ import Navbar from './components/Navbar'
 import SignInPage from './pages/SignInPage/SignInPage'
 import PostsFormPage from './pages/PostsFormPage'
 import LatestNews from './pages/LatestNewsPage'
+import Profile from './pages/Profile'
 import './App.css'
 
 function App() {
-  const [isSignedIn, setIsSignedIn] = useState(false)
+  const [isSignedIn, setIsSignedIn] = useState()
   const [display, setDisplayNavbar] = useState('')
   useEffect(() => {
     setIsSignedIn(false)
@@ -24,10 +25,11 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/signin" element={<SignInPage />} />
+        <Route path="/signin" element={<SignInPage handleStatus={setIsSignedIn} />} />
         <Route path="/postforms" element={<PostsFormPage />} />
         <Route path="/posts/:newJobPostId" element={<PostsFormPage />} />
         <Route path="/news" element={<LatestNews />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </div>
   )
