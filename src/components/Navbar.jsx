@@ -206,7 +206,7 @@ export default function Navbar({
 								<div></div>
 							</Link>
 							{userId ? (
-								<Link to="/profile">
+								<Link to="/profilePage">
 									<div
 										className="flex flex-row border-b-[0.09rem] border-transparent mx-2 pt-2 hover:border-green-600 transition-border duration-700 ease-in-out"
 										// onMouseOver={displayLogOutFunc}

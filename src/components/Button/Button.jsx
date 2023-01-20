@@ -54,15 +54,15 @@ function Button({buttonKind, onClick, onSubmit, className, type, children}) {
     defaultChildren = 'Add New Item'
   }
   if (buttonKind === cancel) {
-    btnClasses = `bg-[#F9FAFE] capitalize text-gray-400  w-[5.6rem] h-[3rem] rounded-[1.5rem] hover:bg-gray-200 `
+    btnClasses = `bg-[#AAAAAA] capitalize text-gray-400  w-[5.6rem] h-[3rem] rounded-[1.5rem] hover:bg-gray-200 `
     defaultChildren = 'cancel'
   }
   if (buttonKind === discard) {
-    btnClasses = `bg-[#F9FAFE] capitalize text-gray-400 w-[5.6rem] h-[3rem] rounded-[1.5rem] hover:bg-gray-200 `
+    btnClasses = `bg-[#F9FAFE] capitalize text-gray-900 w-[5.6rem] h-[3rem] rounded-[1.5rem] hover:bg-gray-200 `
     defaultChildren = 'discard'
   }
   if (buttonKind === saveChanges) {
-    btnClasses = `capitalize text-white bg-purple w-[8.6rem] h-[3rem] rounded-[1.5rem] hover:bg-purple-light `
+    btnClasses = `capitalize text-white bg-purple-900 w-[8.6rem] h-[3rem] rounded-[1.5rem] hover:bg-purple-light `
     defaultChildren = 'save changes'
   }
   if (buttonKind === saveSend) {

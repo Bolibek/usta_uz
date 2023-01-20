@@ -5,7 +5,7 @@ import Navbar from './components/Navbar'
 import SignInPage from './pages/SignInPage/SignInPage'
 import PostsFormPage from './pages/PostsFormPage'
 import LatestNews from './pages/LatestNewsPage'
-import Profile from './pages/Profile'
+import ProfilePage from './pages/ProfilePage'
 import './App.css'
 
 function App() {
@@ -29,7 +29,7 @@ function App() {
         <Route path="/postforms" element={<PostsFormPage />} />
         <Route path="/posts/:newJobPostId" element={<PostsFormPage />} />
         <Route path="/news" element={<LatestNews />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profilePage" element={<ProfilePage />} />
       </Routes>
     </div>
   )
