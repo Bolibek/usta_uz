@@ -1,23 +1,25 @@
+import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-	faArrowLeft,
-	faAngleDoubleLeft,
-	faMoneyBills,
-	faMoneyBillTransfer,
+	// faArrowLeft,
+	// faAngleDoubleLeft,
+	// faMoneyBills,
+	// faMoneyBillTransfer,
 	faMoneyCheckDollar,
 	faAngleDoubleRight,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Box(props) {
-	const { userName, category, photoLinks, wage, extraConditions, extraSkills } =
+	const {id, userName, category, photoLinks, wage, extraConditions, extraSkills } =
 		props;
 	const skill = extraConditions
 		? extraConditions.slice(0, 4)
 		: extraSkills.slice(0, 4);
+	const postId = useParams()
 	return (
 		<div
 			className={`w-full h-[15rem] mx-auto border-2 border-green-300  rounded-md transform  `}
-      // style={{backgroundImage: 'url(' + photoLinks +')'}}
+			// style={{backgroundImage: 'url(' + photoLinks +')'}}
 		>
 			<div className="bg-[#3636369a] p-[0.7rem] h-[15rem]">
 				<div className=" flex flex-row w-full relative bg-transparent">
@@ -102,14 +104,6 @@ export default function Box(props) {
 									className="text-[#308b0f]"
 									icon={faMoneyCheckDollar}
 								/>{" "}
-								{/* <FontAwesomeIcon
-								className="text-[#308b0f]"
-								icon={faMoneyCheckDollar}
-							/>{" "}
-							<FontAwesomeIcon
-								className="text-[#308b0f]"
-								icon={faMoneyCheckDollar}
-							/>{" "} */}
 								+{wage} so'mdan
 							</span>
 						) : null}
@@ -120,13 +114,15 @@ export default function Box(props) {
 							<span className="bg-blue-500 text-white px-1 py-0.5 cursor-pointer rounded-sm">
 								Ko'proq...
 							</span>
-							<span className="bg-blue-500 text-white px-2 py-0.5 cursor-pointer rounded-sm">
-								To'liq{" "}
-								<FontAwesomeIcon
-									className="text-[#ffffff]"
-									icon={faAngleDoubleRight}
-								/>
-							</span>
+							<Link to={`/posts/${id}`} >
+								<span className="bg-blue-500 text-white px-2 py-0.5 cursor-pointer rounded-sm">
+									To'liq{" "}
+									<FontAwesomeIcon
+										className="text-[#ffffff]"
+										icon={faAngleDoubleRight}
+									/>
+								</span>
+							</Link>
 						</div>
 					)}
 				</div>

@@ -21,8 +21,9 @@ const Profile = () => {
 	const userId = JSON.parse(localStorage.getItem("userId"));
 	const { data = {}, isLoading } = useMyProfileQuery(userId);
 	const { data: userPosts } = useSignedUserPostsQuery(userId);
-	const [updateProfile, isUninitialized] = useUpdateProfileMutation();
-	const { firstName, lastName, email, profileImage, _id } = data;
+	const [updateProfile] = useUpdateProfileMutation();
+	const { firstName, lastName, email, profileImage} = data;
+
 	useEffect(() => {
 		if (data) {
 			setMyFirstName(firstName);
@@ -31,50 +32,7 @@ const Profile = () => {
 		}
 		// eslint-disable-next-line
 	}, []);
-	// const handle = () => {
-	// 	try {
-	// 		const newData = {
-	// 			...data,
-	// 			firstName: myFirstName,
-	// 			lastName: myLastName,
-	// 		};
 
-	// 		if (myProfileImage) {
-	// 			const bgData = new FormData();
-	// 			bgData.append("file", profileImage);
-	// 			bgData.append("upload_preset", "usta_uz");
-	// 			bgData.append("cloud_name", "bolibekjnfjenfjnfjnfpjnfjnfenkjfwjf");
-	// 			fetch(
-	// 				"https://api.cloudinary.com/v1_1/bolibekjnfjenfjnfjnfpjnfjnfenkjfwjf/image/upload",
-	// 				{
-	// 					method: "post",
-	// 					body: bgData,
-	// 				}
-	// 			)
-	// 				.then((res) => res.json())
-	// 				.then((imgData) => {
-	// 					imgData.url &&
-	// 						fetch(`http://localhost:8080/user/${userId}`, {
-	// 							method: "put",
-	// 							headers: {
-	// 								"Content-Type": "application/json",
-	// 								Authorization: `Bekki ${localStorage.getItem("jwt")}`,
-	// 							},
-	// 							body: JSON.stringify({
-	// 								...newData,
-	// 								profileImage: imgData.url,
-	// 							}),
-	// 						})
-	// 							.then((res) => res.json())
-	// 							.then((result) => {
-	// 								result && window.location.reload(false);
-	// 							});
-	// 				});
-	// 		}
-	// 	} catch (err) {
-	// 		setError(err);
-	// 	}
-	// };
 	const handleUpdate = () => {
 		try {
 			const bgData = new FormData();
@@ -117,6 +75,7 @@ const Profile = () => {
 			console.log(setError(err));
 		}
 	};
+
 	function BottomModal() {
 		return (
 			<div className="flex justify-between w-[30rem] ml-1">
@@ -141,7 +100,7 @@ const Profile = () => {
 	console.log(updateProfile, data);
 	return (
 		<>
-			<div className=" mx-[8rem] mt-20 ">
+			<div className=" mx-[8rem]  ">
 				{isLoading ? (
 					<div>...Loading</div>
 				) : (
@@ -167,7 +126,6 @@ const Profile = () => {
 														src={avatar}
 														alt="profile"
 														className="rounded-full w-60 h-60"
-														// style={{ width: "330px", height: "330px" }}
 													/>
 												)}
 											</div>
