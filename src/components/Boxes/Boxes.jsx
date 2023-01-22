@@ -36,7 +36,7 @@ export default function Boxes() {
 		<div className="w-full mt-5">
 			<div className="w-[75%] mx-auto grid grid-cols-3 grid-flow-row gap-3">
 				{allUsers.length &&
-					allUsers.map((item) => <Box key={item.id} {...item} />)}
+					allUsers.map((item) => <Box key={item.id} id={item.id} {...item} />)}
 			</div>
 		</div>
 	);

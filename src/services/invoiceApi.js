@@ -53,12 +53,13 @@ export const invoiceApi = createApi({
 			providesTags: ["User"],
 		}),
 
-		// invoiceItemDetails: builder.query({
-		//   query: invoiceId => ({
-		//     url: `/invoice/${invoiceId}`,
-		//     headers: {Authorization: `Bekki ${localStorage.getItem('jwt')}`},
-		//   }),
-		// }),
+		workerPostDetails: builder.query({
+			query: (postId) => ({
+				url: `/posts/${postId}`,
+				headers: { Authorization: `Bekki ${localStorage.getItem("jwt")}` },
+			}),
+			providesTags: ["Worker Post Details"],
+		}),
 
 		addWorkerPost: builder.mutation({
 			query: (workerPost) => ({
@@ -105,7 +106,7 @@ export const {
 	useWorkerPostsQuery,
 	useEmployerPostsQuery,
 	useSignedUserPostsQuery,
-	// useInvoiceItemDetailsQuery,
+	useWorkerPostDetailsQuery,
 	useMyProfileQuery,
 	useUpdateProfileMutation,
 	useAddUserMutation,
