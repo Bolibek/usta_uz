@@ -15,7 +15,7 @@ export default function Box(props) {
 	const skill = extraConditions
 		? extraConditions.slice(0, 4)
 		: extraSkills.slice(0, 4);
-	const postId = useParams()
+	// const postId = useParams()
 	return (
 		<div
 			className={`w-full h-[15rem] mx-auto border-2 border-green-300  rounded-md transform  `}

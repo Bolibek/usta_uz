@@ -3,7 +3,7 @@ export default function CategoryNavbar() {
   const categoryStyles =
     ' text-[#014360]  w-full text-center font-bold flex flex-row'
   return (
-    <div className="mt-[3.6rem] bg-[#ffe207dd] w-full p-1 block">
+    <div className=" bg-[#ffe207dd] w-full p-1 block">
       <div className="mx-[10rem] grid grid-flow-row grid-cols-5 gap-2 p-2 text-xs">
         <Link to={`/`} className={`${categoryStyles}`}>
           <img

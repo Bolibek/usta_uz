@@ -15,22 +15,19 @@ export default function SinglePostPage() {
 	const [error, setError] = useState(null);
 	const [myFirstName, setMyFirstName] = useState("");
 	const [myLastName, setMyLastName] = useState("");
-	const [details, setDetails] = useState();
 	const buttonsRef = useRef(null);
 	const { postId } = useParams();
+	const [details, setDetails] = useState({});
 	const userId = JSON.parse(localStorage.getItem("userId"));
 	const { data = {}, isLoading } = useMyProfileQuery(userId);
-	const { data: postDetails, isSuccess } = useWorkerPostDetailsQuery(postId);
+	const { data: postDetails } = useWorkerPostDetailsQuery(postId);
 	const { firstName, lastName, email, profileImage } = data;
 
 	useEffect(() => {
-		if (data) {
-			setMyFirstName(firstName);
-			setMyLastName(lastName);
-		}
-		isSuccess && 	setDetails(postDetails);
+		setMyFirstName(firstName);
+		setMyLastName(lastName);
 		// eslint-disable-next-line
-	}, [details]);
+	}, []);
 
 	const handleUpdate = () => {
 		try {
@@ -93,24 +90,24 @@ export default function SinglePostPage() {
 			</div>
 		);
 	}
-console.log(details, postId)
+	// console.log(details, postId);
 	return (
-		<div className="mx-[13rem]">
+		<div className="mx-[13rem] mt-24">
 			<div>
-				<div className=" flex flex-row">
+				<div className=" flex flex-row font-bold text-gray-500">
 					<span>Home</span>
 					<img
 						className=" w-3 h-3 mt-2"
-						src="https://img.icons8.com/sf-black-filled/30/null/forward.png"
+						src="https://img.icons8.com/sf-black-filled/30/6B7280/forward.png"
 						alt="arrow"
 					/>
 					<span>Workers</span>
 					<img
 						className=" w-3 h-3 mt-2"
-						src="https://img.icons8.com/sf-black-filled/30/null/forward.png"
+						src="https://img.icons8.com/sf-black-filled/30/6B7280/forward.png"
 						alt="arrow"
 					/>
-					<span>user name</span>
+					<span>{firstName}</span>
 				</div>
 				<div></div>
 			</div>
@@ -145,9 +142,45 @@ console.log(details, postId)
 								<h1 className="text-center font-bold text-xl">
 									{myFirstName || firstName} {myLastName || lastName}
 								</h1>
-								<div>{email}</div>
+								<div className=" flex flex-row mb-1">
+									<img
+										className=" w-3 h-3"
+										src={
+											"https://img.icons8.com/ios-glyphs/100/C9C9C9/star--v1.png"
+										}
+									/>
+									<img
+										className=" w-3 h-3"
+										src={
+											"https://img.icons8.com/ios-glyphs/100/C9C9C9/star--v1.png"
+										}
+									/>
+									<img
+										className=" w-3 h-3"
+										src={
+											"https://img.icons8.com/ios-glyphs/100/C9C9C9/star--v1.png"
+										}
+									/>
+									<img
+										className=" w-3 h-3"
+										src={
+											"https://img.icons8.com/ios-glyphs/100/C9C9C9/star--v1.png"
+										}
+									/>
+									<img
+										className=" w-3 h-3"
+										src={
+											"https://img.icons8.com/ios-glyphs/100/C9C9C9/star--v1.png"
+										}
+									/>
+								</div>
+								<div>
+									+{postDetails && postDetails.phoneNumber}
+								</div>
+								<div className=" text-sky-700 underline">{email}</div>
 								<hr className="full flex self              -center w-2/3 mt-2" />
 							</div>
+
 							<div className="w-full flex justify-center my-5">
 								<button
 									className="bg-gray-200 px-5 py-1 rounded-lg text-black font-semibold"
@@ -159,9 +192,9 @@ console.log(details, postId)
 							</div>
 						</div>
 					</div>
-					<div className=" col-span-9 bg-white">
+					<div className=" col-span-9 ">
 						<div className="mt-5">
-							 {/* <Details key={details.id} {...details} /> */}
+							{postDetails && <Details key={postDetails.id} {...postDetails} />}
 						</div>
 					</div>
 					<div></div>
