@@ -8,7 +8,7 @@ export default function SignInPage({handleStatus}) {
   }, [isRegistered])
 
   return (
-    <div className=" mt-14">
+    <div className=" ">
       {isRegistered ? (
         <SignIn setIsRegistered={setIsRegistered} handleStatus={handleStatus} />
       ) : (

@@ -100,7 +100,7 @@ const Profile = () => {
 	console.log(updateProfile, data);
 	return (
 		<>
-			<div className=" mx-[8rem]  ">
+			<div className=" mx-[8rem]  mt-24">
 				{isLoading ? (
 					<div>...Loading</div>
 				) : (
