@@ -1,6 +1,6 @@
 import React from 'react'
 import * as types from './constant.jsx'
-import plus from '../../assets/icon-plus.svg'
+// import plus from '../../assets/icon-plus.svg'
 
 const {
   newInvoice,
@@ -79,7 +79,7 @@ function Button({buttonKind, onClick, onSubmit, className, type, children}) {
       {defaultChildren === 'newInvoice' ? (
         <>
           <span className="flex justify-center items-center w-[2rem] h-[2rem] rounded-full bg-white text-white">
-            <img src={plus} alt="plus" />
+            <img src={'https://res.cloudinary.com/bolibekjnfjenfjnfjnfpjnfjnfenkjfwjf/image/upload/v1673886563/usta_uz_emposts/gahrpoldittuyaymtkaw.png'} alt="plus" />
           </span>
           <span className={`mr-3 `}>{children || 'New Invoice'}</span>
         </>

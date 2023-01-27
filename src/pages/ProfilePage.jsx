@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import Button from "../components/Button/Button.jsx";
 import Box from "../components/Boxes/Box";
 
-import avatar from "../assets/image-avatar.jpg";
+// import avatar from "../assets/image-avatar.jpg";
 import {
 	useMyProfileQuery,
 	useSignedUserPostsQuery,
@@ -100,7 +100,7 @@ const Profile = () => {
 	console.log(updateProfile, data);
 	return (
 		<>
-			<div className=" mx-[8rem]  mt-24">
+			<div className={`mx-[8rem]  pt-14`}>
 				{isLoading ? (
 					<div>...Loading</div>
 				) : (
@@ -123,7 +123,7 @@ const Profile = () => {
 													/>
 												) : (
 													<img
-														src={avatar}
+														src={"https://res.cloudinary.com/bolibekjnfjenfjnfjnfpjnfjnfenkjfwjf/image/upload/v1673886563/usta_uz_emposts/gahrpoldittuyaymtkaw.png"}
 														alt="profile"
 														className="rounded-full w-60 h-60"
 													/>
@@ -149,7 +149,7 @@ const Profile = () => {
 									</div>
 								</div>
 							</div>
-							<div className=" col-span-9 bg-white">
+							<div className=" col-span-9 ">
 								<div className="mt-5">
 									<div className="w-full mx-auto grid grid-cols-2 grid-flow-row gap-3">
 										{allUserPosts &&

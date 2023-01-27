@@ -1,6 +1,6 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; 
 
 :root {
   --blue: #007bff;
@@ -34,7 +34,7 @@
 }
 
 body {
-  margin: 0;
+  /* margin: 0; */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -43,16 +43,24 @@ body {
   /* background-color: var(--dark); */
   overflow-x: hidden;
   overflow-y: auto;
-  scroll-margin-left: 125px;
+  /* scroll-margin-left: 125px; */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
- input, select, textarea{
+ /* input, select, textarea{
   background-color: var(--dark)
  }
 .navbar{
   background-color: var(--dark)
+} */
+
+.bg-slate-900{
+  background-color: #0f172a;
+}
+
+.bg-white{
+  background-color: #fff;
 }
