@@ -48910,7 +48910,14 @@
         })
       );
     }
-    return /* @__PURE__ */ React.createElement("button", { className: ` w-10 `, onClick: () => dispatch(toggle()) }, theme === "light" ? "Kun" : "Tun", theme === "light" ? /* @__PURE__ */ React.createElement(FontAwesomeIcon, { className: "text-[#ff710ba0] pl-1", icon: faSun }) : /* @__PURE__ */ React.createElement(FontAwesomeIcon, { className: "text-[#f2e9e3] pl-1", icon: faMoon }));
+    return /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        className: `border-b-[0.09rem] border-transparent transition-border duration-700 ease-in-out ${theme === "light" ? " hover:border-green-600" : "hover:border-white"} w-10 cursor-pointer`,
+        onClick: () => dispatch(toggle())
+      },
+      theme === "light" ? /* @__PURE__ */ React.createElement(React.Fragment, null, "Kun", /* @__PURE__ */ React.createElement(FontAwesomeIcon, { className: "text-[#ff710ba0] pl-1", icon: faSun })) : /* @__PURE__ */ React.createElement(React.Fragment, null, "Tun", /* @__PURE__ */ React.createElement(FontAwesomeIcon, { className: "text-[#f2e9e3] pl-1", icon: faMoon }))
+    );
   }
   var ThemeToggler_default = ThemeToggler;
 
@@ -48939,60 +48946,81 @@
       {
         className: `  flex flex-row items-center justify-between px-[12.2%] h-[3.6rem]   `
       },
-      /* @__PURE__ */ React.createElement("div", { className: "flex flex-row justify-between" }, /* @__PURE__ */ React.createElement(Link, { to: "/" }, /* @__PURE__ */ React.createElement("div", { className: "mt-1 w-9" }, /* @__PURE__ */ React.createElement(
+      /* @__PURE__ */ React.createElement("div", { className: "flex flex-row justify-between" }, /* @__PURE__ */ React.createElement(Link, { to: "/" }, /* @__PURE__ */ React.createElement("div", { className: "mt-1 w-9  rounded-full bg-[#fff] ring-2 ring-cyan-500" }, /* @__PURE__ */ React.createElement(
         "img",
         {
-          alt: "sdfg",
+          alt: "logo",
           src: "data:image/png;base64,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"
         }
       ))), /* @__PURE__ */ React.createElement("div", { className: "full-name text-[1.7rem] ml-4" }, /* @__PURE__ */ React.createElement("h1", null, "Ustalar"))),
-      /* @__PURE__ */ React.createElement("div", { className: "flex flex-row w-[28rem] h-[1.6em] mt-1 border-[0.09rem] border-green-600 rounded-sm" }, /* @__PURE__ */ React.createElement(
+      /* @__PURE__ */ React.createElement(
         "div",
         {
-          onMouseOver: displayCityFunc,
-          onMouseOut: hideCityFunc,
-          className: "w-10 text-[#0f8bff] bg-[#ffffff] text-[0.6em] flex flex-row justify-around border-r-[0.09rem] border-green-300"
+          className: `flex flex-row w-[28rem] h-[1.6em] mt-1 border-[0.09rem] ${theme === "light" ? "hover:border-green-600" : " border-white"}  rounded-[0.2em]`
         },
         /* @__PURE__ */ React.createElement(
-          "img",
+          "div",
           {
-            alt: "sdfg",
-            className: "pl-1 w-6 h-6",
-            src: "https://img.icons8.com/color/100/null/city.png"
+            onMouseOver: displayCityFunc,
+            onMouseOut: hideCityFunc,
+            className: `w-10 ${theme === "light" ? " text-[#0f8bff] bg-[#ffffff] hover:border-green-600" : " bg-slate-700 text-white border-white"}   text-[0.6em] flex flex-row justify-around border-r-[0.09rem] `
+          },
+          /* @__PURE__ */ React.createElement(
+            "img",
+            {
+              alt: "sdfg",
+              className: "pl-1 w-6 h-6",
+              src: "https://img.icons8.com/color/100/null/city.png"
+            }
+          ),
+          /* @__PURE__ */ React.createElement("span", { className: "pt-1.5" }, /* @__PURE__ */ React.createElement(FontAwesomeIcon, { icon: faCaretDown }))
+        ),
+        /* @__PURE__ */ React.createElement(
+          "div",
+          {
+            onMouseOver: displayCityFunc,
+            onMouseOut: hideCityFunc,
+            className: `${displayCity} ${theme === "light" ? "bg-[#ffffff]" : bgColor + " " + textColor} w-[30%] pl-10 text-xs  font-medium  p-1 z-50 absolute top-[2.66rem] left-[10rem] shadow-md shadow-slate-300 rounded-sm grid grid-cols-3 grid-flow-row `
+          },
+          /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer" }, "Toshkent"),
+          /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer" }, "Samarqand"),
+          /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer" }, "Buxoro"),
+          /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer" }, "Xorazm"),
+          /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer" }, "Andijon"),
+          /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer" }, "Farg'ona"),
+          /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer" }, "Namangan"),
+          /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer" }, "Qarshi"),
+          /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer" }, "Termiz"),
+          /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer" }, "Navoiy"),
+          /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer" }, "Jizzax"),
+          /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer" }, "Guliston")
+        ),
+        /* @__PURE__ */ React.createElement(
+          "input",
+          {
+            type: "text",
+            placeholder: "Qidirish...",
+            className: `w-[84%] pl-2 ${theme === "light" ? " text-gray-900" : " bg-slate-700 text-white"}  text-[0.7em] font-semibold outline-none`
           }
         ),
-        /* @__PURE__ */ React.createElement("span", { className: "pt-1.5" }, /* @__PURE__ */ React.createElement(FontAwesomeIcon, { icon: faCaretDown }))
-      ), /* @__PURE__ */ React.createElement(
+        /* @__PURE__ */ React.createElement(
+          "div",
+          {
+            className: `w-[7.9%] rounded-tr-sm rounded-br-sm ${theme === "light" ? " bg-green-600" : "bg-gray-500 "}  text-white text-[0.9em] flex flex-row justify-around py-1 mr-[-1px] rounded-xs`
+          },
+          /* @__PURE__ */ React.createElement(FontAwesomeIcon, { icon: faSearch })
+        )
+      ),
+      /* @__PURE__ */ React.createElement("div", { className: "flex flex-row" }, /* @__PURE__ */ React.createElement("div", { className: "flex flex-row text-xs font-medium " }, /* @__PURE__ */ React.createElement(Link, { to: "/news" }, /* @__PURE__ */ React.createElement(
         "div",
         {
-          onMouseOver: displayCityFunc,
-          onMouseOut: hideCityFunc,
-          className: `${displayCity} w-[30%] pl-10 text-xs  font-medium bg-[#ffffff] p-1 z-50 absolute top-[2.66rem] left-[10rem] shadow-md shadow-slate-300 rounded-sm grid grid-cols-3 grid-flow-row `
+          className: ` border-b-[0.09rem] border-transparent mx-2 pt-2 ${theme === "light" ? "hover:border-green-600" : "hover:border-white"} transition-border duration-700 ease-in-out`
         },
-        /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer" }, "Toshkent"),
-        /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer" }, "Samarqand"),
-        /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer" }, "Buxoro"),
-        /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer" }, "Xorazm"),
-        /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer" }, "Andijon"),
-        /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer" }, "Farg'ona"),
-        /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer" }, "Namangan"),
-        /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer" }, "Qarshi"),
-        /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer" }, "Termiz"),
-        /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer" }, "Navoiy"),
-        /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer" }, "Jizzax"),
-        /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer" }, "Guliston")
-      ), /* @__PURE__ */ React.createElement(
-        "input",
-        {
-          type: "text",
-          placeholder: "Qidirish...",
-          className: "w-[84%] pl-2 text-gray-900 text-[0.7em] font-semibold outline-none"
-        }
-      ), /* @__PURE__ */ React.createElement("div", { className: "w-[8%] bg-green-600 text-white text-[0.9em] flex flex-row justify-around py-1 mr-[-1px] rounded-xs" }, /* @__PURE__ */ React.createElement(FontAwesomeIcon, { icon: faSearch }))),
-      /* @__PURE__ */ React.createElement("div", { className: "flex flex-row" }, /* @__PURE__ */ React.createElement("div", { className: "flex flex-row text-xs font-medium " }, /* @__PURE__ */ React.createElement(Link, { to: "/news" }, /* @__PURE__ */ React.createElement("div", { className: " border-b-[0.09rem] border-transparent mx-2 pt-2 hover:border-green-600 transition-border duration-700 ease-in-out" }, /* @__PURE__ */ React.createElement("h2", null, "Yangiliklar"))), /* @__PURE__ */ React.createElement(Link, { to: "/postforms" }, /* @__PURE__ */ React.createElement(
+        /* @__PURE__ */ React.createElement("h2", null, "Yangiliklar")
+      )), /* @__PURE__ */ React.createElement(Link, { to: "/postforms" }, /* @__PURE__ */ React.createElement(
         "div",
         {
-          className: " mt-1 p-1 border-b-[0.09rem] border-transparent mx-2 bg-green-600 text-white rounded-sm"
+          className: `mt-1 p-1 border-b-[0.09rem] border-transparent mx-2 ${theme === "light" ? "bg-green-600" : "bg-gray-500"}  text-white rounded-sm`
         },
         /* @__PURE__ */ React.createElement("h2", null, "E'lon joylash")
       )), /* @__PURE__ */ React.createElement(Link, { to: "/" }, /* @__PURE__ */ React.createElement(
@@ -49000,7 +49028,7 @@
         {
           onMouseOver: displayLangFunc,
           onMouseOut: hideLangFunc,
-          className: "border-b-[0.09rem] border-transparent mx-2 pt-2 hover:border-green-600 transition-border duration-700 ease-in-out"
+          className: `border-b-[0.09rem] border-transparent mx-2 pt-2 ${theme === "light" ? " hover:border-green-600" : "hover:border-white"} transition-border duration-700 ease-in-out`
         },
         /* @__PURE__ */ React.createElement("span", { className: " mr-0.5" }, "O'zbek"),
         /* @__PURE__ */ React.createElement(
@@ -49014,39 +49042,62 @@
         /* @__PURE__ */ React.createElement(
           "div",
           {
-            className: `${displayLang} absolute top-[2.4rem] right-[16.5rem] h-[4rem] py-2 scroll-none flex flex-col justify-around text-xs  font-medium bg-[#ffffff] shadow-md shadow-slate-300 rounded-md`,
+            className: `${displayLang} absolute top-[2.4rem] right-[16.5rem] h-[4rem] py-2 scroll-none flex flex-col justify-around text-xs  font-medium ${theme === "light" ? "bg-white" : "bg-slate-500 text-white"}  shadow-md shadow-slate-300 rounded-md`,
             onMouseOver: displayLangFunc,
             onMouseOut: hideLangFunc
           },
-          /* @__PURE__ */ React.createElement("span", { className: "hidden mx-2 cursor-pointer flex-row hover:scale-105 hover:bg-green-100 px-2" }, /* @__PURE__ */ React.createElement(
-            "img",
+          /* @__PURE__ */ React.createElement(
+            "span",
             {
-              alt: "sdfg",
-              className: " w-4 h-4",
-              src: "https://img.icons8.com/color/48/null/uzbekistan.png"
-            }
-          ), "UZ"),
-          /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer flex flex-row hover:scale-105 hover:bg-green-100 px-2" }, /* @__PURE__ */ React.createElement(
-            "img",
+              className: `hidden mx-2 cursor-pointer flex-row hover:scale-105  ${theme === "light" ? "hover:bg-green-100" : "hover:bg-gray-100 hover:text-stone-700"}`
+            },
+            /* @__PURE__ */ React.createElement(
+              "img",
+              {
+                alt: "sdfg",
+                className: " w-4 h-4",
+                src: "https://img.icons8.com/color/48/null/uzbekistan.png"
+              }
+            ),
+            "UZ"
+          ),
+          /* @__PURE__ */ React.createElement(
+            "span",
             {
-              alt: "sdfg",
-              className: " w-4 h-4",
-              src: "https://img.icons8.com/color/48/null/usa.png"
-            }
-          ), " ", "EN"),
-          /* @__PURE__ */ React.createElement("span", { className: "mx-2 cursor-pointer flex flex-row hover:scale-105 hover:bg-green-100 px-2" }, /* @__PURE__ */ React.createElement(
-            "img",
+              className: `mx-2 cursor-pointer flex flex-row hover:scale-105 ${theme === "light" ? "hover:bg-green-100" : "hover:bg-gray-100 hover:text-stone-700"}  px-2`
+            },
+            /* @__PURE__ */ React.createElement(
+              "img",
+              {
+                alt: "sdfg",
+                className: " w-4 h-4",
+                src: "https://img.icons8.com/color/48/null/usa.png"
+              }
+            ),
+            " ",
+            "EN"
+          ),
+          /* @__PURE__ */ React.createElement(
+            "span",
             {
-              alt: "sdfg",
-              className: " w-4 h-4",
-              src: "https://img.icons8.com/color/48/null/russian-federation.png"
-            }
-          ), " ", "RU")
+              className: `mx-2 cursor-pointer flex flex-row hover:scale-105 ${theme === "light" ? "hover:bg-green-100" : "hover:bg-gray-100 hover:text-stone-700"} hover:bg-green-100 px-2`
+            },
+            /* @__PURE__ */ React.createElement(
+              "img",
+              {
+                alt: "sdfg",
+                className: " w-4 h-4",
+                src: "https://img.icons8.com/color/48/null/russian-federation.png"
+              }
+            ),
+            " ",
+            "RU"
+          )
         )
-      )), /* @__PURE__ */ React.createElement("div", { className: "border-b-[0.09rem]  border-transparent mx-2 pt-2 hover:border-green-600 transition-border duration-700 ease-in-out" }, /* @__PURE__ */ React.createElement("div", { className: "" }, /* @__PURE__ */ React.createElement(ThemeToggler_default, null))), userId ? /* @__PURE__ */ React.createElement(Link, { to: "/profilePage" }, /* @__PURE__ */ React.createElement(
+      )), /* @__PURE__ */ React.createElement("div", { className: ` mx-2 pt-2  ` }, /* @__PURE__ */ React.createElement(ThemeToggler_default, null)), userId ? /* @__PURE__ */ React.createElement(Link, { to: "/profilePage" }, /* @__PURE__ */ React.createElement(
         "div",
         {
-          className: "flex flex-row border-b-[0.09rem] border-transparent mx-2 pt-2 hover:border-green-600 transition-border duration-700 ease-in-out"
+          className: `flex flex-row border-b-[0.09rem] border-transparent mx-2 pt-2 ${theme === "light" ? " hover:border-green-600" : "hover:border-white"} `
         },
         /* @__PURE__ */ React.createElement("h2", null, "Profil"),
         /* @__PURE__ */ React.createElement(
@@ -49060,7 +49111,7 @@
       )) : /* @__PURE__ */ React.createElement(Link, { to: "/signin" }, /* @__PURE__ */ React.createElement(
         "div",
         {
-          className: "flex flex-row border-b-[0.09rem] border-transparent mx-2 pt-2 hover:border-green-600 transition-border duration-700 ease-in-out"
+          className: `flex flex-row border-b-[0.09rem] border-transparent mx-2 pt-2 ${theme === "light" ? " hover:border-green-600" : "hover:border-white"} transition-border duration-700 ease-in-out`
         },
         /* @__PURE__ */ React.createElement("h2", null, "Kirish"),
         /* @__PURE__ */ React.createElement(
@@ -49083,8 +49134,9 @@
 
   // src/components/CategoryNavbar.jsx
   function CategoryNavbar() {
-    const categoryStyles = " text-[#014360]  w-full text-center font-bold flex flex-row";
-    return /* @__PURE__ */ React.createElement("div", { className: " bg-[#ffe207dd] w-full p-1 block" }, /* @__PURE__ */ React.createElement("div", { className: "mx-[10rem] grid grid-flow-row grid-cols-5 gap-2 p-2 text-xs" }, /* @__PURE__ */ React.createElement(Link, { to: `/`, className: `${categoryStyles}` }, /* @__PURE__ */ React.createElement(
+    const { theme, bgColor, textColor } = useSelector((state) => state.themeStates);
+    const categoryStyles = "   w-full text-center font-bold flex flex-row";
+    return /* @__PURE__ */ React.createElement("div", { className: `${theme === "light" ? "bg-[#ffe207dd] text-[#014360]" : "bg-gray-700 " + textColor}  w-full p-1 block` }, /* @__PURE__ */ React.createElement("div", { className: "mx-[10rem] grid grid-flow-row grid-cols-5 gap-2 p-2 text-xs" }, /* @__PURE__ */ React.createElement(Link, { to: `/`, className: `${categoryStyles}` }, /* @__PURE__ */ React.createElement(
       "img",
       {
         className: "h-[1.2rem]",
@@ -50374,7 +50426,7 @@
       });
     }, []);
     const restNews = hotNews.slice(1, 3);
-    return /* @__PURE__ */ React.createElement("div", { className: "mt-[10vh]" }, /* @__PURE__ */ React.createElement("div", { className: "w-full bg-white" }, /* @__PURE__ */ React.createElement("div", { className: "w-[51rem] mx-auto " }, /* @__PURE__ */ React.createElement("div", { className: "mb-10" }, /* @__PURE__ */ React.createElement("div", { className: "flex flex-row justify-between" }, /* @__PURE__ */ React.createElement(HotNewsPoster, { isFirst: true, ...hotNews[0] }), /* @__PURE__ */ React.createElement("div", { className: " flex flex-col" }, restNews.length ? restNews.map((news, i2) => /* @__PURE__ */ React.createElement(HotNewsPoster, { key: i2, ...news })) : /* @__PURE__ */ React.createElement("h3", null, "No more hot news")))), " ", /* @__PURE__ */ React.createElement(LatestNews_default, null))));
+    return /* @__PURE__ */ React.createElement("div", { className: "mt-[10vh]" }, /* @__PURE__ */ React.createElement("div", { className: "w-full " }, /* @__PURE__ */ React.createElement("div", { className: "w-[51rem] mx-auto " }, /* @__PURE__ */ React.createElement("div", { className: "mb-10" }, /* @__PURE__ */ React.createElement("div", { className: "flex flex-row justify-between" }, /* @__PURE__ */ React.createElement(HotNewsPoster, { isFirst: true, ...hotNews[0] }), /* @__PURE__ */ React.createElement("div", { className: " flex flex-col" }, restNews.length ? restNews.map((news, i2) => /* @__PURE__ */ React.createElement(HotNewsPoster, { key: i2, ...news })) : /* @__PURE__ */ React.createElement("h3", null, "No more hot news")))), " ", /* @__PURE__ */ React.createElement(LatestNews_default, null))));
   }
 
   // src/pages/ProfilePage.jsx
@@ -50582,10 +50634,9 @@
     ), /* @__PURE__ */ React.createElement("div", { className: "flex items-center flex-col mt-5 mb-3.5" }, /* @__PURE__ */ React.createElement("h1", { className: "text-center font-bold text-xl" }, myFirstName || firstName, " ", myLastName || lastName), /* @__PURE__ */ React.createElement("div", null, email), /* @__PURE__ */ React.createElement("hr", { className: "full flex self              -center w-2/3 mt-2" })), /* @__PURE__ */ React.createElement("div", { className: "w-full flex justify-center my-5" }, /* @__PURE__ */ React.createElement(
       "button",
       {
-        className: "bg-gray-200 px-5 py-1 rounded-lg text-black font-semibold",
+        className: "bg-gray-200 px-5 py-2 rounded-lg text-black font-semibold",
         onClick: () => setOpenWindow(true)
       },
-      /* @__PURE__ */ React.createElement("i", { className: "bx bx-edit-alt mr-2 text-xl" }),
       "Edit Profile"
     )))), /* @__PURE__ */ React.createElement("div", { className: " col-span-9 " }, /* @__PURE__ */ React.createElement("div", { className: "mt-5" }, /* @__PURE__ */ React.createElement("div", { className: "w-full mx-auto grid grid-cols-2 grid-flow-row gap-3" }, allUserPosts && allUserPosts.map((item) => /* @__PURE__ */ React.createElement(Box, { key: item.id, ...item }))))), /* @__PURE__ */ React.createElement("div", null)))), openWindow && /* @__PURE__ */ React.createElement("div", { className: "absolute right-0 z-60 top-14 bg-white w-[950px] rounded-l-xl h-[91vh] overflow-auto " }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "pr-14 pl-14 pt-14 pb-16 z-50" }, /* @__PURE__ */ React.createElement("h1", { className: "font-bold" }, "Edit Profile"), /* @__PURE__ */ React.createElement("label", { htmlFor: "firstname", className: "my-5" }, "Firstname"), /* @__PURE__ */ React.createElement(
       "input",
@@ -50850,10 +50901,9 @@
     )), /* @__PURE__ */ React.createElement("div", null, "+", postDetails && postDetails.phoneNumber), /* @__PURE__ */ React.createElement("div", { className: " text-sky-700 underline" }, email), /* @__PURE__ */ React.createElement("hr", { className: "full flex self              -center w-2/3 mt-2" })), /* @__PURE__ */ React.createElement("div", { className: "w-full flex justify-center my-5" }, /* @__PURE__ */ React.createElement(
       "button",
       {
-        className: "bg-gray-200 px-5 py-1 rounded-lg text-black font-semibold",
+        className: "bg-gray-200 px-5 py-2 rounded-lg text-black font-semibold",
         onClick: () => setOpenWindow(true)
       },
-      /* @__PURE__ */ React.createElement("i", { className: "bx bx-edit-alt mr-2 text-xl" }),
       "Edit Post"
     )))), /* @__PURE__ */ React.createElement("div", { className: " col-span-9 " }, /* @__PURE__ */ React.createElement("div", { className: "mt-5" }, postDetails && /* @__PURE__ */ React.createElement(Details, { key: postDetails.id, ...postDetails }))), /* @__PURE__ */ React.createElement("div", null))), openWindow && /* @__PURE__ */ React.createElement("div", { className: "absolute right-0 z-60 top-14 bg-white w-[950px] rounded-l-xl h-[91vh] overflow-auto " }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "pr-14 pl-14 pt-14 pb-16 z-50" }, /* @__PURE__ */ React.createElement("h1", { className: "font-bold" }, "Edit Profile"), /* @__PURE__ */ React.createElement("label", { htmlFor: "firstname", className: "my-5" }, "Firstname"), /* @__PURE__ */ React.createElement(
       "input",
@@ -50904,7 +50954,7 @@
   function App() {
     const [isSignedIn, setIsSignedIn] = (0, import_react33.useState)();
     const [display, setDisplayNavbar] = (0, import_react33.useState)("");
-    const { bgColor } = useSelector((state) => state.themeStates);
+    const { bgColor, textColor } = useSelector((state) => state.themeStates);
     const bodyRef = (0, import_react33.useRef)(null);
     (0, import_react33.useEffect)(() => {
       const root2 = bodyRef.current.parentElement;
@@ -50912,7 +50962,7 @@
       setIsSignedIn(false);
     }, [isSignedIn, bgColor]);
     console.log(bodyRef);
-    return /* @__PURE__ */ React.createElement("div", { ref: bodyRef, className: `App ${bgColor} ` }, /* @__PURE__ */ React.createElement(
+    return /* @__PURE__ */ React.createElement("div", { ref: bodyRef, className: `App ${bgColor, textColor} ` }, /* @__PURE__ */ React.createElement(
       Navbar,
       {
         status: isSignedIn,

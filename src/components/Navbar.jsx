@@ -125,7 +125,11 @@ export default function Navbar() {
 								</div>
 							</Link>
 							<Link to="/postforms">
-								<div className=" mt-1 p-1 border-b-[0.09rem] border-transparent mx-2 bg-green-600 text-white rounded-sm">
+								<div
+									className={`mt-1 p-1 border-b-[0.09rem] border-transparent mx-2 ${
+										theme === "light" ? "bg-green-600" : "bg-gray-500"
+									}  text-white rounded-sm`}
+								>
 									<h2>E'lon joylash</h2>
 								</div>
 							</Link>
@@ -146,11 +150,19 @@ export default function Navbar() {
 										icon={faCaretDown}
 									/>{" "}
 									<div
-										className={`${displayLang} absolute top-[2.4rem] right-[16.5rem] h-[4rem] py-2 scroll-none flex flex-col justify-around text-xs  font-medium bg-[#ffffff] shadow-md shadow-slate-300 rounded-md`}
+										className={`${displayLang} absolute top-[2.4rem] right-[16.5rem] h-[4rem] py-2 scroll-none flex flex-col justify-around text-xs  font-medium ${
+											theme === "light" ? "bg-white" : "bg-slate-500 text-white"
+										}  shadow-md shadow-slate-300 rounded-md`}
 										onMouseOver={displayLangFunc}
 										onMouseOut={hideLangFunc}
 									>
-										<span className="hidden mx-2 cursor-pointer flex-row hover:scale-105 hover:bg-green-100 px-2">
+										<span
+											className={`hidden mx-2 cursor-pointer flex-row hover:scale-105  ${
+												theme === "light"
+													? "hover:bg-green-100"
+													: "hover:bg-gray-100 hover:text-stone-700"
+											}`}
+										>
 											<img
 												alt="sdfg"
 												className=" w-4 h-4"
@@ -158,7 +170,13 @@ export default function Navbar() {
 											/>
 											UZ
 										</span>
-										<span className="mx-2 cursor-pointer flex flex-row hover:scale-105 hover:bg-green-100 px-2">
+										<span
+											className={`mx-2 cursor-pointer flex flex-row hover:scale-105 ${
+												theme === "light"
+													? "hover:bg-green-100"
+													: "hover:bg-gray-100 hover:text-stone-700"
+											}  px-2`}
+										>
 											<img
 												alt="sdfg"
 												className=" w-4 h-4"
@@ -166,7 +184,13 @@ export default function Navbar() {
 											/>{" "}
 											EN
 										</span>
-										<span className="mx-2 cursor-pointer flex flex-row hover:scale-105 hover:bg-green-100 px-2">
+										<span
+											className={`mx-2 cursor-pointer flex flex-row hover:scale-105 ${
+												theme === "light"
+													? "hover:bg-green-100"
+													: "hover:bg-gray-100 hover:text-stone-700"
+											} hover:bg-green-100 px-2`}
+										>
 											<img
 												alt="sdfg"
 												className=" w-4 h-4"
@@ -178,14 +202,8 @@ export default function Navbar() {
 								</div>
 							</Link>
 
-							<div
-								className={` mx-2 pt-2 ${
-									theme === "light"
-										? " hover:border-green-600"
-										: "hover:border-white"
-								} transition-border duration-700 ease-in-out`}
-							>
-									<ThemeToggler />
+							<div className={` mx-2 pt-2  `}>
+								<ThemeToggler />
 							</div>
 							{userId ? (
 								<Link to="/profilePage">
@@ -194,7 +212,7 @@ export default function Navbar() {
 											theme === "light"
 												? " hover:border-green-600"
 												: "hover:border-white"
-										} transition-border duration-700 ease-in-out`}
+										} `}
 									>
 										<h2>Profil</h2>
 										<img
