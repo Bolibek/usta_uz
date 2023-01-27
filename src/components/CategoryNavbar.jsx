@@ -1,9 +1,11 @@
+import { useSelector } from 'react-redux'
 import {Link} from 'react-router-dom'
 export default function CategoryNavbar() {
+  const {theme, bgColor, textColor} = useSelector(state => state.themeStates)
   const categoryStyles =
-    ' text-[#014360]  w-full text-center font-bold flex flex-row'
+    '   w-full text-center font-bold flex flex-row'
   return (
-    <div className=" bg-[#ffe207dd] w-full p-1 block">
+    <div className={`${theme === "light"? "bg-[#ffe207dd] text-[#014360]" : "bg-gray-700 " + textColor}  w-full p-1 block`}>
       <div className="mx-[10rem] grid grid-flow-row grid-cols-5 gap-2 p-2 text-xs">
         <Link to={`/`} className={`${categoryStyles}`}>
           <img

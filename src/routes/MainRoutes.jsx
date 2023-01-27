@@ -9,7 +9,7 @@ import SinglePostPage from "../pages/SinglePostPage";
 
 export default function MainRoutes({ setIsSignedIn }) {
 	return (
-		<div className="mt-14">
+		<div className="mt-14 border-blue-500">
 			<Routes>
 				<Route path="/" element={<HomePage />} />
 				<Route

@@ -6,7 +6,7 @@ export default function PostsFormPage() {
   const [isWorker, setIsWorker] = useState(true)
   const buttonStyle = 'bg-green-600 text-white border-green-600'
   return (
-    <div className=" mt-[5rem] flex flex-col items-center">
+    <div className=" pt-[2rem] flex flex-col items-center">
       <h1>E&apos;lonlar</h1>
       <div className=" flex flex-row ">
         <button

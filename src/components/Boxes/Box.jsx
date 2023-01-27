@@ -1,27 +1,32 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-	// faArrowLeft,
-	// faAngleDoubleLeft,
-	// faMoneyBills,
-	// faMoneyBillTransfer,
 	faMoneyCheckDollar,
 	faAngleDoubleRight,
 } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
 
 export default function Box(props) {
-	const {id, userName, category, photoLinks, wage, extraConditions, extraSkills } =
-		props;
+	const {
+		id,
+		userName,
+		category,
+		photoLinks,
+		wage,
+		extraConditions,
+		extraSkills,
+	} = props;
 	const skill = extraConditions
 		? extraConditions.slice(0, 4)
 		: extraSkills.slice(0, 4);
-	// const postId = useParams()
+	const { theme, textColor } = useSelector(
+		(state) => state.themeStates
+	);
 	return (
 		<div
-			className={`w-full h-[15rem] mx-auto border-2 border-green-300  rounded-md transform  `}
-			// style={{backgroundImage: 'url(' + photoLinks +')'}}
+			className={`w-full h-[15rem] mx-auto border-2 ${theme === "light"? "border-green-300" : "border-" + textColor + "-300"}  rounded-md transform  `}
 		>
-			<div className="bg-[#3636369a] p-[0.7rem] h-[15rem]">
+			<div className=" p-[0.7rem] h-[15rem]">
 				<div className=" flex flex-row w-full relative bg-transparent">
 					<div>
 						<img
@@ -31,8 +36,10 @@ export default function Box(props) {
 						/>
 					</div>
 					<div className="ml-5 text-xs">
-						<h1 className=" font-bold text-white">{userName}</h1>
-						<div className="text-xs font-semibold">{category}</div>
+						<h1 className={` font-bold ${textColor}`}>{userName}</h1>
+						<div className={`text-xs font-semibold ${textColor}`}>
+							{category}
+						</div>
 						<div className=" flex flex-row mb-1">
 							<img
 								className=" w-3 h-3"
@@ -99,7 +106,7 @@ export default function Box(props) {
 					)}
 					<div className="my-2 text-xs font-semibold ">
 						{skill ? (
-							<span className="text-white">
+							<span className={`${textColor}`}>
 								<FontAwesomeIcon
 									className="text-[#308b0f]"
 									icon={faMoneyCheckDollar}
@@ -114,7 +121,7 @@ export default function Box(props) {
 							<span className="bg-blue-500 text-white px-1 py-0.5 cursor-pointer rounded-sm">
 								Ko'proq...
 							</span>
-							<Link to={`/posts/${id}`} >
+							<Link to={`/posts/${id}`}>
 								<span className="bg-blue-500 text-white px-2 py-0.5 cursor-pointer rounded-sm">
 									To'liq{" "}
 									<FontAwesomeIcon
@@ -139,7 +146,7 @@ export default function Box(props) {
 								/>
 							))
 					) : (
-						<h3>No photos uploaded</h3>
+						<h3 className={`${textColor} w-full text-center mt-6 font-semibold text-xs`}>No photos uploaded</h3>
 					)}
 				</div>
 			</div>

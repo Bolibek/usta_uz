@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Button from "../components/Button/Button.jsx";
 import Details from "../components/Details.jsx";
-import avatar from "../assets/image-avatar.jpg";
+// import avatar from "../assets/image-avatar.jpg";
 import {
 	useMyProfileQuery,
 	useWorkerPostDetailsQuery,
@@ -90,9 +90,8 @@ export default function SinglePostPage() {
 			</div>
 		);
 	}
-	// console.log(details, postId);
 	return (
-		<div className="mx-[13rem] mt-24">
+		<div className={`mx-[13rem] ${data? "h-[100%]" : "h-[100vh]"}  pt-14`}>
 			<div>
 				<div className=" flex flex-row font-bold text-gray-500">
 					<span>Home</span>
@@ -117,7 +116,6 @@ export default function SinglePostPage() {
 						<div>
 							<div
 								className=" flex justify-center"
-								// style={{ height: "348px" }}
 							>
 								<div className="flex flex-col">
 									<div className={`  `}>
@@ -130,7 +128,7 @@ export default function SinglePostPage() {
 											/>
 										) : (
 											<img
-												src={avatar}
+												src={'https://res.cloudinary.com/bolibekjnfjenfjnfjnfpjnfjnfenkjfwjf/image/upload/v1673886563/usta_uz_emposts/gahrpoldittuyaymtkaw.png'}
 												alt="profile"
 												className="rounded-full w-60 h-60"
 											/>

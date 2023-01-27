@@ -25,7 +25,7 @@ export default function HomePage() {
       {/* <div className="w-full">
 				<QuickLinks />
 			</div> */}
-      <div className="w-full bg-white">
+      <div className="w-full ">
         <div className="w-[51rem] mx-auto ">
           <div className="mb-10">
             <div className="flex flex-row justify-between">
