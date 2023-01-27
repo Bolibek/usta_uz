@@ -140,10 +140,9 @@ const Profile = () => {
 									</div>
 									<div className="w-full flex justify-center my-5">
 										<button
-											className="bg-gray-200 px-5 py-1 rounded-lg text-black font-semibold"
+											className="bg-gray-200 px-5 py-2 rounded-lg text-black font-semibold"
 											onClick={() => setOpenWindow(true)}
 										>
-											<i className="bx bx-edit-alt mr-2 text-xl"></i>
 											Edit Profile
 										</button>
 									</div>

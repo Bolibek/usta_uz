@@ -41,7 +41,12 @@ function ThemeToggler() {
 
 	// console.log(body)
 	return (
-		<button className={`border-b-[0.09rem] border-transparent w-10 cursor-pointer`} onClick={() => dispatch(toggle())}>
+		<button
+			className={`border-b-[0.09rem] border-transparent transition-border duration-700 ease-in-out ${
+				theme === "light" ? " hover:border-green-600" : "hover:border-white"
+			} w-10 cursor-pointer`}
+			onClick={() => dispatch(toggle())}
+		>
 			{theme === "light" ? (
 				<>
 					Kun
