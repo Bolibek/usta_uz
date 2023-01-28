@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,7 +16,10 @@ export default function Navbar() {
 	const { theme, textColor, bgColor } = useSelector(
 		(state) => state.themeStates
 	);
-
+	const { t, i18n } = useTranslation();
+	useEffect(() => {
+		i18n.changeLanguage("en"); // default language
+	}, [i18n]);
 	const displayCityFunc = () => {
 		setDisplayCity("");
 	};
@@ -95,7 +99,7 @@ export default function Navbar() {
 
 						<input
 							type="text"
-							placeholder="Qidirish..."
+							placeholder={t("searchPlaceholder")}
 							className={`w-[84%] pl-2 ${
 								theme === "light"
 									? " text-gray-900"
@@ -121,7 +125,7 @@ export default function Navbar() {
 											: "hover:border-white"
 									} transition-border duration-700 ease-in-out`}
 								>
-									<h2>Yangiliklar</h2>
+									<h2>{t("articleNav")}</h2>
 								</div>
 							</Link>
 							<Link to="/postforms">
@@ -130,7 +134,7 @@ export default function Navbar() {
 										theme === "light" ? "bg-green-600" : "bg-gray-500"
 									}  text-white rounded-sm`}
 								>
-									<h2>E'lon joylash</h2>
+									<h2>{t("newPost")}</h2>
 								</div>
 							</Link>
 
@@ -144,7 +148,7 @@ export default function Navbar() {
 											: "hover:border-white"
 									} transition-border duration-700 ease-in-out`}
 								>
-									<span className=" mr-0.5">O'zbek</span>
+									<span className=" mr-0.5">{t("language")}</span>
 									<FontAwesomeIcon
 										className=" text-[0.8em]"
 										icon={faCaretDown}
@@ -203,7 +207,7 @@ export default function Navbar() {
 							</Link>
 
 							<div className={` mx-2 pt-2  `}>
-								<ThemeToggler />
+								<ThemeToggler translator={t} />
 							</div>
 							{userId ? (
 								<Link to="/profilePage">
@@ -214,7 +218,7 @@ export default function Navbar() {
 												: "hover:border-white"
 										} `}
 									>
-										<h2>Profil</h2>
+										<h2>{t("profile")}</h2>
 										<img
 											alt="sdfg"
 											className=" w-4 h-4"
