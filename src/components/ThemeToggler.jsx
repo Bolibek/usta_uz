@@ -9,7 +9,7 @@ import {
 	faMoon,
 	// faSignOut,
 } from "@fortawesome/free-solid-svg-icons";
-function ThemeToggler() {
+function ThemeToggler({translator}) {
 	const dispatch = useDispatch();
 	const { theme } = useSelector((state) => state.themeStates);
 	// const bodyRef = useMemo(() => messages.map(() => useRef(<HTMLBodyElement/>), []))
@@ -39,7 +39,7 @@ function ThemeToggler() {
 	//   body.style.backgroundColor = theme === "dark"? "#0f172a" : "#fff";
 	// });
 
-	// console.log(body)
+	// console.log(translator("theme"))
 	return (
 		<button
 			className={`border-b-[0.09rem] border-transparent transition-border duration-700 ease-in-out ${
@@ -49,12 +49,12 @@ function ThemeToggler() {
 		>
 			{theme === "light" ? (
 				<>
-					Kun
+					{translator("day")}
 					<FontAwesomeIcon className="text-[#ff710ba0] pl-1" icon={faSun} />
 				</>
 			) : (
 				<>
-					Tun
+					{translator("night")}
 					<FontAwesomeIcon className="text-[#f2e9e3] pl-1" icon={faMoon} />
 				</>
 			)}
