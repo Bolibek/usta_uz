@@ -5,7 +5,7 @@ export default function CategoryNavbar() {
   const categoryStyles =
     '   w-full text-center font-bold flex flex-row'
   return (
-    <div className={`${theme === "light"? "bg-[#ffe207dd] text-[#014360]" : "bg-gray-700 " + textColor}  w-full p-1 block`}>
+    <div className={`${theme === "light"? "bg-[#ffe207dd] text-[#014360]" : "bg-gray-300 text-slate-900"}  w-full p-1 block`}>
       <div className="mx-[10rem] grid grid-flow-row grid-cols-5 gap-2 p-2 text-xs">
         <Link to={`/`} className={`${categoryStyles}`}>
           <img
