@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
+import { v4 as uuidv4 } from "uuid";
 import FormInput from "../FormInputs/FormInput";
 import RadioInput from "../FormInputs/RadioInput";
 import { useAddWorkerPostMutation } from "../../services/invoiceApi";
-import { v4 as uuidv4 } from "uuid";
 import { formatDate } from "../../utils/index";
 
 export default function WorkerPostForm() {
@@ -15,11 +17,16 @@ export default function WorkerPostForm() {
 	const [extraSkills, setExtraSkills] = useState("");
 	const [startingTime, setStartingTime] = useState("bugun");
 	const [image, setImage] = useState("");
-
+	const { theme, textColor, bgColor } = useSelector(
+		(state) => state.themeStates
+	);
 	const navigate = useNavigate();
 
 	const [addWorkerPost, isSuccess] = useAddWorkerPostMutation();
-
+	const { t, i18n } = useTranslation();
+	// useEffect(() => {
+	// 	i18n.changeLanguage("en"); // default language
+	// }, [i18n]);
 	const handleSection = (e) => {
 		setSection(e.target.value);
 	};
@@ -76,7 +83,8 @@ export default function WorkerPostForm() {
 				})
 				.catch((err) => {
 					console.log(err);
-				}).finally(() => {
+				})
+				.finally(() => {
 					navigate("/");
 				});
 			// if (kindModal === 'editLight') {
@@ -115,8 +123,8 @@ export default function WorkerPostForm() {
 	// console.log(new Date('16 Jan 2023').getTime());
 	// console.log(startingTime);
 	return (
-		<div className="flex flex-col items-center">
-			<h1>Ishchi e'lonini to'ldirish</h1>
+		<div className="flex flex-col items-center ">
+			<h1> {t("fillWorkerForm")} </h1>
 			<form
 				onSubmit={handle}
 				className="mt-5 p-5 border-[0.1rem] border-green-600 rounded-md w-[45vw]"
@@ -124,8 +132,8 @@ export default function WorkerPostForm() {
 				<div>
 					<div className="flex flex-col">
 						<FormInput
-							labelText={"Servis nomi"}
-							className={"mt-1"}
+							labelText={t("serviceName")}
+							className={`mt-1 text-white`}
 							inputType={"text"}
 							inputValue={""}
 						/>
@@ -135,14 +143,14 @@ export default function WorkerPostForm() {
 							<div className=" flex flex-col w-[48%]">
 								<label
 									htmlFor=""
-									className="font-spartan text-xs flex flex-col text-gray-900 font-medium"
+									className={`font-spartan text-xs flex flex-col ${theme === "light" ?" text-gray-900" : "text-white"}  font-medium`}
 								>
-									Bo'lim
+									{t("sectionName")}
 								</label>
 								<select
 									value={section}
 									onChange={handleSection}
-									className="rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold "
+									className={`rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-slate-900 font-bold`}
 								>
 									<option value="Qurilish1">Qurilish1</option>
 									<option value="Qurilish2">Qurilish2</option>
@@ -157,9 +165,9 @@ export default function WorkerPostForm() {
 							<div className=" flex flex-col w-[48%]">
 								<label
 									htmlFor=""
-									className="font-spartan text-xs flex flex-col text-gray-900 font-medium"
+									className={`font-spartan text-xs flex flex-col ${theme === "light" ?" text-gray-900" : "text-white"} font-medium`}
 								>
-									Kategoriya
+									{t("category")}
 								</label>
 								<select
 									value={category}
@@ -181,9 +189,9 @@ export default function WorkerPostForm() {
 							<div className=" flex flex-col w-[48%]">
 								<label
 									htmlFor=""
-									className="font-spartan text-xs flex flex-col text-gray-900 font-medium"
+									className={`"font-spartan text-xs flex flex-col ${theme === "light" ?" text-gray-900" : "text-white"} font-medium`}
 								>
-									Kategoriya turi
+									{t("categoryType")}
 								</label>
 								<select
 									value={categoryType}
@@ -203,9 +211,9 @@ export default function WorkerPostForm() {
 							<div className=" flex flex-col w-[48%]">
 								<label
 									htmlFor=""
-									className="font-spartan text-xs flex flex-col text-gray-900 font-medium"
+									className={`"font-spartan text-xs flex flex-col ${theme === "light" ?" text-gray-900" : "text-white"} font-medium`}
 								>
-									Material turi (ixtiyoriy)
+									{t("jobPicturesDone")}
 								</label>
 								<select
 									value={material}
@@ -227,7 +235,7 @@ export default function WorkerPostForm() {
 					<div className=" flex flex-row justify-between mt-3">
 						<div className=" flex flex-col w-[48%]">
 							<FormInput
-								labelText={"Qilingan ish rasmi (ixtiyoriy)"}
+								labelText={t("jobPicturesDone")}
 								className={"mt-1.5 "}
 								inputType={"file"}
 								inputValue={""}
@@ -237,9 +245,9 @@ export default function WorkerPostForm() {
 						<div className="flex flex-col w-[48%] ">
 							<label
 								htmlFor=""
-								className="font-spartan text-xs flex flex-col text-gray-900 font-medium mb-1"
+								className={`font-spartan text-xs flex flex-col ${theme === "light" ?" text-gray-900" : "text-white"} font-medium mb-1`}
 							>
-								Mahoratlar/Skillar (ixtiyoriy)
+								{t("skills")}
 							</label>
 							<textarea
 								value={extraSkills}
@@ -251,30 +259,30 @@ export default function WorkerPostForm() {
 					</div>
 				</div>
 				<div>
-					<label className="font-spartan text-xs flex flex-col text-gray-900 font-medium mb-1 mt-3">
-						Qachondan boshlay olasiz?
+					<label className={`font-spartan text-xs flex flex-col ${theme === "light" ?" text-gray-900" : "text-white"} font-medium mb-1 mt-3`}>
+						{t("startTime4Wrk")}
 					</label>
-					<div className=" flex flex-row font-spartan text-xs text-gray-900 font-medium">
+					<div className={`flex flex-row font-spartan text-xs ${theme === "light" ?" text-gray-900" : "text-white"} font-medium`}>
 						<RadioInput
-							label="Bugun"
+							label={t("today")}
 							value="bugun"
 							checked={startingTime}
 							setter={setStartingTime}
 						/>
 						<RadioInput
-							label="Ertaga"
+							label={t("tomorrrow")}
 							value="ertaga"
 							checked={startingTime}
 							setter={setStartingTime}
 						/>
 						<RadioInput
-							label="Xo'jayinning vaqtiga qarab"
+							label={t("dependOnEmployer")}
 							value="Xojayinning-vaqtiga-qarab"
 							checked={startingTime}
 							setter={setStartingTime}
 						/>
 						<RadioInput
-							label="Hafta ichida"
+							label={t("withinAWeek")}
 							value="hafta-ichida"
 							checked={startingTime}
 							setter={setStartingTime}
@@ -283,9 +291,9 @@ export default function WorkerPostForm() {
 					<div className="flex flex-col mt-3">
 						<label
 							htmlFor=""
-							className="font-spartan text-xs flex flex-col text-gray-900 font-medium"
+							className={`"font-spartan text-xs flex flex-col ${theme === "light" ?" text-gray-900" : "text-white"} font-medium`}
 						>
-							Ishga qaysi vaqtda kelasiz?
+							{t("comingHours")}
 						</label>
 						<select
 							value={comingHours}
@@ -305,7 +313,7 @@ export default function WorkerPostForm() {
 					<div className=" flex flex-row justify-between mt-3">
 						<div className="flex flex-col w-[48%]">
 							<FormInput
-								labelText={"Xizmat uchun qancha olmoqchisiz?"}
+								labelText={t("wage")}
 								className={"mt-1 "}
 								inputType={"text"}
 								inputValue={""}
@@ -313,7 +321,7 @@ export default function WorkerPostForm() {
 						</div>
 						<div className="flex flex-col w-[48%]">
 							<FormInput
-								labelText={"Telefon raqam"}
+								labelText={t("phoneNumber")}
 								className={"mt-1 "}
 								inputType={"text"}
 								inputValue={""}
@@ -324,10 +332,10 @@ export default function WorkerPostForm() {
 
 				<div classNames="">
 					<button
-						className="mt-3 px-5 rounded  py-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold"
+						className={`mt-3 px-5 rounded  py-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border ${theme === "light" ?" text-gray-900" : "text-white"} font-bold`}
 						type="submit"
 					>
-						Submit
+						{t("submit")}
 					</button>
 				</div>
 			</form>

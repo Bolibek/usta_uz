@@ -17,9 +17,9 @@ export default function Navbar() {
 		(state) => state.themeStates
 	);
 	const { t, i18n } = useTranslation();
-	useEffect(() => {
-		i18n.changeLanguage("en"); // default language
-	}, [i18n]);
+	// useEffect(() => {
+	// 	i18n.changeLanguage("en"); // default language
+	// }, [i18n]);
 	const displayCityFunc = () => {
 		setDisplayCity("");
 	};
@@ -83,18 +83,18 @@ export default function Navbar() {
 								theme === "light" ? "bg-[#ffffff]" : bgColor + " " + textColor
 							} w-[30%] pl-10 text-xs  font-medium  p-1 z-50 absolute top-[2.66rem] left-[10rem] shadow-md shadow-slate-300 rounded-sm grid grid-cols-3 grid-flow-row `}
 						>
-							<span className="mx-2 cursor-pointer">Toshkent</span>
-							<span className="mx-2 cursor-pointer">Samarqand</span>
-							<span className="mx-2 cursor-pointer">Buxoro</span>
-							<span className="mx-2 cursor-pointer">Xorazm</span>
-							<span className="mx-2 cursor-pointer">Andijon</span>
-							<span className="mx-2 cursor-pointer">Farg'ona</span>
-							<span className="mx-2 cursor-pointer">Namangan</span>
-							<span className="mx-2 cursor-pointer">Qarshi</span>
-							<span className="mx-2 cursor-pointer">Termiz</span>
-							<span className="mx-2 cursor-pointer">Navoiy</span>
-							<span className="mx-2 cursor-pointer">Jizzax</span>
-							<span className="mx-2 cursor-pointer">Guliston</span>
+							<span className="mx-2 cursor-pointer">{t("tashkent")}</span>
+							<span className="mx-2 cursor-pointer">{t("samarkand")}</span>
+							<span className="mx-2 cursor-pointer">{t("bukhara")}</span>
+							<span className="mx-2 cursor-pointer">{t("khvarezm")}</span>
+							<span className="mx-2 cursor-pointer">{t("andijan")}</span>
+							<span className="mx-2 cursor-pointer">{t("fergana")}</span>
+							<span className="mx-2 cursor-pointer">{t("namangan")}</span>
+							<span className="mx-2 cursor-pointer">{t("qarshi")}</span>
+							<span className="mx-2 cursor-pointer">{t("termiz")}</span>
+							<span className="mx-2 cursor-pointer">{t("navai")}</span>
+							<span className="mx-2 cursor-pointer">{t("jizzakh")}</span>
+							<span className="mx-2 cursor-pointer">{t("gulistan")}</span>
 						</div>
 
 						<input
@@ -172,7 +172,7 @@ export default function Navbar() {
 												className=" w-4 h-4"
 												src="https://img.icons8.com/color/48/null/uzbekistan.png"
 											/>
-											UZ
+											{t("langCodeForUz")}
 										</span>
 										<span
 											className={`mx-2 cursor-pointer flex flex-row hover:scale-105 ${
@@ -186,7 +186,7 @@ export default function Navbar() {
 												className=" w-4 h-4"
 												src="https://img.icons8.com/color/48/null/usa.png"
 											/>{" "}
-											EN
+											{t("langCodeForEn")}
 										</span>
 										<span
 											className={`mx-2 cursor-pointer flex flex-row hover:scale-105 ${
@@ -200,7 +200,7 @@ export default function Navbar() {
 												className=" w-4 h-4"
 												src="https://img.icons8.com/color/48/null/russian-federation.png"
 											/>{" "}
-											RU
+											{t("langCodeForRu")}
 										</span>
 									</div>
 								</div>
