@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import FormInput from "../FormInputs/FormInput";
 import RadioInput from "../FormInputs/RadioInput";
 import { useAddEmployerPostMutation } from "../../services/invoiceApi";
@@ -17,10 +19,17 @@ export default function EmployerPostForm() {
 	const [startingTime, setStartingTime] = useState("bugun");
 	const [image, setImage] = useState("");
 	const [url, setUrl] = useState("");
+	const { theme, textColor, bgColor } = useSelector(
+		(state) => state.themeStates
+	);
 
 	const navigate = useNavigate();
 
 	const [addEmployerPost] = useAddEmployerPostMutation();
+	const { t, i18n } = useTranslation();
+	// useEffect(() => {
+	// 	i18n.changeLanguage("en"); // default language
+	// }, [i18n]);
 
 	const handleSection = (e) => {
 		setSection(e.target.value);
@@ -124,7 +133,7 @@ export default function EmployerPostForm() {
 	console.log(url);
 	return (
 		<div className="flex flex-col items-center ">
-			<h1>Ishchi e'lonini to'ldirish</h1>
+			<h1>{t("fillEmployerForm")}</h1>
 			<form
 				onSubmit={handle}
 				className="mt-5 p-5 border-[0.1rem] border-green-600 rounded-md w-[45vw]"
@@ -132,7 +141,7 @@ export default function EmployerPostForm() {
 				<div className="mb-1.5">
 					<div className="flex flex-col">
 						<FormInput
-							labelText={"Ish nomi"}
+							labelText={t("jobName")}
 							className={"mt-1"}
 							inputType={"text"}
 							inputValue={""}
@@ -143,9 +152,9 @@ export default function EmployerPostForm() {
 							<div className=" flex flex-col w-[48%]">
 								<label
 									htmlFor=""
-									className="font-spartan text-xs flex flex-col text-gray-900 font-medium"
+									className={`font-spartan text-xs flex flex-col ${theme === "light" ?" text-gray-900" : "text-white"} font-medium`}
 								>
-									Bo'lim
+									{t("sectionName")}
 								</label>
 								<select
 									value={section}
@@ -165,9 +174,9 @@ export default function EmployerPostForm() {
 							<div className=" flex flex-col w-[48%]">
 								<label
 									htmlFor=""
-									className="font-spartan text-xs flex flex-col text-gray-900 font-medium"
+									className={`font-spartan text-xs flex flex-col ${theme === "light" ?" text-gray-900" : "text-white"} font-medium`}
 								>
-									Kategoriya
+									{t("category")}
 								</label>
 								<select
 									value={category}
@@ -189,9 +198,9 @@ export default function EmployerPostForm() {
 							<div className=" flex flex-col w-[48%]">
 								<label
 									htmlFor=""
-									className="font-spartan text-xs flex flex-col text-gray-900 font-medium"
+									className={`font-spartan text-xs flex flex-col ${theme === "light" ?" text-gray-900" : "text-white"} font-medium`}
 								>
-									Kategoriya turi
+									{t("categoryType")}
 								</label>
 								<select
 									value={categoryType}
@@ -211,9 +220,9 @@ export default function EmployerPostForm() {
 							<div className=" flex flex-col w-[48%]">
 								<label
 									htmlFor=""
-									className="font-spartan text-xs flex flex-col text-gray-900 font-medium"
+									className={`font-spartan text-xs flex flex-col ${theme === "light" ?" text-gray-900" : "text-white"} font-medium`}
 								>
-									Material turi (ixtiyoriy)
+									{t("material")}
 								</label>
 								<select
 									value={material}
@@ -235,7 +244,7 @@ export default function EmployerPostForm() {
 					<div className=" flex flex-row justify-between">
 						<div className=" flex flex-col w-[48%] mt-3">
 							<FormInput
-								labelText={"Qilinadigan ish rasmi (ixtiyoriy)"}
+								labelText={t("jobPicturesTodo")}
 								className={"mt-1.5"}
 								inputType={"file"}
 								inputValue={""}
@@ -245,9 +254,9 @@ export default function EmployerPostForm() {
 						<div className=" flex flex-col w-[48%]">
 							<label
 								htmlFor=""
-								className="font-spartan text-xs text-gray-900 font-medium mb-1"
+								className={`font-spartan text-xs ${theme === "light" ?" text-gray-900" : "text-white"} font-medium mb-1`}
 							>
-								Qo'shimcha ma'lumot (ixtiyoriy)
+								{t("extraInfo")}
 							</label>
 							<textarea
 								value={extraInfo}
@@ -259,30 +268,30 @@ export default function EmployerPostForm() {
 				</div>
 
 				<div>
-					<label className="font-spartan text-xs text-gray-900 font-medium">
-						Qachondan boshlasa ma'qul?
+					<label className={`font-spartan text-xs ${theme === "light" ?" text-gray-900" : "text-white"} font-medium`}>
+						{t("startTime4Emp")}
 					</label>
 					<div className=" flex flex-row font-spartan text-xs text-gray-900 font-medium mt-0.5">
 						<RadioInput
-							label="Bugun"
+							label={t("today")}
 							value="bugun"
 							checked={startingTime}
 							setter={setStartingTime}
 						/>
 						<RadioInput
-							label="Ertaga"
+							label={t("tomorrow")}
 							value="ertaga"
 							checked={startingTime}
 							setter={setStartingTime}
 						/>
 						<RadioInput
-							label="Ustaning vaqtiga qarab"
+							label={t("dependOnWorker")}
 							value="ustaning-vaqtiga-qarab"
 							checked={startingTime}
 							setter={setStartingTime}
 						/>
 						<RadioInput
-							label="Hafta ichida"
+							label={t("withinAWeek")}
 							value="hafta-ichida"
 							checked={startingTime}
 							setter={setStartingTime}
@@ -291,9 +300,9 @@ export default function EmployerPostForm() {
 					<div className="flex flex-col">
 						<label
 							htmlFor=""
-							className="font-spartan text-xs text-gray-900 font-medium mb-2.5 mt-3"
+							className={`font-spartan text-xs ${theme === "light" ?" text-gray-900" : "text-white"} font-medium mb-2.5 mt-3`}
 						>
-							Usta qaysi vaqtda kelgan ma'qul?
+							{t("comingHours")}
 						</label>
 						<select
 							value={comingHours}
@@ -313,7 +322,7 @@ export default function EmployerPostForm() {
 					<div className=" flex flex-row justify-between mt-3">
 						<div className="flex flex-col w-[48%]">
 							<FormInput
-								labelText={"Xizmat uchun qancha olmoqchisiz?"}
+								labelText={t("charge")}
 								className={"mt-1 "}
 								inputType={"text"}
 								inputValue={""}
@@ -321,7 +330,7 @@ export default function EmployerPostForm() {
 						</div>
 						<div className="flex flex-col w-[48%]">
 							<FormInput
-								labelText={"Telefon raqam"}
+								labelText={t("phoneNumber")}
 								className={"mt-1 "}
 								inputType={"text"}
 								inputValue={""}
@@ -332,7 +341,7 @@ export default function EmployerPostForm() {
 				<div>
 					<div className="flex flex-col">
 						<FormInput
-							labelText={"Manzil"}
+							labelText={t("address")}
 							className={"mt-3 "}
 							inputType={"text"}
 							inputValue={""}
@@ -340,7 +349,7 @@ export default function EmployerPostForm() {
 					</div>
 					<div className="flex flex-col">
 						<FormInput
-							labelText={"Mo'ljal (ixtiyoriy)"}
+							labelText={t("orientation")}
 							className={"mt-3 "}
 							inputType={"text"}
 							inputValue={""}
@@ -349,23 +358,23 @@ export default function EmployerPostForm() {
 					<div className="flex flex-col">
 						<label
 							htmlFor=""
-							className="font-spartan text-xs text-gray-900 font-medium mt-3 mb-1"
+							className={`font-spartan text-xs ${theme === "light" ?" text-gray-900" : "text-white"} font-medium mt-3 mb-1`}
 						>
-							Talab qilinadigan Mahoratlar/Skillar (ixtiyoriy)
+							{t("requirements")}
 						</label>
 						<textarea
 							value={extraWishes}
 							onChange={handleExtraWishes}
-							className="rounded p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold "
+							className={`rounded p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border ${theme === "light" ?" text-gray-900" : "text-white"} font-bold `}
 						/>
 					</div>
 				</div>
 				<div classNames="">
 					<button
-						className="mt-3 px-5 rounded  py-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold"
+						className={`mt-3 px-5 rounded  py-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border ${theme === "light" ?" text-gray-900" : "text-white"} font-bold`}
 						type="submit"
 					>
-						Submit
+						{t("submit")}
 					</button>
 				</div>
 			</form>

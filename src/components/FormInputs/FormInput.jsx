@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -9,10 +11,13 @@ const FormInput = ({
 	className,
 	id,
 	isRegInput,
-  setImage
+	setImage,
 }) => {
 	const [startDate, setStartDate] = useState(new Date());
 	const [currentValue, setCurrentValue] = useState(inputValue);
+	const { theme, textColor, bgColor } = useSelector(
+		(state) => state.themeStates
+	);
 	const handleChange = (e) => {
 		if (inputType === "file") {
 			setCurrentValue(setImage(e.target.files[0]));
@@ -26,7 +31,9 @@ const FormInput = ({
 			className={
 				isRegInput
 					? `flex flex-col my-1`
-					: `font-spartan ${className} text-xs flex flex-col text-gray-900 font-medium`
+					: `font-spartan ${className} text-xs flex flex-col ${
+							theme === "light" ? "text-gray-900" : "text-white"
+					  }  font-medium`
 			}
 		>
 			{labelText}
