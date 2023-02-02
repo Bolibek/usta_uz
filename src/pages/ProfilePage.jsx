@@ -1,4 +1,6 @@
 import { useState, useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+
 import Button from "../components/Button/Button.jsx";
 import Box from "../components/Boxes/Box";
 
@@ -23,7 +25,10 @@ const Profile = () => {
 	const { data: userPosts } = useSignedUserPostsQuery(userId);
 	const [updateProfile] = useUpdateProfileMutation();
 	const { firstName, lastName, email, profileImage} = data;
-
+	const { t, i18n } = useTranslation();
+	// useEffect(() => {
+	// 	i18n.changeLanguage("en"); // default language
+	// }, [i18n]);
 	useEffect(() => {
 		if (data) {
 			setMyFirstName(firstName);
@@ -143,7 +148,7 @@ const Profile = () => {
 											className="bg-gray-200 px-5 py-2 rounded-lg text-black font-semibold"
 											onClick={() => setOpenWindow(true)}
 										>
-											Edit Profile
+											{t("editProfile")}
 										</button>
 									</div>
 								</div>
