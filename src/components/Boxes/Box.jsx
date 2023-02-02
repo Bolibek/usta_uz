@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faMoneyCheckDollar,
@@ -7,6 +8,10 @@ import {
 import { useSelector } from "react-redux";
 
 export default function Box(props) {
+	const { t, i18n } = useTranslation();
+	// useEffect(() => {
+	// 	i18n.changeLanguage("en"); // default language
+	// }, [i18n]);
 	const {
 		id,
 		userName,
@@ -19,12 +24,12 @@ export default function Box(props) {
 	const skill = extraConditions
 		? extraConditions.slice(0, 4)
 		: extraSkills.slice(0, 4);
-	const { theme, textColor } = useSelector(
-		(state) => state.themeStates
-	);
+	const { theme, textColor } = useSelector((state) => state.themeStates);
 	return (
 		<div
-			className={`w-full h-[15rem] mx-auto border-2 ${theme === "light"? "border-green-300" : "border-" + textColor + "-300"}  rounded-md transform  `}
+			className={`w-full h-[15rem] mx-auto border-2 ${
+				theme === "light" ? "border-green-300" : "border-" + textColor + "-300"
+			}  rounded-md transform  `}
 		>
 			<div className=" p-[0.7rem] h-[15rem]">
 				<div className=" flex flex-row w-full relative bg-transparent">
@@ -77,7 +82,7 @@ export default function Box(props) {
 								7/24
 							</span>
 							<span className=" bg-green-600 py-[0.1em] px-[0.4em] rounded-sm">
-								Tezkor so'rov
+								{t("easyApply")}
 							</span>
 						</div>
 					</div>
@@ -111,21 +116,25 @@ export default function Box(props) {
 									className="text-[#308b0f]"
 									icon={faMoneyCheckDollar}
 								/>{" "}
-								+{wage} so'mdan
+								{t("from") === "из"
+									? "из +" + wage + " " + "сум"
+									: t("from") === "from"
+									? t("from") + " +" + wage + " " + "sum"
+									: "+" + wage + " " + t("from")}
 							</span>
 						) : null}
 					</div>
 
 					{photoLinks && (
 						<div className="flex flex-row justify-between">
-							<span className="bg-blue-500 text-white px-1 py-0.5 cursor-pointer rounded-sm">
-								Ko'proq...
+							<span className="bg-blue-500 text-white px-2 py-0.5 cursor-pointer rounded-sm">
+								{t("more")}...
 							</span>
 							<Link to={`/posts/${id}`}>
 								<span className="bg-blue-500 text-white px-2 py-0.5 cursor-pointer rounded-sm">
-									To'liq{" "}
+									{t("details")}{" "}
 									<FontAwesomeIcon
-										className="text-[#ffffff]"
+										className="text-[#ffffff] mt-1"
 										icon={faAngleDoubleRight}
 									/>
 								</span>
@@ -146,7 +155,11 @@ export default function Box(props) {
 								/>
 							))
 					) : (
-						<h3 className={`${textColor} w-full text-center mt-6 font-semibold text-xs`}>No photos uploaded</h3>
+						<h3
+							className={`${textColor} w-full text-center mt-6 font-semibold text-xs`}
+						>
+							No photos uploaded
+						</h3>
 					)}
 				</div>
 			</div>

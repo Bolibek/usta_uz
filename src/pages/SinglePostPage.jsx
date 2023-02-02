@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Button from "../components/Button/Button.jsx";
 import Details from "../components/Details.jsx";
 // import avatar from "../assets/image-avatar.jpg";
@@ -22,7 +23,10 @@ export default function SinglePostPage() {
 	const { data = {}, isLoading } = useMyProfileQuery(userId);
 	const { data: postDetails } = useWorkerPostDetailsQuery(postId);
 	const { firstName, lastName, email, profileImage } = data;
-
+	const { t, i18n } = useTranslation();
+	// useEffect(() => {
+	// 	i18n.changeLanguage("en"); // default language
+	// }, [i18n]);
 	useEffect(() => {
 		setMyFirstName(firstName);
 		setMyLastName(lastName);
@@ -184,7 +188,7 @@ export default function SinglePostPage() {
 									className="bg-gray-200 px-5 py-2 rounded-lg text-black font-semibold"
 									onClick={() => setOpenWindow(true)}
 								>
-									Edit Post
+									{t("editButton")}
 								</button>
 							</div>
 						</div>
