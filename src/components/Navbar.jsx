@@ -12,14 +12,19 @@ import ThemeToggler from "./ThemeToggler";
 export default function Navbar() {
 	const [displayCity, setDisplayCity] = useState("hidden");
 	const [displayLang, setDisplayLang] = useState("hidden");
+		let currentLang = !localStorage.getItem("language")
+		? "en"
+		: localStorage.getItem("language");
+	const [language, setLanguage] = useState(currentLang);
 	const userId = localStorage.getItem("userId");
 	const { theme, textColor, bgColor } = useSelector(
 		(state) => state.themeStates
 	);
 	const { t, i18n } = useTranslation();
-	// useEffect(() => {
-	// 	i18n.changeLanguage("en"); // default language
-	// }, [i18n]);
+
+	useEffect(() => {
+		i18n.changeLanguage(language); // default language
+	}, [i18n]);
 	const displayCityFunc = () => {
 		setDisplayCity("");
 	};
@@ -32,12 +37,15 @@ export default function Navbar() {
 	const hideLangFunc = () => {
 		setDisplayLang("hidden");
 	};
+	const handleLanguage = (lang) => {
+		localStorage.setItem("language", lang);
+		window.location.reload(false);
+	};
 	return (
 		<div className={`navbar z-10 fixed top-0 w-full ${textColor} ${bgColor}`}>
 			<div>
 				<div
-					className={`  flex flex-row items-center justify-between px-[12.2%] h-[3.6rem]   `}
-				>
+					className={`  flex flex-row items-center justify-between px-[12.2%] h-[3.6rem]   `}>
 					<div className="flex flex-row justify-between">
 						<Link to="/">
 							<div className="mt-1 w-9  rounded-full bg-[#fff] ring-2 ring-cyan-500">
@@ -55,8 +63,7 @@ export default function Navbar() {
 					<div
 						className={`flex flex-row w-[28rem] h-[1.6em] mt-1 border-[0.09rem] ${
 							theme === "light" ? "hover:border-green-600" : " border-white"
-						}  rounded-[0.2em]`}
-					>
+						}  rounded-[0.2em]`}>
 						<div
 							onMouseOver={displayCityFunc}
 							onMouseOut={hideCityFunc}
@@ -64,8 +71,7 @@ export default function Navbar() {
 								theme === "light"
 									? " text-[#0f8bff] bg-[#ffffff] hover:border-green-600"
 									: " bg-slate-700 text-white border-white"
-							}   text-[0.6em] flex flex-row justify-around border-r-[0.09rem] `}
-						>
+							}   text-[0.6em] flex flex-row justify-around border-r-[0.09rem] `}>
 							<img
 								alt="sdfg"
 								className="pl-1 w-6 h-6"
@@ -81,8 +87,7 @@ export default function Navbar() {
 							onMouseOut={hideCityFunc}
 							className={`${displayCity} ${
 								theme === "light" ? "bg-[#ffffff]" : bgColor + " " + textColor
-							} w-[30%] pl-10 text-xs  font-medium  p-1 z-50 absolute top-[2.66rem] left-[10rem] shadow-md shadow-slate-300 rounded-sm grid grid-cols-3 grid-flow-row `}
-						>
+							} w-[30%] pl-10 text-xs  font-medium  p-1 z-50 absolute top-[2.66rem] left-[10rem] shadow-md shadow-slate-300 rounded-sm grid grid-cols-3 grid-flow-row `}>
 							<span className="mx-2 cursor-pointer">{t("tashkent")}</span>
 							<span className="mx-2 cursor-pointer">{t("samarkand")}</span>
 							<span className="mx-2 cursor-pointer">{t("bukhara")}</span>
@@ -109,8 +114,7 @@ export default function Navbar() {
 						<div
 							className={`w-[7.9%] rounded-tr-sm rounded-br-sm ${
 								theme === "light" ? " bg-green-600" : "bg-gray-500 "
-							}  text-white text-[0.9em] flex flex-row justify-around py-1 mr-[-1px] rounded-xs`}
-						>
+							}  text-white text-[0.9em] flex flex-row justify-around py-1 mr-[-1px] rounded-xs`}>
 							<FontAwesomeIcon icon={faSearch} />
 						</div>
 					</div>
@@ -123,8 +127,7 @@ export default function Navbar() {
 										theme === "light"
 											? "hover:border-green-600"
 											: "hover:border-white"
-									} transition-border duration-700 ease-in-out`}
-								>
+									} transition-border duration-700 ease-in-out`}>
 									<h2>{t("articleNav")}</h2>
 								</div>
 							</Link>
@@ -132,8 +135,7 @@ export default function Navbar() {
 								<div
 									className={`mt-1 p-1 border-b-[0.09rem] border-transparent mx-2 ${
 										theme === "light" ? "bg-green-600" : "bg-gray-500"
-									}  text-white rounded-sm`}
-								>
+									}  text-white rounded-sm`}>
 									<h2>{t("newPost")}</h2>
 								</div>
 							</Link>
@@ -146,8 +148,7 @@ export default function Navbar() {
 										theme === "light"
 											? " hover:border-green-600"
 											: "hover:border-white"
-									} transition-border duration-700 ease-in-out`}
-								>
+									} transition-border duration-700 ease-in-out`}>
 									<span className=" mr-0.5">{t("language")}</span>
 									<FontAwesomeIcon
 										className=" text-[0.8em]"
@@ -158,15 +159,16 @@ export default function Navbar() {
 											theme === "light" ? "bg-white" : "bg-slate-500 text-white"
 										}  shadow-md shadow-slate-300 rounded-md`}
 										onMouseOver={displayLangFunc}
-										onMouseOut={hideLangFunc}
-									>
+										onMouseOut={hideLangFunc}>
 										<span
-											className={`hidden mx-2 cursor-pointer flex-row hover:scale-105  ${
+											onClick={() => handleLanguage("uz")}
+											className={`${
+												language === "uz" ? "hidden" : ""
+											}  mx-2 cursor-pointer flex flex-row hover:scale-105  ${
 												theme === "light"
 													? "hover:bg-green-100"
 													: "hover:bg-gray-100 hover:text-stone-700"
-											}`}
-										>
+											} px-2`}>
 											<img
 												alt="sdfg"
 												className=" w-4 h-4"
@@ -175,12 +177,14 @@ export default function Navbar() {
 											{t("langCodeForUz")}
 										</span>
 										<span
-											className={`mx-2 cursor-pointer flex flex-row hover:scale-105 ${
+											onClick={() => handleLanguage("en")}
+											className={` ${
+												language === "en" ? "hidden" : ""
+											} mx-2 cursor-pointer flex flex-row hover:scale-105 ${
 												theme === "light"
 													? "hover:bg-green-100"
 													: "hover:bg-gray-100 hover:text-stone-700"
-											}  px-2`}
-										>
+											}  px-2`}>
 											<img
 												alt="sdfg"
 												className=" w-4 h-4"
@@ -189,12 +193,14 @@ export default function Navbar() {
 											{t("langCodeForEn")}
 										</span>
 										<span
-											className={`mx-2 cursor-pointer flex flex-row hover:scale-105 ${
+											onClick={() => handleLanguage("ru")}
+											className={`${
+												language === "ru" ? "hidden" : ""
+											} mx-2 cursor-pointer flex flex-row hover:scale-105 ${
 												theme === "light"
 													? "hover:bg-green-100"
 													: "hover:bg-gray-100 hover:text-stone-700"
-											} hover:bg-green-100 px-2`}
-										>
+											} hover:bg-green-100 px-2`}>
 											<img
 												alt="sdfg"
 												className=" w-4 h-4"
@@ -216,8 +222,7 @@ export default function Navbar() {
 											theme === "light"
 												? " hover:border-green-600"
 												: "hover:border-white"
-										} `}
-									>
+										} `}>
 										<h2>{t("profile")}</h2>
 										<img
 											alt="sdfg"
@@ -233,8 +238,7 @@ export default function Navbar() {
 											theme === "light"
 												? " hover:border-green-600"
 												: "hover:border-white"
-										} transition-border duration-700 ease-in-out`}
-									>
+										} transition-border duration-700 ease-in-out`}>
 										<h2>Kirish</h2>
 										<img
 											alt="sdfg"
