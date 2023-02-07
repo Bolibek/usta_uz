@@ -1,8 +1,6 @@
 import {useState, useEffect} from 'react'
-// import QuickLinks from "../components/Posters/QuickLinks";
 import HotNewsPoster from '../components/HotNewsPoster'
 import LatestNews from '../components/LatestNews'
-// import data from "../data/hotNews.json";
 
 export default function HomePage() {
   const [hotNews, setHotNews] = useState([])
@@ -14,17 +12,10 @@ export default function HomePage() {
       .then(result => {
         setHotNews(result.articles)
       })
-
-    // requst credit tugaganda
-
-    // setHotNews(data.articles);
   }, [])
   const restNews = hotNews.slice(1, 3)
   return (
     <div className="mt-[10vh]">
-      {/* <div className="w-full">
-				<QuickLinks />
-			</div> */}
       <div className="w-full ">
         <div className="w-[51rem] mx-auto ">
           <div className="mb-10">

@@ -1,6 +1,5 @@
 import {useState, useEffect} from 'react'
 import LatestNewsBox from './LatestNewsBox'
-// import data from "../../data/latestNews.json"
 
 const LatestNews = () => {
   const [latestNews, setLatestNews] = useState([])
@@ -13,9 +12,6 @@ const LatestNews = () => {
       .then(result => {
         setLatestNews(result.articles.slice(0, lastIndex))
       })
-
-    // requst credit tugaganda
-    // setLatestNews(data.articles.slice(0, lastIndex));
   }, [lastIndex])
 
   const loadMore = addQuantity => {

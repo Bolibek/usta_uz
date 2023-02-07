@@ -15,7 +15,7 @@ const FormInput = ({
 }) => {
 	const [startDate, setStartDate] = useState(new Date());
 	const [currentValue, setCurrentValue] = useState(inputValue);
-	const { theme, textColor, bgColor } = useSelector(
+	const { theme } = useSelector(
 		(state) => state.themeStates
 	);
 	const handleChange = (e) => {

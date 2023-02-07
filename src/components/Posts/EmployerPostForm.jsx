@@ -18,18 +18,15 @@ export default function EmployerPostForm() {
 	const [extraWishes, setExtraWishes] = useState("");
 	const [startingTime, setStartingTime] = useState("bugun");
 	const [image, setImage] = useState("");
-	const [url, setUrl] = useState("");
-	const { theme, textColor, bgColor } = useSelector(
+	const { theme} = useSelector(
 		(state) => state.themeStates
 	);
 
 	const navigate = useNavigate();
 
 	const [addEmployerPost] = useAddEmployerPostMutation();
-	const { t, i18n } = useTranslation();
-	// useEffect(() => {
-	// 	i18n.changeLanguage("en"); // default language
-	// }, [i18n]);
+	const { t } = useTranslation();
+
 
 	const handleSection = (e) => {
 		setSection(e.target.value);
@@ -130,7 +127,6 @@ export default function EmployerPostForm() {
 			console.log(err);
 		}
 	};
-	console.log(url);
 	return (
 		<div className="flex flex-col items-center ">
 			<h1>{t("fillEmployerForm")}</h1>

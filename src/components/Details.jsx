@@ -2,10 +2,8 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 
 export default function Details(props) {
-	const { t, i18n } = useTranslation();
-	// useEffect(() => {
-	// 	i18n.changeLanguage("en"); // default language
-	// }, [i18n]);
+	const { t} = useTranslation();
+
 	const {
 		status,
 		createdAt,
@@ -81,9 +79,9 @@ export default function Details(props) {
 				{" "}
 				<span className=" font-bold text-xs">{t("wage")} :</span>{" "}
 				{t("from") === "из"
-					? "из +" + wage + " " + "сум"
+					? "из +" + wage + " сум"
 					: t("from") === "from"
-					? t("from") + " +" + wage + " " + "sum"
+					? t("from") + " +" + wage + " sum"
 					: "+" + wage + " " + t("from")}
 			</div>
 			<div>

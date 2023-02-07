@@ -1,10 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-
 import Button from "../components/Button/Button.jsx";
-import Box from "../components/Boxes/Box";
-
-// import avatar from "../assets/image-avatar.jpg";
+import WorkerCard from "../components/Boxes/WorkerCard.jsx";
 import {
 	useMyProfileQuery,
 	useSignedUserPostsQuery,
@@ -25,10 +22,8 @@ const Profile = () => {
 	const { data: userPosts } = useSignedUserPostsQuery(userId);
 	const [updateProfile] = useUpdateProfileMutation();
 	const { firstName, lastName, email, profileImage} = data;
-	const { t, i18n } = useTranslation();
-	// useEffect(() => {
-	// 	i18n.changeLanguage("en"); // default language
-	// }, [i18n]);
+	const { t } = useTranslation();
+
 	useEffect(() => {
 		if (data) {
 			setMyFirstName(firstName);
@@ -60,7 +55,6 @@ const Profile = () => {
 						lastName: myLastName,
 						profileImage: fetchedUrl,
 					};
-					// updateProfile({ _id, ...newData }).unwrap();
 					fetch(`http://localhost:8080/user/${userId}`, {
 						method: "put",
 						headers: {
@@ -158,7 +152,7 @@ const Profile = () => {
 									<div className="w-full mx-auto grid grid-cols-2 grid-flow-row gap-3">
 										{allUserPosts &&
 											allUserPosts.map((item) => (
-												<Box key={item.id} {...item} />
+												<WorkerCard key={item.id} {...item} />
 											))}
 									</div>
 								</div>

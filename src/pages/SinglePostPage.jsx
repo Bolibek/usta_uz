@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Button from "../components/Button/Button.jsx";
 import Details from "../components/Details.jsx";
-// import avatar from "../assets/image-avatar.jpg";
 import {
 	useMyProfileQuery,
 	useWorkerPostDetailsQuery,
@@ -18,15 +17,13 @@ export default function SinglePostPage() {
 	const [myLastName, setMyLastName] = useState("");
 	const buttonsRef = useRef(null);
 	const { postId } = useParams();
-	const [details, setDetails] = useState({});
+	// const [details, setDetails] = useState({});
 	const userId = JSON.parse(localStorage.getItem("userId"));
-	const { data = {}, isLoading } = useMyProfileQuery(userId);
+	const { data = {} } = useMyProfileQuery(userId);
 	const { data: postDetails } = useWorkerPostDetailsQuery(postId);
 	const { firstName, lastName, email, profileImage } = data;
-	const { t, i18n } = useTranslation();
-	// useEffect(() => {
-	// 	i18n.changeLanguage("en"); // default language
-	// }, [i18n]);
+	const { t} = useTranslation();
+
 	useEffect(() => {
 		setMyFirstName(firstName);
 		setMyLastName(lastName);
@@ -147,30 +144,35 @@ export default function SinglePostPage() {
 								<div className=" flex flex-row mb-1">
 									<img
 										className=" w-3 h-3"
+										alt="star"
 										src={
 											"https://img.icons8.com/ios-glyphs/100/C9C9C9/star--v1.png"
 										}
 									/>
 									<img
 										className=" w-3 h-3"
+										alt="star"
 										src={
 											"https://img.icons8.com/ios-glyphs/100/C9C9C9/star--v1.png"
 										}
 									/>
 									<img
 										className=" w-3 h-3"
+										alt="star"
 										src={
 											"https://img.icons8.com/ios-glyphs/100/C9C9C9/star--v1.png"
 										}
 									/>
 									<img
 										className=" w-3 h-3"
+										alt="star"
 										src={
 											"https://img.icons8.com/ios-glyphs/100/C9C9C9/star--v1.png"
 										}
 									/>
 									<img
 										className=" w-3 h-3"
+										alt="star"
 										src={
 											"https://img.icons8.com/ios-glyphs/100/C9C9C9/star--v1.png"
 										}
