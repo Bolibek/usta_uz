@@ -1,10 +1,9 @@
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggle } from "../app/store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-	faSearch,
-	faCaretDown,
+	// faSearch,
+	// faCaretDown,
 	faSun,
 	faMoon,
 	// faSignOut,
@@ -12,7 +11,6 @@ import {
 function ThemeToggler({translator}) {
 	const dispatch = useDispatch();
 	const { theme } = useSelector((state) => state.themeStates);
-	// const bodyRef = useMemo(() => messages.map(() => useRef(<HTMLBodyElement/>), []))
 
 	if (theme === "dark") {
 		localStorage.setItem(
@@ -34,12 +32,6 @@ function ThemeToggler({translator}) {
 		);
 	}
 
-	// const body = document.querySelector("body");
-	// useEffect(() => {
-	//   body.style.backgroundColor = theme === "dark"? "#0f172a" : "#fff";
-	// });
-
-	// console.log(translator("theme"))
 	return (
 		<button
 			className={`border-b-[0.09rem] border-transparent transition-border duration-700 ease-in-out ${

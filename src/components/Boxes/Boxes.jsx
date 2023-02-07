@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import Box from "./Box";
+import WorkerCard from "./WorkerCard";
+import JobCard from "./JobCard";
 import {
 	useWorkerPostsQuery,
 	useEmployerPostsQuery,
 } from "../../services/invoiceApi";
-// import data from '../../data/workers.json'
 
 export default function Boxes() {
 	const [workers, setWorkers] = useState([]);
@@ -26,12 +26,19 @@ export default function Boxes() {
 			setAllUsers(orderedData);
 		}
 		setCounts(counts + 1);
+		//eslint-disable-next-line
 	}, [workers, employers]);
 	return (
 		<div className="w-full mt-5">
 			<div className="w-[75%] mx-auto grid grid-cols-3 grid-flow-row gap-3">
 				{allUsers.length &&
-					allUsers.map((item) => <Box key={item.id} id={item.id} {...item} />)}
+					allUsers.map((item) =>
+						item.orientating === undefined ? (
+							<WorkerCard key={item.id} id={item.id} {...item} />
+						) : (
+							<JobCard key={item.id} id={item.id} {...item} />
+						)
+					)}
 			</div>
 		</div>
 	);

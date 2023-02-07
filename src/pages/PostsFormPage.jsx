@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import EmployerPostForm from "../components/Posts/EmployerPostForm";
@@ -6,10 +6,7 @@ import WorkerPostForm from "../components/Posts/WorkerPostForm";
 
 export default function PostsFormPage() {
 	const [isWorker, setIsWorker] = useState(true);
-	const { t, i18n } = useTranslation();
-	// useEffect(() => {
-	// 	i18n.changeLanguage("en"); // default language
-	// }, [i18n]);
+	const { t } = useTranslation();
 	const buttonStyle = "bg-green-600 text-white border-green-600";
 	return (
 		<div className=" pt-[2rem] flex flex-col items-center">

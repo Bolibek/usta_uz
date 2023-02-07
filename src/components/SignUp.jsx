@@ -1,9 +1,7 @@
-import { useNavigate } from "react-router-dom";
 import { useAddUserMutation } from "../services/invoiceApi";
 import FormInput from "./FormInput.jsx";
 
 export default function SignUp({ setIsRegistered }) {
-	const navigate = useNavigate();
 	const [addUser] = useAddUserMutation();
 	const handle = async (e) => {
 		e.preventDefault();
@@ -14,9 +12,7 @@ export default function SignUp({ setIsRegistered }) {
 				email: e.target[2].value,
 				password: e.target[3].value,
 			});
-			// navigate('/signin')
 		} catch (err) {
-			// eslint-disable-next-line
 			console.log(err);
 		}
 

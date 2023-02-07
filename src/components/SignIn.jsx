@@ -11,7 +11,6 @@ export default function SignIn({ setIsRegistered, handleStatus }) {
 	// };
 	const handle = async (e) => {
 		try {
-			//  fetch('https://invoice-api-5h9l.onrender.com/signinuser', {
 			fetch("http://localhost:8080/signinuser", {
 				method: "post",
 				headers: {
@@ -27,9 +26,7 @@ export default function SignIn({ setIsRegistered, handleStatus }) {
 					data && localStorage.setItem("jwt", data.token);
 					data && localStorage.setItem("userId", JSON.stringify(data.userId));
 					data && localStorage.setItem("isLoggedIn", JSON.stringify(true));
-					// data && handleStatus(true);
 					data && navigate("/");
-					// data && window.location.reload(false);
 				});
 		} catch (err) {
 			// eslint-disable-next-line
@@ -72,7 +69,6 @@ export default function SignIn({ setIsRegistered, handleStatus }) {
 						onClick={(e) => {
 							e.preventDefault();
 							handle();
-							// handleStatus(true);
 						}}
 					>
 						Sign in

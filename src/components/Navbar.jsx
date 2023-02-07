@@ -12,10 +12,9 @@ import ThemeToggler from "./ThemeToggler";
 export default function Navbar() {
 	const [displayCity, setDisplayCity] = useState("hidden");
 	const [displayLang, setDisplayLang] = useState("hidden");
-		let currentLang = !localStorage.getItem("language")
+		let language = !localStorage.getItem("language")
 		? "en"
 		: localStorage.getItem("language");
-	const [language, setLanguage] = useState(currentLang);
 	const userId = localStorage.getItem("userId");
 	const { theme, textColor, bgColor } = useSelector(
 		(state) => state.themeStates
@@ -24,6 +23,7 @@ export default function Navbar() {
 
 	useEffect(() => {
 		i18n.changeLanguage(language); // default language
+		//eslint-disable-next-line
 	}, [i18n]);
 	const displayCityFunc = () => {
 		setDisplayCity("");
