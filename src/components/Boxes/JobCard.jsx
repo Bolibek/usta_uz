@@ -33,7 +33,7 @@ export default function JobCard(props) {
 						// .slice(0,3)
 						.map((sample, index) => (
 							<img
-								className=" w-screen h-[7rem] rounded-md m-3"
+								className=" w-screen h-[7rem] rounded-md mx-10 mt-2"
 								src={sample}
 								alt={`sample ${index}`}
 							/>
