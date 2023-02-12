@@ -27,13 +27,13 @@ export default function WorkerCard(props) {
 			className={`w-full h-[15rem] mx-auto border-2 ${
 				theme === "light" ? "border-green-300" : "border-" + textColor + "-300"
 			}  rounded-md transform  `}>
-			<div className=" flex flex-row w-full h-[4rem] justify-between ">
+			<div className=" flex flex-row w-full h-[4rem] justify-center px-2">
 				{photoLinks ? (
 					[photoLinks]
 						// .slice(0, 3)
 						.map((sample, index) => (
 							<img
-								className="w-screen h-[7rem] rounded-md mx-10 mt-2"
+								className=" w-screen h-[9rem] rounded-md mt-2"
 								src={sample}
 								alt={`sample ${index}`}
 							/>
