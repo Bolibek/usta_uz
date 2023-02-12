@@ -79,6 +79,7 @@ export default function WorkerPostForm() {
 							comingHours: e.target[11].value,
 							wage: e.target[12].value,
 							phoneNumber: e.target[13].value,
+							city: e.target[14].value,
 						}).unwrap();
 				})
 				.catch((err) => {
@@ -127,8 +128,7 @@ export default function WorkerPostForm() {
 			<h1> {t("fillWorkerForm")} </h1>
 			<form
 				onSubmit={handle}
-				className="mt-5 p-5 border-[0.1rem] border-green-600 rounded-md w-[45vw]"
-			>
+				className="mt-5 p-5 border-[0.1rem] border-green-600 rounded-md w-[45vw]">
 				<div>
 					<div className="flex flex-col">
 						<FormInput
@@ -143,15 +143,15 @@ export default function WorkerPostForm() {
 							<div className=" flex flex-col w-[48%]">
 								<label
 									htmlFor=""
-									className={`font-spartan text-xs flex flex-col ${theme === "light" ?" text-gray-900" : "text-white"}  font-medium`}
-								>
+									className={`font-spartan text-xs flex flex-col ${
+										theme === "light" ? " text-gray-900" : "text-white"
+									}  font-medium`}>
 									{t("sectionName")}
 								</label>
 								<select
 									value={section}
 									onChange={handleSection}
-									className={`rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-slate-900 font-bold`}
-								>
+									className={`rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-slate-900 font-bold`}>
 									<option value="Qurilish1">Qurilish1</option>
 									<option value="Qurilish2">Qurilish2</option>
 									<option value="Qurilish3">Qurilish3</option>
@@ -165,15 +165,15 @@ export default function WorkerPostForm() {
 							<div className=" flex flex-col w-[48%]">
 								<label
 									htmlFor=""
-									className={`font-spartan text-xs flex flex-col ${theme === "light" ?" text-gray-900" : "text-white"} font-medium`}
-								>
+									className={`font-spartan text-xs flex flex-col ${
+										theme === "light" ? " text-gray-900" : "text-white"
+									} font-medium`}>
 									{t("category")}
 								</label>
 								<select
 									value={category}
 									onChange={handleCategory}
-									className="rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold "
-								>
+									className="rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold ">
 									<option value="Suvoq1">Suvoq1</option>
 									<option value="Suvoq2">Suvoq2</option>
 									<option value="Suvoq3">Suvoq3</option>
@@ -189,15 +189,15 @@ export default function WorkerPostForm() {
 							<div className=" flex flex-col w-[48%]">
 								<label
 									htmlFor=""
-									className={`"font-spartan text-xs flex flex-col ${theme === "light" ?" text-gray-900" : "text-white"} font-medium`}
-								>
+									className={`"font-spartan text-xs flex flex-col ${
+										theme === "light" ? " text-gray-900" : "text-white"
+									} font-medium`}>
 									{t("categoryType")}
 								</label>
 								<select
 									value={categoryType}
 									onChange={handleCategoryType}
-									className="rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold "
-								>
+									className="rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold ">
 									<option value="Qum suvoq1">Qum suvoq1</option>
 									<option value="Qum suvoq2">Qum suvoq2</option>
 									<option value="Qum suvoq3">Qum suvoq3</option>
@@ -211,15 +211,15 @@ export default function WorkerPostForm() {
 							<div className=" flex flex-col w-[48%]">
 								<label
 									htmlFor=""
-									className={`"font-spartan text-xs flex flex-col ${theme === "light" ?" text-gray-900" : "text-white"} font-medium`}
-								>
+									className={`"font-spartan text-xs flex flex-col ${
+										theme === "light" ? " text-gray-900" : "text-white"
+									} font-medium`}>
 									{t("jobPicturesDone")}
 								</label>
 								<select
 									value={material}
 									onChange={handleMaterial}
-									className="rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold  "
-								>
+									className="rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold  ">
 									<option value="Kliniz1">Kliniz1</option>
 									<option value="Kliniz2">Kliniz2</option>
 									<option value="Kliniz3">Kliniz3</option>
@@ -245,8 +245,9 @@ export default function WorkerPostForm() {
 						<div className="flex flex-col w-[48%] ">
 							<label
 								htmlFor=""
-								className={`font-spartan text-xs flex flex-col ${theme === "light" ?" text-gray-900" : "text-white"} font-medium mb-1`}
-							>
+								className={`font-spartan text-xs flex flex-col ${
+									theme === "light" ? " text-gray-900" : "text-white"
+								} font-medium mb-1`}>
 								{t("skills")}
 							</label>
 							<textarea
@@ -259,10 +260,16 @@ export default function WorkerPostForm() {
 					</div>
 				</div>
 				<div>
-					<label className={`font-spartan text-xs flex flex-col ${theme === "light" ?" text-gray-900" : "text-white"} font-medium mb-1 mt-3`}>
+					<label
+						className={`font-spartan text-xs flex flex-col ${
+							theme === "light" ? " text-gray-900" : "text-white"
+						} font-medium mb-1 mt-3`}>
 						{t("startTime4Wrk")}
 					</label>
-					<div className={`flex flex-row font-spartan text-xs ${theme === "light" ?" text-gray-900" : "text-white"} font-medium`}>
+					<div
+						className={`flex flex-row font-spartan text-xs ${
+							theme === "light" ? " text-gray-900" : "text-white"
+						} font-medium`}>
 						<RadioInput
 							label={t("today")}
 							value="bugun"
@@ -291,15 +298,15 @@ export default function WorkerPostForm() {
 					<div className="flex flex-col mt-3">
 						<label
 							htmlFor=""
-							className={`"font-spartan text-xs flex flex-col ${theme === "light" ?" text-gray-900" : "text-white"} font-medium`}
-						>
+							className={`"font-spartan text-xs flex flex-col ${
+								theme === "light" ? " text-gray-900" : "text-white"
+							} font-medium`}>
 							{t("comingHours")}
 						</label>
 						<select
 							value={comingHours}
 							onChange={handleComingHours}
-							className=" w-[48%] rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold "
-						>
+							className=" w-[48%] rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold ">
 							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
 							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
 							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
@@ -328,13 +335,22 @@ export default function WorkerPostForm() {
 							/>
 						</div>
 					</div>
+					<div className="w-full">
+						<FormInput
+							labelText={t("city")}
+							className={"mt-1 "}
+							inputType={"text"}
+							inputValue={""}
+						/>
+					</div>
 				</div>
 
 				<div classNames="">
 					<button
-						className={`mt-3 px-5 rounded  py-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border ${theme === "light" ?" text-gray-900" : "text-white"} font-bold`}
-						type="submit"
-					>
+						className={`mt-3 px-5 rounded  py-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border ${
+							theme === "light" ? " text-gray-900" : "text-white"
+						} font-bold`}
+						type="submit">
 						{t("submit")}
 					</button>
 				</div>

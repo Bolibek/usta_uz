@@ -81,10 +81,11 @@ export default function EmployerPostForm() {
 						startDate: startingTime,
 						comingHours: e.target[11].value,
 						wage: e.target[12].value,
-						employerAddress: e.target[13].value,
-						orientating: e.target[14].value,
-						phoneNumber: e.target[15].value,
-						extraConditions: e.target[16].value,
+						phoneNumber: e.target[13].value,
+						city: e.target[14].value,
+						employerAddress: e.target[15].value,
+						orientating: e.target[16].value,
+						extraConditions: e.target[17].value,
 					}).unwrap();
 				})
 				.catch((err) => {
@@ -335,6 +336,14 @@ export default function EmployerPostForm() {
 					</div>
 				</div>
 				<div>
+					<div className="flex flex-col">
+						<FormInput
+							labelText={t("city")}
+							className={"mt-3 "}
+							inputType={"text"}
+							inputValue={""}
+						/>
+					</div>
 					<div className="flex flex-col">
 						<FormInput
 							labelText={t("address")}

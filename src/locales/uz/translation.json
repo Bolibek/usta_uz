@@ -63,6 +63,7 @@
 	"extraInfo": "Qo'shimcha ma'lumot (ixtiyoriy)",
 	"wage": "Xizmat uchun qancha olmoqchisiz?",
 	"charge": "Xizmat uchun qancha to'lamoqchisiz?",
+	"city":"Shahar",
 	"address": "Manzil",
 	"orientation": "Mo'ljal",
 	"requirements": "Talab qilinadigan Mahoratlar/Skillar (ixtiyoriy)",

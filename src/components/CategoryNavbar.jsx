@@ -71,7 +71,7 @@ export default function CategoryNavbar() {
 						alt="categoryimg"
 						src="https://img.icons8.com/color/100/null/car-service.png"
 					/>
-					{t("autoServis")}
+					{t("autoService")}
 				</Link>
 				<Link to={`/`} className={`${categoryStyles}`}>
 					<img
