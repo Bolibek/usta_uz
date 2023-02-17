@@ -17,16 +17,14 @@ export default function WorkerPostForm() {
 	const [extraSkills, setExtraSkills] = useState("");
 	const [startingTime, setStartingTime] = useState("bugun");
 	const [image, setImage] = useState("");
-	const { theme, textColor, bgColor } = useSelector(
+	const { theme } = useSelector(
 		(state) => state.themeStates
 	);
 	const navigate = useNavigate();
 
-	const [addWorkerPost, isSuccess] = useAddWorkerPostMutation();
-	const { t, i18n } = useTranslation();
-	// useEffect(() => {
-	// 	i18n.changeLanguage("en"); // default language
-	// }, [i18n]);
+	const [addWorkerPost] = useAddWorkerPostMutation();
+	const { t } = useTranslation();
+
 	const handleSection = (e) => {
 		setSection(e.target.value);
 	};

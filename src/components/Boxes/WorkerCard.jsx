@@ -33,6 +33,7 @@ export default function WorkerCard(props) {
 						// .slice(0, 3)
 						.map((sample, index) => (
 							<img
+								key={index}
 								className=" w-screen h-[9rem] rounded-md mt-2"
 								src={sample}
 								alt={`sample ${index}`}
@@ -124,7 +125,10 @@ export default function WorkerCard(props) {
 							{skill ? (
 								[skill, skill, skill, skill].map((skill, index) => (
 									<span key={index} className="  ">
-										<span className={`mx-1 cursor-pointer underline ${theme === "light"? "text-blue-600" : "text-white"} py-1 rounded-sm`}>
+										<span
+											className={`mx-1 cursor-pointer underline ${
+												theme === "light" ? "text-blue-600" : "text-white"
+											} py-1 rounded-sm`}>
 											#{skill}
 										</span>
 									</span>
