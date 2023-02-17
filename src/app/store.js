@@ -2,11 +2,13 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 import stringMiddleware from "../middleWare/stringMiddleWare";
 import { invoiceApi } from "../services/invoiceApi";
 
-const initialState = {};
+const initialState = { city: "tashkent" };
 const appSlice = createSlice({
 	name: "reducer",
 	initialState,
-	reducers: {},
+	reducers: {
+		handleCity: (state, action) => action.payload && { city: action.payload },
+	},
 	theme: "light",
 });
 const initialThemeState = {
@@ -16,7 +18,9 @@ const initialThemeState = {
 };
 const themeSlice = createSlice({
 	name: "theme",
-	initialState: JSON.parse(localStorage.getItem("ustaThemes"))? JSON.parse(localStorage.getItem("ustaThemes")): initialThemeState,
+	initialState: JSON.parse(localStorage.getItem("ustaThemes"))
+		? JSON.parse(localStorage.getItem("ustaThemes"))
+		: initialThemeState,
 	reducers: {
 		toggle: (state) =>
 			state.theme === "light"
@@ -33,6 +37,7 @@ const themeSlice = createSlice({
 	},
 });
 export const { toggle } = themeSlice.actions;
+export const { handleCity } = appSlice.actions;
 const { reducer } = appSlice;
 
 export const store = configureStore({

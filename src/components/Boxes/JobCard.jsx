@@ -33,6 +33,7 @@ export default function JobCard(props) {
 						// .slice(0,3)
 						.map((sample, index) => (
 							<img
+								key={index}
 								className=" w-screen h-[9.2rem] rounded-tl-[7px] rounded-tr-[7px] "
 								src={sample}
 								alt={`sample ${index}`}
@@ -48,7 +49,9 @@ export default function JobCard(props) {
 			<div className=" mt-12 p-[0.7rem] h-[15rem]">
 				<div className=" flex flex-row w-full relative bg-transparent">
 					<div className=" flex flex-col">
-						<h1 className={` mt-[-5px] text-xl font-bold ${textColor}`}>{category}</h1>
+						<h1 className={` mt-[-5px] text-xl font-bold ${textColor}`}>
+							{category}
+						</h1>
 						<div className="mt-0.5 flex flex-row">
 							<img
 								className="w-[1rem] h-[1rem] rounded-full border-[0.1em]"

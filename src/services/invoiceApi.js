@@ -45,6 +45,13 @@ export const invoiceApi = createApi({
 			}),
 			providesTags: ["Employer Posts"],
 		}),
+		cityPosts: builder.query({
+			query: (city) => ({
+				url: `/cityposts/${city}`,
+				headers: { Authorization: `Bekki ${localStorage.getItem("jwt")}` },
+			}),
+			providesTags: ["City Posts"],
+		}),
 		signedUserPosts: builder.query({
 			query: (userId) => ({
 				url: `/signeduserposts/${userId}`,
@@ -105,6 +112,7 @@ export const invoiceApi = createApi({
 export const {
 	useWorkerPostsQuery,
 	useEmployerPostsQuery,
+	useCityPostsQuery,
 	useSignedUserPostsQuery,
 	useWorkerPostDetailsQuery,
 	useMyProfileQuery,

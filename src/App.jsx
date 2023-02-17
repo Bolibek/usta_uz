@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useRef } from "react";
 import Navbar from "./components/Navbar";
 import MainRoutes from "./routes/MainRoutes";
 import { useSelector } from "react-redux";
@@ -17,9 +17,8 @@ function App() {
 
 		setIsSignedIn(false);
 	}, [isSignedIn, bgColor]);
-	console.log(bodyRef);
 	return (
-		<div ref={bodyRef} className={`App ${bgColor, textColor} `}>
+		<div ref={bodyRef} className={`App ${bgColor + " " + textColor} `}>
 			<Navbar
 				status={isSignedIn}
 				display={display}

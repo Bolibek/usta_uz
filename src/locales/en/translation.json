@@ -63,6 +63,7 @@
 	"extraInfo": "Extra Information (optional)",
 	"wage": "How much to be paid for the service?",
 	"charge": "How much to pay for the service?",
+	"city":"City",
 	"address": "Address",
 	"orientation": "Orientation",
 	"requirements": "Requirements",
