@@ -52,6 +52,13 @@ export const invoiceApi = createApi({
 			}),
 			providesTags: ["City Posts"],
 		}),
+		categoryPosts: builder.query({
+			query: (category) => ({
+				url: `/categoryposts/${category}`,
+				headers: { Authorization: `Bekki ${localStorage.getItem("jwt")}` },
+			}),
+			providesTags: ["City Posts"],
+		}),
 		signedUserPosts: builder.query({
 			query: (userId) => ({
 				url: `/signeduserposts/${userId}`,
@@ -113,6 +120,7 @@ export const {
 	useWorkerPostsQuery,
 	useEmployerPostsQuery,
 	useCityPostsQuery,
+	useCategoryPostsQuery,
 	useSignedUserPostsQuery,
 	useWorkerPostDetailsQuery,
 	useMyProfileQuery,

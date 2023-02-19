@@ -6,6 +6,7 @@ import {
 	useWorkerPostsQuery,
 	useEmployerPostsQuery,
 	useCityPostsQuery,
+	useCategoryPostsQuery,
 } from "../../services/invoiceApi";
 
 export default function Boxes() {
@@ -13,10 +14,12 @@ export default function Boxes() {
 	const [employers, setEmployers] = useState([]);
 	//eslint-disable-next-line
 	const [allUsers, setAllUsers] = useState([]);
-	const city = useSelector((state) => state.posts.city);
+	const { city, category } = useSelector((state) => state.posts);
 	const { data: workersData = [] } = useWorkerPostsQuery();
 	const { data: employersData = [] } = useEmployerPostsQuery();
 	const { data: cityData = [], isSuccess } = useCityPostsQuery(city);
+	const { data: categoryData = [], isSuccess: isSuccessCategory } =
+		useCategoryPostsQuery(category);
 	useEffect(() => {
 		if (workersData && employersData) {
 			setWorkers(workersData);
@@ -31,25 +34,34 @@ export default function Boxes() {
 		}
 		//eslint-disable-next-line
 	}, [workers, employers]);
+	console.log(categoryData);
 	return (
 		<div className="w-full mt-5">
 			<div className="w-[75%] mx-auto grid grid-cols-3 grid-flow-row gap-3">
-				{isSuccess
-					? cityData.map((item) =>
-							item.orientating === undefined ? (
-								<WorkerCard key={item.id} id={item.id} {...item} />
-							) : (
-								<JobCard key={item.id} id={item.id} {...item} />
-							)
-					  )
-					: allUsers.map((item) =>
-							item.orientating === undefined ? (
-								<WorkerCard key={item.id} id={item.id} {...item} />
-							) : (
-								<JobCard key={item.id} id={item.id} {...item} />
-							)
-					  )}
-				{}
+				{isSuccess &&
+					cityData.map((item) =>
+						item.orientating === undefined ? (
+							<WorkerCard key={item.id} id={item.id} {...item} />
+						) : (
+							<JobCard key={item.id} id={item.id} {...item} />
+						)
+					)}
+				{isSuccessCategory &&
+					categoryData.map((item) =>
+						item.orientating === undefined ? (
+							<WorkerCard key={item.id} id={item.id} {...item} />
+						) : (
+							<JobCard key={item.id} id={item.id} {...item} />
+						)
+					)}
+				{(!isSuccess || !isSuccessCategory) &&
+					allUsers.map((item) =>
+						item.orientating === undefined ? (
+							<WorkerCard key={item.id} id={item.id} {...item} />
+						) : (
+							<JobCard key={item.id} id={item.id} {...item} />
+						)
+					)}
 			</div>
 		</div>
 	);

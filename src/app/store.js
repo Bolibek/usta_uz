@@ -2,12 +2,14 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 import stringMiddleware from "../middleWare/stringMiddleWare";
 import { invoiceApi } from "../services/invoiceApi";
 
-const initialState = { city: "tashkent" };
+const initialState = { city: "", category: "" };
 const appSlice = createSlice({
 	name: "reducer",
 	initialState,
 	reducers: {
 		handleCity: (state, action) => action.payload && { city: action.payload },
+		handleCategory: (state, action) =>
+			action.payload && { category: action.payload },
 	},
 	theme: "light",
 });
@@ -37,7 +39,7 @@ const themeSlice = createSlice({
 	},
 });
 export const { toggle } = themeSlice.actions;
-export const { handleCity } = appSlice.actions;
+export const { handleCity, handleCategory } = appSlice.actions;
 const { reducer } = appSlice;
 
 export const store = configureStore({

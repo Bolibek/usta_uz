@@ -180,14 +180,15 @@ export default function EmployerPostForm() {
 									onChange={handleCategory}
 									className="rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold "
 								>
-									<option value="Suvoq1">Suvoq1</option>
-									<option value="Suvoq2">Suvoq2</option>
-									<option value="Suvoq3">Suvoq3</option>
-									<option value="Suvoq4">Suvoq4</option>
-									<option value="Suvoq5">Suvoq5</option>
-									<option value="Suvoq6">Suvoq6</option>
-									<option value="Suvoq7">Suvoq7</option>
-									<option value="Suvoq8">Suvoq8</option>
+									<option value="Household">{t("household")}</option>
+									<option value="Electronics">{t("electronics")}</option>
+									<option value="Plumber">{t("plumber")}</option>
+									<option value="Ads">{t("ads")}</option>
+									<option value="Design">{t("design")}</option>
+									<option value="Auto service">{t("autoService")}</option>
+									<option value="Technology">{t("technology")}</option>
+									<option value="Beauty/Health">{t("beautyHealth")}</option>
+									<option value="Other services">{t("otherServices")}</option>
 								</select>
 							</div>
 						</div>
