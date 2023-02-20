@@ -9,31 +9,19 @@ import { useAddWorkerPostMutation } from "../../services/invoiceApi";
 import { formatDate } from "../../utils/index";
 
 export default function WorkerPostForm() {
-	const [section, setSection] = useState("");
 	const [category, setCategory] = useState("");
-	const [categoryType, setCategoryType] = useState("");
-	const [material, setMaterial] = useState("");
 	const [comingHours, setComingHours] = useState("");
 	const [extraSkills, setExtraSkills] = useState("");
 	const [startingTime, setStartingTime] = useState("bugun");
 	const [image, setImage] = useState("");
 	const { theme } = useSelector((state) => state.themeStates);
-	const navigate = useNavigate();
 
+	const navigate = useNavigate();
 	const [addWorkerPost] = useAddWorkerPostMutation();
 	const { t } = useTranslation();
 
-	const handleSection = (e) => {
-		setSection(e.target.value);
-	};
 	const handleCategory = (e) => {
 		setCategory(e.target.value);
-	};
-	const handleCategoryType = (e) => {
-		setCategoryType(e.target.value);
-	};
-	const handleMaterial = (e) => {
-		setMaterial(e.target.value);
 	};
 	const handleComingHours = (e) => {
 		setComingHours(e.target.value);
@@ -65,17 +53,14 @@ export default function WorkerPostForm() {
 							createdAt: formatDate(new Date()),
 							lifeStamp: new Date().getTime().toLocaleString(),
 							serviceName: e.target[0].value,
-							section: e.target[1].value,
-							category: e.target[2].value,
-							categoryType: e.target[3].value,
-							material: e.target[4].value,
+							category: e.target[1].value,
 							photoLinks: imageUrl,
-							extraSkills: e.target[6].value,
+							extraSkills: e.target[3].value,
 							startDate: startingTime,
-							comingHours: e.target[11].value,
-							wage: e.target[12].value,
-							phoneNumber: e.target[13].value,
-							city: e.target[14].value,
+							comingHours: e.target[8].value,
+							wage: e.target[9].value,
+							phoneNumber: e.target[10].value,
+							city: e.target[11].value,
 						}).unwrap();
 				})
 				.catch((err) => {
@@ -84,41 +69,12 @@ export default function WorkerPostForm() {
 				.finally(() => {
 					navigate("/");
 				});
-			// if (kindModal === 'editLight') {
-			//   const newData = {
-			//     ...data,
-			//     status,
-			//     senderAddress: {
-			//       street: e.target[0].value,
-			//       city: e.target[1].value,
-			//       postCode: e.target[2].value,
-			//       country: e.target[3].value,
-			//     },
-			//     employerName: e.target[4].value,
-			//     employerEmail: e.target[5].value,
-			//     employerAddress: {
-			//       street: e.target[6].value,
-			//       city: e.target[7].value,
-			//       postCode: e.target[8].value,
-			//       country: e.target[9].value,
-			//     },
-			//     paymentDue: formatDate(e.target[10].value),
-			//     paymentTerms: e.target[11].value,
-			//     description: e.target[12].value,
-			//     items: itemsRow,
-			//   }
-			//   updateInvoice({_id, ...newData}).unwrap()
-			//   navigate(`/invoice/${invoiceId}`)
-			//   window.location.reload(false)
-			// } else {
-			// }
 		} catch (err) {
 			// setError(err)
 			console.log(err);
 		}
 	};
-	// console.log(new Date('16 Jan 2023').getTime());
-	// console.log(startingTime);
+
 	return (
 		<div className="flex flex-col items-center ">
 			<h1> {t("fillWorkerForm")} </h1>
@@ -141,35 +97,13 @@ export default function WorkerPostForm() {
 									htmlFor=""
 									className={`font-spartan text-xs flex flex-col ${
 										theme === "light" ? " text-gray-900" : "text-white"
-									}  font-medium`}>
-									{t("sectionName")}
-								</label>
-								<select
-									value={section}
-									onChange={handleSection}
-									className={`rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-slate-900 font-bold`}>
-									<option value="Qurilish1">Qurilish1</option>
-									<option value="Qurilish2">Qurilish2</option>
-									<option value="Qurilish3">Qurilish3</option>
-									<option value="Qurilish4">Qurilish4</option>
-									<option value="Qurilish5">Qurilish5</option>
-									<option value="Qurilish6">Qurilish6</option>
-									<option value="Qurilish7">Qurilish7</option>
-									<option value="Qurilish8">Qurilish8</option>
-								</select>
-							</div>
-							<div className=" flex flex-col w-[48%]">
-								<label
-									htmlFor=""
-									className={`font-spartan text-xs flex flex-col ${
-										theme === "light" ? " text-gray-900" : "text-white"
 									} font-medium`}>
 									{t("category")}
 								</label>
 								<select
 									value={category}
 									onChange={handleCategory}
-									className="rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold ">
+									className="rounded mt-[0.625rem] p-[20px] border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold ">
 									<option value="Household">{t("household")}</option>
 									<option value="Electronics">{t("electronics")}</option>
 									<option value="Plumber">{t("plumber")}</option>
@@ -181,65 +115,19 @@ export default function WorkerPostForm() {
 									<option value="Other services">{t("otherServices")}</option>
 								</select>
 							</div>
-						</div>
-						<div className=" flex flex-row justify-between mt-3 ">
 							<div className=" flex flex-col w-[48%]">
-								<label
-									htmlFor=""
-									className={`"font-spartan text-xs flex flex-col ${
-										theme === "light" ? " text-gray-900" : "text-white"
-									} font-medium`}>
-									{t("categoryType")}
-								</label>
-								<select
-									value={categoryType}
-									onChange={handleCategoryType}
-									className="rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold ">
-									<option value="Qum suvoq1">Qum suvoq1</option>
-									<option value="Qum suvoq2">Qum suvoq2</option>
-									<option value="Qum suvoq3">Qum suvoq3</option>
-									<option value="Qum suvoq4">Qum suvoq4</option>
-									<option value="Qum suvoq5">Qum suvoq5</option>
-									<option value="Qum suvoq6">Qum suvoq6</option>
-									<option value="Qum suvoq7">Qum suvoq7</option>
-									<option value="Qum suvoq8">Qum suvoq8</option>
-								</select>
-							</div>
-							<div className=" flex flex-col w-[48%]">
-								<label
-									htmlFor=""
-									className={`"font-spartan text-xs flex flex-col ${
-										theme === "light" ? " text-gray-900" : "text-white"
-									} font-medium`}>
-									{t("jobPicturesDone")}
-								</label>
-								<select
-									value={material}
-									onChange={handleMaterial}
-									className="rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold  ">
-									<option value="Kliniz1">Kliniz1</option>
-									<option value="Kliniz2">Kliniz2</option>
-									<option value="Kliniz3">Kliniz3</option>
-									<option value="Kliniz4">Kliniz4</option>
-									<option value="Kliniz5">Kliniz5</option>
-									<option value="Kliniz6">Kliniz6</option>
-									<option value="Kliniz7">Kliniz7</option>
-									<option value="Kliniz8">Kliniz8</option>
-								</select>
+								<FormInput
+									labelText={t("jobPicturesDone")}
+									inputType={"file"}
+									inputValue={""}
+									setImage={setImage}
+								/>
 							</div>
 						</div>
+						<div className=" flex flex-row justify-between mt-3 "></div>
 					</div>
 					<div className=" flex flex-row justify-between mt-3">
-						<div className=" flex flex-col w-[48%]">
-							<FormInput
-								labelText={t("jobPicturesDone")}
-								className={"mt-1.5 "}
-								inputType={"file"}
-								inputValue={""}
-								setImage={setImage}
-							/>
-						</div>
-						<div className="flex flex-col w-[48%] ">
+						<div className="flex flex-col w-full ">
 							<label
 								htmlFor=""
 								className={`font-spartan text-xs flex flex-col ${
@@ -304,14 +192,14 @@ export default function WorkerPostForm() {
 							value={comingHours}
 							onChange={handleComingHours}
 							className=" w-[48%] rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold ">
-							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
-							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
-							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
-							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
-							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
-							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
-							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
-							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
+							<option value="9:00-10:00">9:00-10:00</option>
+							<option value="10:00-11:00">10:00-11:00</option>
+							<option value="11:00-12:00">11:00-12:00</option>
+							<option value="12:00-13:00">12:00-13:00</option>
+							<option value="13:00-14:00">13:00-14:00</option>
+							<option value="14:00-15:00">14:00-15:00</option>
+							<option value="15:00-16:00">15:00-16:00</option>
+							<option value="16:00-17:00">16:00-17:00</option>
 						</select>
 					</div>
 					<div className=" flex flex-row justify-between mt-3">

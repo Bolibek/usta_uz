@@ -9,36 +9,21 @@ import { v4 as uuidv4 } from "uuid";
 import { formatDate } from "../../utils/index";
 
 export default function EmployerPostForm() {
-	const [section, setSection] = useState("");
 	const [category, setCategory] = useState("");
-	const [categoryType, setCategoryType] = useState("");
-	const [material, setMaterial] = useState("");
 	const [extraInfo, setExtraInfo] = useState("");
 	const [comingHours, setComingHours] = useState("");
 	const [extraWishes, setExtraWishes] = useState("");
 	const [startingTime, setStartingTime] = useState("bugun");
 	const [image, setImage] = useState("");
-	const { theme} = useSelector(
-		(state) => state.themeStates
-	);
+	const { theme } = useSelector((state) => state.themeStates);
 
 	const navigate = useNavigate();
 
 	const [addEmployerPost] = useAddEmployerPostMutation();
 	const { t } = useTranslation();
 
-
-	const handleSection = (e) => {
-		setSection(e.target.value);
-	};
 	const handleCategory = (e) => {
 		setCategory(e.target.value);
-	};
-	const handleCategoryType = (e) => {
-		setCategoryType(e.target.value);
-	};
-	const handleMaterial = (e) => {
-		setMaterial(e.target.value);
 	};
 	const handleExtraInfo = (e) => {
 		setExtraInfo(e.target.value);
@@ -72,20 +57,17 @@ export default function EmployerPostForm() {
 						createdAt: formatDate(new Date()),
 						lifeStamp: new Date().getTime().toLocaleString(),
 						jobName: e.target[0].value,
-						section: e.target[1].value,
-						category: e.target[2].value,
-						categoryType: e.target[3].value,
-						material: e.target[4].value,
+						category: e.target[1].value,
 						photoLinks: imageUrl,
-						extraInfo: e.target[6].value,
+						extraInfo: e.target[3].value,
 						startDate: startingTime,
-						comingHours: e.target[11].value,
-						wage: e.target[12].value,
-						phoneNumber: e.target[13].value,
-						city: e.target[14].value,
-						employerAddress: e.target[15].value,
-						orientating: e.target[16].value,
-						extraConditions: e.target[17].value,
+						comingHours: e.target[8].value,
+						wage: e.target[9].value,
+						phoneNumber: e.target[10].value,
+						city: e.target[11].value,
+						employerAddress: e.target[12].value,
+						orientating: e.target[13].value,
+						extraConditions: e.target[14].value,
 					}).unwrap();
 				})
 				.catch((err) => {
@@ -94,35 +76,6 @@ export default function EmployerPostForm() {
 				.finally(() => {
 					navigate("/");
 				});
-			// if (kindModal === 'editLight') {
-			//   const newData = {
-			//     ...data,
-			//     status,
-			//     senderAddress: {
-			//       street: e.target[0].value,
-			//       city: e.target[1].value,
-			//       postCode: e.target[2].value,
-			//       country: e.target[3].value,
-			//     },
-			//     employerName: e.target[4].value,
-			//     employerEmail: e.target[5].value,
-			//     employerAddress: {
-			//       street: e.target[6].value,
-			//       city: e.target[7].value,
-			//       postCode: e.target[8].value,
-			//       country: e.target[9].value,
-			//     },
-			//     paymentDue: formatDate(e.target[10].value),
-			//     paymentTerms: e.target[11].value,
-			//     description: e.target[12].value,
-			//     items: itemsRow,
-			//   }
-			//   updateInvoice({_id, ...newData}).unwrap()
-			//   navigate(`/invoice/${invoiceId}`)
-			//   window.location.reload(false)
-			// } else {
-
-			// }
 		} catch (err) {
 			// setError(err)
 			console.log(err);
@@ -133,8 +86,7 @@ export default function EmployerPostForm() {
 			<h1>{t("fillEmployerForm")}</h1>
 			<form
 				onSubmit={handle}
-				className="mt-5 p-5 border-[0.1rem] border-green-600 rounded-md w-[45vw]"
-			>
+				className="mt-5 p-5 border-[0.1rem] border-green-600 rounded-md w-[45vw]">
 				<div className="mb-1.5">
 					<div className="flex flex-col">
 						<FormInput
@@ -149,37 +101,15 @@ export default function EmployerPostForm() {
 							<div className=" flex flex-col w-[48%]">
 								<label
 									htmlFor=""
-									className={`font-spartan text-xs flex flex-col ${theme === "light" ?" text-gray-900" : "text-white"} font-medium`}
-								>
-									{t("sectionName")}
-								</label>
-								<select
-									value={section}
-									onChange={handleSection}
-									className="rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold "
-								>
-									<option value="Qurilish1">Qurilish1</option>
-									<option value="Qurilish2">Qurilish2</option>
-									<option value="Qurilish3">Qurilish3</option>
-									<option value="Qurilish4">Qurilish4</option>
-									<option value="Qurilish5">Qurilish5</option>
-									<option value="Qurilish6">Qurilish6</option>
-									<option value="Qurilish7">Qurilish7</option>
-									<option value="Qurilish8">Qurilish8</option>
-								</select>
-							</div>
-							<div className=" flex flex-col w-[48%]">
-								<label
-									htmlFor=""
-									className={`font-spartan text-xs flex flex-col ${theme === "light" ?" text-gray-900" : "text-white"} font-medium`}
-								>
+									className={`font-spartan text-xs flex flex-col ${
+										theme === "light" ? " text-gray-900" : "text-white"
+									} font-medium`}>
 									{t("category")}
 								</label>
 								<select
 									value={category}
 									onChange={handleCategory}
-									className="rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold "
-								>
+									className="rounded mt-[0.625rem] p-[20px] border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold ">
 									<option value="Household">{t("household")}</option>
 									<option value="Electronics">{t("electronics")}</option>
 									<option value="Plumber">{t("plumber")}</option>
@@ -191,82 +121,39 @@ export default function EmployerPostForm() {
 									<option value="Other services">{t("otherServices")}</option>
 								</select>
 							</div>
-						</div>
-						<div className=" flex flex-row justify-between mt-3 ">
 							<div className=" flex flex-col w-[48%]">
-								<label
-									htmlFor=""
-									className={`font-spartan text-xs flex flex-col ${theme === "light" ?" text-gray-900" : "text-white"} font-medium`}
-								>
-									{t("categoryType")}
-								</label>
-								<select
-									value={categoryType}
-									onChange={handleCategoryType}
-									className="rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold "
-								>
-									<option value="Qum suvoq1">Qum suvoq1</option>
-									<option value="Qum suvoq2">Qum suvoq2</option>
-									<option value="Qum suvoq3">Qum suvoq3</option>
-									<option value="Qum suvoq4">Qum suvoq4</option>
-									<option value="Qum suvoq5">Qum suvoq5</option>
-									<option value="Qum suvoq6">Qum suvoq6</option>
-									<option value="Qum suvoq7">Qum suvoq7</option>
-									<option value="Qum suvoq8">Qum suvoq8</option>
-								</select>
-							</div>
-							<div className=" flex flex-col w-[48%]">
-								<label
-									htmlFor=""
-									className={`font-spartan text-xs flex flex-col ${theme === "light" ?" text-gray-900" : "text-white"} font-medium`}
-								>
-									{t("material")}
-								</label>
-								<select
-									value={material}
-									onChange={handleMaterial}
-									className="rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold  "
-								>
-									<option value="Kliniz1">Kliniz1</option>
-									<option value="Kliniz2">Kliniz2</option>
-									<option value="Kliniz3">Kliniz3</option>
-									<option value="Kliniz4">Kliniz4</option>
-									<option value="Kliniz5">Kliniz5</option>
-									<option value="Kliniz6">Kliniz6</option>
-									<option value="Kliniz7">Kliniz7</option>
-									<option value="Kliniz8">Kliniz8</option>
-								</select>
+								<FormInput
+									labelText={t("jobPicturesTodo")}
+									inputType={"file"}
+									inputValue={""}
+									setImage={setImage}
+								/>
 							</div>
 						</div>
 					</div>
-					<div className=" flex flex-row justify-between">
-						<div className=" flex flex-col w-[48%] mt-3">
-							<FormInput
-								labelText={t("jobPicturesTodo")}
-								className={"mt-1.5"}
-								inputType={"file"}
-								inputValue={""}
-								setImage={setImage}
-							/>
-						</div>
-						<div className=" flex flex-col w-[48%]">
+					<div className=" mb- flex flex-row justify-between">
+						<div className=" flex flex-col w-full">
 							<label
 								htmlFor=""
-								className={`font-spartan text-xs ${theme === "light" ?" text-gray-900" : "text-white"} font-medium mb-1`}
-							>
+								className={`mt-3 font-spartan text-xs ${
+									theme === "light" ? " text-gray-900" : "text-white"
+								} font-medium mb-1`}>
 								{t("extraInfo")}
 							</label>
 							<textarea
 								value={extraInfo}
 								onChange={handleExtraInfo}
-								className=" rounded p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold"
+								className="mt-2 rounded p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold"
 							/>
 						</div>
 					</div>
 				</div>
 
 				<div>
-					<label className={`font-spartan text-xs ${theme === "light" ?" text-gray-900" : "text-white"} font-medium`}>
+					<label
+						className={`font-spartan text-xs ${
+							theme === "light" ? " text-gray-900" : "text-white"
+						} font-medium`}>
 						{t("startTime4Emp")}
 					</label>
 					<div className=" flex flex-row font-spartan text-xs text-gray-900 font-medium mt-0.5">
@@ -298,23 +185,23 @@ export default function EmployerPostForm() {
 					<div className="flex flex-col">
 						<label
 							htmlFor=""
-							className={`font-spartan text-xs ${theme === "light" ?" text-gray-900" : "text-white"} font-medium mb-2.5 mt-3`}
-						>
+							className={`font-spartan text-xs ${
+								theme === "light" ? " text-gray-900" : "text-white"
+							} font-medium mb-2.5 mt-3`}>
 							{t("comingHours")}
 						</label>
 						<select
 							value={comingHours}
 							onChange={handleComingHours}
-							className=" w-[48%] rounded p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold"
-						>
-							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
-							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
-							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
-							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
-							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
-							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
-							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
-							<option value="9:00 dan 10:00 gacha">9:00 dan 10:00 gacha</option>
+							className=" w-[48%] rounded p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold">
+							<option value="9:00-10:00">9:00-10:00</option>
+							<option value="10:00-11:00">10:00-11:00</option>
+							<option value="11:00-12:00">11:00-12:00</option>
+							<option value="12:00-13:00">12:00-13:00</option>
+							<option value="13:00-14:00">13:00-14:00</option>
+							<option value="14:00-15:00">14:00-15:00</option>
+							<option value="15:00-16:00">15:00-16:00</option>
+							<option value="16:00-17:00">16:00-17:00</option>
 						</select>
 					</div>
 					<div className=" flex flex-row justify-between mt-3">
@@ -364,22 +251,26 @@ export default function EmployerPostForm() {
 					<div className="flex flex-col">
 						<label
 							htmlFor=""
-							className={`font-spartan text-xs ${theme === "light" ?" text-gray-900" : "text-white"} font-medium mt-3 mb-1`}
-						>
+							className={`font-spartan text-xs ${
+								theme === "light" ? " text-gray-900" : "text-white"
+							} font-medium mt-3 mb-1`}>
 							{t("requirements")}
 						</label>
 						<textarea
 							value={extraWishes}
 							onChange={handleExtraWishes}
-							className={`rounded p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border ${theme === "light" ?" text-gray-900" : "text-white"} font-bold `}
+							className={`rounded p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border ${
+								theme === "light" ? " text-gray-900" : "text-white"
+							} font-bold `}
 						/>
 					</div>
 				</div>
 				<div classNames="">
 					<button
-						className={`mt-3 px-5 rounded  py-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border ${theme === "light" ?" text-gray-900" : "text-white"} font-bold`}
-						type="submit"
-					>
+						className={`mt-3 px-5 rounded  py-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border ${
+							theme === "light" ? " text-gray-900" : "text-white"
+						} font-bold`}
+						type="submit">
 						{t("submit")}
 					</button>
 				</div>

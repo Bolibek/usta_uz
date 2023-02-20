@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 
 export default function Details(props) {
-	const { t} = useTranslation();
+	const { t } = useTranslation();
 
 	const {
 		status,
@@ -38,25 +38,7 @@ export default function Details(props) {
 				<div>
 					<div className=" font-bold text-xs">{t("status")}:</div>
 					<div className=" flex flex-row">
-						<span>{section}</span>
-						<img
-							className=" w-3 h-3 mt-1"
-							src="https://img.icons8.com/sf-black-filled/30/ffffff/forward.png"
-							alt="arrow"
-						/>
 						<span>{category}</span>
-						<img
-							className=" w-3 h-3 mt-1"
-							src="https://img.icons8.com/sf-black-filled/30/ffffff/forward.png"
-							alt="arrow"
-						/>
-						<span>{categoryType}</span>
-						<img
-							className=" w-3 h-3 mt-1"
-							src="https://img.icons8.com/sf-black-filled/30/ffffff/forward.png"
-							alt="arrow"
-						/>
-						<span>{material}</span>
 					</div>
 				</div>
 				<div className="ml-64">
@@ -86,9 +68,17 @@ export default function Details(props) {
 			</div>
 			<div>
 				<div className=" font-bold text-xs">
-					{wage ? t("jobPicturesDone").slice(0, t("jobPicturesDone").indexOf("(") - 1) : t("jobPicturesTodo").slice(0, t("jobPicturesDone").indexOf("(") - 1)}
+					{wage
+						? t("jobPicturesDone").slice(
+								0,
+								t("jobPicturesDone").indexOf("(") - 1
+						  )
+						: t("jobPicturesTodo").slice(
+								0,
+								t("jobPicturesDone").indexOf("(") - 1
+						  )}
 				</div>
-				<div className=" grid grid-cols-3 gap-y-2 ">
+				<div className="mt-2 grid grid-cols-3 gap-y-2 ">
 					<img
 						className="h-32 w-[16em]"
 						src={photoLinks}
