@@ -73,8 +73,9 @@
 	"profileImg": "Profile Image",
 	"cancel": "Cancel",
 	"saveChanges": "Save Changes",
-	"status": "Expertise in more details",
+	"status": "Category",
 	"editButton":"Edit Post",
 	"editProfile": "Edit Profile",
-	"createdAt": "Created At"
+	"createdAt": "Created At",
+	"filter": "Filter"
 }

@@ -46,7 +46,7 @@ const FormInput = ({
 					className={
 						isRegInput
 							? `${className} my-1`
-							: `rounded mt-[0.625rem] p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold`
+							: `rounded mt-[0.625rem] ${inputType==="file" && "bg-white"} p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold`
 					}
 				/>
 			) : (

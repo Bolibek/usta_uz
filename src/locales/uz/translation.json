@@ -63,7 +63,7 @@
 	"extraInfo": "Qo'shimcha ma'lumot (ixtiyoriy)",
 	"wage": "Xizmat uchun qancha olmoqchisiz?",
 	"charge": "Xizmat uchun qancha to'lamoqchisiz?",
-	"city":"Shahar",
+	"city": "Shahar",
 	"address": "Manzil",
 	"orientation": "Mo'ljal",
 	"requirements": "Talab qilinadigan Mahoratlar/Skillar (ixtiyoriy)",
@@ -73,8 +73,9 @@
 	"profileImg": "Profil uchun rasm",
 	"cancel": "Bekor qilish",
 	"saveChanges": "O'zgarishlarni saqlash",
-	"status": "Mutahassislik to'liqroq:",
+	"status": "Mutahassislik",
 	"editButton": "E'lonni tahrirlash",
 	"editProfile": "Edit Profile",
-	"createdAt": "E'lon qilingan sana:"
+	"createdAt": "E'lon qilingan sana:",
+	"filter": "Filter"
 }
