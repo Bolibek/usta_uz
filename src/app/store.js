@@ -19,7 +19,7 @@ const initialThemeState = {
 	bgColor: "bg-white",
 };
 const themeSlice = createSlice({
-	name: "theme",
+	name: "themeStates",
 	initialState: JSON.parse(localStorage.getItem("ustaThemes"))
 		? JSON.parse(localStorage.getItem("ustaThemes"))
 		: initialThemeState,

@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
-export default function FilterNav() {
+export default function FilterNav({handleAllPosts ,handleWorkerPosts, handleEmployerPosts}) {
 	const { theme } = useSelector(
 		(state) => state.themeStates
 	);
@@ -43,9 +43,9 @@ export default function FilterNav() {
 				<span className="mt-1 ml-1">{t("filter")}</span>
 			</div>
       <div className=" mx-3 w-[30%] mt-1 flex flex-row items-center justify-around">
-        <div>All</div>
-        <div>Jobs</div>
-        <div>Workers</div>
+        <div onClick={handleAllPosts}>All</div>
+        <div onClick={handleEmployerPosts}>Jobs</div>
+        <div onClick={handleWorkerPosts}>Workers</div>
       </div>
 		</div>
 	);

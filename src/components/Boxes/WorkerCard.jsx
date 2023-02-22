@@ -12,6 +12,7 @@ export default function WorkerCard(props) {
 	const {
 		id,
 		userName,
+		profileImage,
 		category,
 		photoLinks,
 		wage,
@@ -27,14 +28,14 @@ export default function WorkerCard(props) {
 			className={`w-full h-[15rem] mx-auto border-2 ${
 				theme === "light" ? "border-green-300" : "border-" + textColor + "-300"
 			}  rounded-md transform  `}>
-			<div className=" flex flex-row w-full h-[4rem] justify-center px-2">
+			<div className=" flex flex-row w-full h-[4rem] justify-center">
 				{photoLinks ? (
 					[photoLinks]
 						// .slice(0, 3)
 						.map((sample, index) => (
 							<img
 								key={index}
-								className=" w-screen h-[9rem] rounded-md mt-2"
+								className=" w-screen h-[9.2rem] rounded-tl-[7px] rounded-tr-[7px]"
 								src={sample}
 								alt={`sample ${index}`}
 							/>
@@ -54,7 +55,7 @@ export default function WorkerCard(props) {
 						<div className=" text-center">
 							<img
 								className="ml-[40%] w-[3.6rem] h-[3.6rem] rounded-full border-[0.1em] mt-2"
-								src={photoLinks}
+								src={profileImage}
 								alt="ProfileImage"
 							/>
 						</div>
