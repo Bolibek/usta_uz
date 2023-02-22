@@ -157,25 +157,25 @@ export default function WorkerPostForm() {
 						} font-medium`}>
 						<RadioInput
 							label={t("today")}
-							value="bugun"
+							value={t("today")}
 							checked={startingTime}
 							setter={setStartingTime}
 						/>
 						<RadioInput
-							label={t("tomorrrow")}
-							value="ertaga"
+							label={t("tomorrow")}
+							value={t("tomorrow")}
 							checked={startingTime}
 							setter={setStartingTime}
 						/>
 						<RadioInput
 							label={t("dependOnEmployer")}
-							value="Xojayinning-vaqtiga-qarab"
+							value={t("dependOnEmployer")}
 							checked={startingTime}
 							setter={setStartingTime}
 						/>
 						<RadioInput
 							label={t("withinAWeek")}
-							value="hafta-ichida"
+							value={t("withinAWeek")}
 							checked={startingTime}
 							setter={setStartingTime}
 						/>

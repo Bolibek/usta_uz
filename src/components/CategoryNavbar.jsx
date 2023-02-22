@@ -3,13 +3,13 @@ import { useTranslation } from "react-i18next";
 import { handleCategory } from "../app/store";
 
 export default function CategoryNavbar() {
-	const { theme } = useSelector((state) => state.themeStates.theme);
+	const theme = useSelector((state) => state.themeStates.theme);
 	const dispatch = useDispatch();
 	const { t } = useTranslation();
-	const categoryStyles = "   w-full text-center font-bold flex flex-row";
+	const categoryStyles = " w-full text-center font-bold flex flex-row";
 	const handleCategoryPosts = (category) => {
-		dispatch(handleCategory(category))
-	}
+		dispatch(handleCategory(category));
+	};
 	return (
 		<div
 			className={`${
@@ -18,7 +18,9 @@ export default function CategoryNavbar() {
 					: "bg-gray-300 text-slate-900"
 			}  w-full p-1 block`}>
 			<div className="mx-[10rem] grid grid-flow-row grid-cols-5 gap-2 p-2 text-xs">
-				<div onClick={() => handleCategoryPosts("Household")} className={`${categoryStyles}`}>
+				<div
+					onClick={() => handleCategoryPosts("Household")}
+					className={`${categoryStyles}`}>
 					<img
 						className="h-[1.2rem]"
 						alt="categoryimg"
@@ -26,7 +28,9 @@ export default function CategoryNavbar() {
 					/>{" "}
 					{t("household")}
 				</div>
-				<div onClick={() => handleCategoryPosts("Electronics")} className={`${categoryStyles}`}>
+				<div
+					onClick={() => handleCategoryPosts("Electronics")}
+					className={`${categoryStyles}`}>
 					<img
 						className="h-[1.2rem]"
 						alt="categoryimg"
@@ -34,7 +38,9 @@ export default function CategoryNavbar() {
 					/>
 					{t("electronics")}
 				</div>
-				<div onClick={() => handleCategoryPosts("Plumber")} className={`${categoryStyles}`}>
+				<div
+					onClick={() => handleCategoryPosts("Plumber")}
+					className={`${categoryStyles}`}>
 					<img
 						className="h-[1.2rem]"
 						alt="categoryimg"
@@ -42,7 +48,9 @@ export default function CategoryNavbar() {
 					/>
 					{t("plumber")}
 				</div>
-				<div onClick={() => handleCategoryPosts("Ads")} className={`${categoryStyles}`}>
+				<div
+					onClick={() => handleCategoryPosts("Ads")}
+					className={`${categoryStyles}`}>
 					<img
 						className="h-[1.2rem]"
 						alt="categoryimg"
@@ -50,7 +58,9 @@ export default function CategoryNavbar() {
 					/>
 					{t("ads")}
 				</div>
-				<div onClick={() => handleCategoryPosts("Design")} className={`${categoryStyles}`}>
+				<div
+					onClick={() => handleCategoryPosts("Design")}
+					className={`${categoryStyles}`}>
 					<img
 						className="h-[1.2rem]"
 						alt="categoryimg"
@@ -58,7 +68,9 @@ export default function CategoryNavbar() {
 					/>
 					{t("design")}
 				</div>
-				<div onClick={() => handleCategoryPosts("Furniture")} className={`${categoryStyles}`}>
+				<div
+					onClick={() => handleCategoryPosts("Furniture")}
+					className={`${categoryStyles}`}>
 					<img
 						className="h-[1.2rem]"
 						alt="categoryimg"
@@ -66,7 +78,9 @@ export default function CategoryNavbar() {
 					/>
 					{t("furniture")}
 				</div>
-				<div onClick={() => handleCategoryPosts("Auto service")} className={`${categoryStyles}`}>
+				<div
+					onClick={() => handleCategoryPosts("Auto service")}
+					className={`${categoryStyles}`}>
 					<img
 						className="h-[1.2rem]"
 						alt="categoryimg"
@@ -74,7 +88,9 @@ export default function CategoryNavbar() {
 					/>
 					{t("autoService")}
 				</div>
-				<div onClick={() => handleCategoryPosts("Technology")} className={`${categoryStyles}`}>
+				<div
+					onClick={() => handleCategoryPosts("Technology")}
+					className={`${categoryStyles}`}>
 					<img
 						className="h-[1.2rem]"
 						alt="categoryimg"
@@ -82,7 +98,9 @@ export default function CategoryNavbar() {
 					/>
 					{t("technology")}
 				</div>
-				<div onClick={() => handleCategoryPosts("Beauty/Health")} className={`${categoryStyles}`}>
+				<div
+					onClick={() => handleCategoryPosts("Beauty/Health")}
+					className={`${categoryStyles}`}>
 					<img
 						className="h-[1.2rem]"
 						alt="categoryimg"
@@ -90,7 +108,9 @@ export default function CategoryNavbar() {
 					/>
 					{t("beautyHealth")}
 				</div>
-				<div onClick={() => handleCategoryPosts("Other services")} className={`${categoryStyles}`}>
+				<div
+					onClick={() => handleCategoryPosts("Other services")}
+					className={`${categoryStyles}`}>
 					<img
 						className="h-[1.2rem]"
 						alt="categoryimg"

@@ -1,18 +1,20 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	// faMoneyCheckDollar,
 	faAngleDoubleRight,
 } from "@fortawesome/free-solid-svg-icons";
-import { useSelector } from "react-redux";
 
 export default function JobCard(props) {
 	const { t } = useTranslation();
 	const {
 		id,
+		// category,
+		jobName,
 		userName,
-		category,
+		profileImage,
 		photoLinks,
 		// wage,
 		// extraConditions,
@@ -22,6 +24,7 @@ export default function JobCard(props) {
 	// 	? extraConditions.slice(0, 4)
 	// 	: extraSkills.slice(0, 4);
 	const { theme, textColor } = useSelector((state) => state.themeStates);
+
 	return (
 		<div
 			className={`w-full h-[15rem] mx-auto border-2 ${
@@ -50,12 +53,12 @@ export default function JobCard(props) {
 				<div className=" flex flex-row w-full relative bg-transparent">
 					<div className=" flex flex-col">
 						<h1 className={` mt-[-5px] text-xl font-bold ${textColor}`}>
-							{category}
+							{jobName}
 						</h1>
 						<div className="mt-0.5 flex flex-row">
 							<img
 								className="w-[1rem] h-[1rem] rounded-full border-[0.1em]"
-								src={photoLinks}
+								src={profileImage}
 								alt="ProfileImage"
 							/>
 							<div className={`ml-1 text-xs font-semibold ${textColor}`}>

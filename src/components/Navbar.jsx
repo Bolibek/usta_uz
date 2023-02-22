@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,11 +13,11 @@ import { handleCity } from "../app/store";
 export default function Navbar() {
 	const [displayCity, setDisplayCity] = useState("hidden");
 	const [displayLang, setDisplayLang] = useState("hidden");
-		let language = !localStorage.getItem("language")
+	let language = !localStorage.getItem("language")
 		? "en"
 		: localStorage.getItem("language");
 	const userId = localStorage.getItem("userId");
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
 	const { theme, textColor, bgColor } = useSelector(
 		(state) => state.themeStates
 	);
@@ -44,8 +44,8 @@ export default function Navbar() {
 		window.location.reload(false);
 	};
 	const handleCityPosts = (city) => {
-		dispatch(handleCity(city))
-	}
+		dispatch(handleCity(city));
+	};
 	return (
 		<div className={`navbar z-10 fixed top-0 w-full ${textColor} ${bgColor}`}>
 			<div>
@@ -93,18 +93,66 @@ export default function Navbar() {
 							className={`${displayCity} ${
 								theme === "light" ? "bg-[#ffffff]" : bgColor + " " + textColor
 							} w-[30%] pl-10 text-xs  font-medium  p-1 z-50 absolute top-[2.66rem] left-[10rem] shadow-md shadow-slate-300 rounded-sm grid grid-cols-3 grid-flow-row `}>
-							<span onClick={() => handleCityPosts("tashkent")} className="mx-2 cursor-pointer">{t("tashkent")}</span>
-							<span onClick={() => handleCityPosts("samarkand")} className="mx-2 cursor-pointer">{t("samarkand")}</span>
-							<span onClick={() => handleCityPosts("bukhara")} className="mx-2 cursor-pointer">{t("bukhara")}</span>
-							<span onClick={() => handleCityPosts("khvarezm")} className="mx-2 cursor-pointer">{t("khvarezm")}</span>
-							<span onClick={() => handleCityPosts("andijan")} className="mx-2 cursor-pointer">{t("andijan")}</span>
-							<span onClick={() => handleCityPosts("fergana")} className="mx-2 cursor-pointer">{t("fergana")}</span>
-							<span onClick={() => handleCityPosts("namangan")} className="mx-2 cursor-pointer">{t("namangan")}</span>
-							<span onClick={() => handleCityPosts("qarshi")} className="mx-2 cursor-pointer">{t("qarshi")}</span>
-							<span onClick={() => handleCityPosts("termiz")} className="mx-2 cursor-pointer">{t("termiz")}</span>
-							<span onClick={() => handleCityPosts("navai")} className="mx-2 cursor-pointer">{t("navai")}</span>
-							<span onClick={() => handleCityPosts("jizzakh")} className="mx-2 cursor-pointer">{t("jizzakh")}</span>
-							<span onClick={() => handleCityPosts("gulistan")} className="mx-2 cursor-pointer">{t("gulistan")}</span>
+							<span
+								onClick={() => handleCityPosts("tashkent")}
+								className="mx-2 cursor-pointer">
+								{t("tashkent")}
+							</span>
+							<span
+								onClick={() => handleCityPosts("samarkand")}
+								className="mx-2 cursor-pointer">
+								{t("samarkand")}
+							</span>
+							<span
+								onClick={() => handleCityPosts("bukhara")}
+								className="mx-2 cursor-pointer">
+								{t("bukhara")}
+							</span>
+							<span
+								onClick={() => handleCityPosts("khvarezm")}
+								className="mx-2 cursor-pointer">
+								{t("khvarezm")}
+							</span>
+							<span
+								onClick={() => handleCityPosts("andijan")}
+								className="mx-2 cursor-pointer">
+								{t("andijan")}
+							</span>
+							<span
+								onClick={() => handleCityPosts("fergana")}
+								className="mx-2 cursor-pointer">
+								{t("fergana")}
+							</span>
+							<span
+								onClick={() => handleCityPosts("namangan")}
+								className="mx-2 cursor-pointer">
+								{t("namangan")}
+							</span>
+							<span
+								onClick={() => handleCityPosts("qarshi")}
+								className="mx-2 cursor-pointer">
+								{t("qarshi")}
+							</span>
+							<span
+								onClick={() => handleCityPosts("termiz")}
+								className="mx-2 cursor-pointer">
+								{t("termiz")}
+							</span>
+							<span
+								onClick={() => handleCityPosts("navai")}
+								className="mx-2 cursor-pointer">
+								{t("navai")}
+							</span>
+							<span
+								onClick={() => handleCityPosts("jizzakh")}
+								className="mx-2 cursor-pointer">
+								{t("jizzakh")}
+							</span>
+							<span
+								onClick={() => handleCityPosts("gulistan")}
+								className="mx-2 cursor-pointer">
+								{t("gulistan")}
+							</span>
 						</div>
 
 						<input
