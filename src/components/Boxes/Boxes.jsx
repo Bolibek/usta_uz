@@ -53,7 +53,7 @@ export default function Boxes() {
 	return (
 		<div>
 			<FilterNav
-			handleAllPosts={handleAllPosts}
+				handleAllPosts={handleAllPosts}
 				handleWorkerPosts={handleWorkerPosts}
 				handleEmployerPosts={handleEmployerPosts}
 			/>
