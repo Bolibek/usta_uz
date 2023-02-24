@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import WorkerCard from "./WorkerCard";
 import JobCard from "./JobCard";
 import FilterNav from "../FilterNav";
@@ -9,13 +9,17 @@ import {
 	useCityPostsQuery,
 	useCategoryPostsQuery,
 } from "../../services/invoiceApi";
+// import { handleWindow } from "../../app/store";
 
 export default function Boxes() {
 	const [workers, setWorkers] = useState([]);
 	const [employers, setEmployers] = useState([]);
 	//eslint-disable-next-line
 	const [allUsers, setAllUsers] = useState([]);
+	const [openWindow, setOpenWindow] = useState(false)
 	const { city, category } = useSelector((state) => state.posts);
+	// const dispatch = useDispatch();
+
 	const { data: workersData = [] } = useWorkerPostsQuery();
 	const { data: employersData = [] } = useEmployerPostsQuery();
 	const { data: cityData = [], isSuccess } = useCityPostsQuery(city);
@@ -33,6 +37,7 @@ export default function Boxes() {
 			);
 			setAllUsers(orderedData);
 		}
+		// dispatch(handleWindow(openWindow));
 		//eslint-disable-next-line
 	}, [workers, employers]);
 	const handleAllPosts = () => {
@@ -50,14 +55,18 @@ export default function Boxes() {
 	const handleEmployerPosts = () => {
 		setAllUsers(employersData);
 	};
+	console.log(openWindow);
+
 	return (
 		<div>
 			<FilterNav
+			  openWindow={openWindow}
+				setOpenWindow={setOpenWindow}
 				handleAllPosts={handleAllPosts}
 				handleWorkerPosts={handleWorkerPosts}
 				handleEmployerPosts={handleEmployerPosts}
 			/>
-			<div className="w-full mt-5">
+			<div className={` ${openWindow === true ? 'hidden' : ''} w-full mt-5`}>
 				<div className="w-[75%] mx-auto grid grid-cols-3 grid-flow-row gap-3">
 					{isSuccess &&
 						cityData.map((item) =>
