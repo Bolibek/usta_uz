@@ -2,7 +2,7 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 import stringMiddleware from "../middleWare/stringMiddleWare";
 import { invoiceApi } from "../services/invoiceApi";
 
-const initialState = { city: "", category: "" };
+const initialState = { city: "", category: "", openWindow: false };
 const appSlice = createSlice({
 	name: "reducer",
 	initialState,
@@ -10,6 +10,10 @@ const appSlice = createSlice({
 		handleCity: (state, action) => action.payload && { city: action.payload },
 		handleCategory: (state, action) =>
 			action.payload && { category: action.payload },
+		handleWindow: (state, action) =>
+			action.payload === true
+				? { openWindow: true }
+				: { openWindow: false },
 	},
 	theme: "light",
 });
@@ -39,7 +43,7 @@ const themeSlice = createSlice({
 	},
 });
 export const { toggle } = themeSlice.actions;
-export const { handleCity, handleCategory } = appSlice.actions;
+export const { handleCity, handleCategory, handleWindow } = appSlice.actions;
 const { reducer } = appSlice;
 
 export const store = configureStore({
