@@ -77,5 +77,9 @@
 	"editButton":"Edit Post",
 	"editProfile": "Edit Profile",
 	"createdAt": "Created At",
-	"filter": "Filter"
+	"filter": "Filter",
+	"topRated": "Top Rated",
+	"newPosts": "New Posts",
+	"variety": "Variety",
+	"type": "Post Type"
 }
