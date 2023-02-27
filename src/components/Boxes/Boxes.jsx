@@ -16,7 +16,8 @@ export default function Boxes() {
 	const [employers, setEmployers] = useState([]);
 	//eslint-disable-next-line
 	const [allUsers, setAllUsers] = useState([]);
-	const [openWindow, setOpenWindow] = useState(false)
+	const [filteredPosts, setFilteredPosts] = useState([]);
+	const [openWindow, setOpenWindow] = useState(false);
 	const { city, category } = useSelector((state) => state.posts);
 	// const dispatch = useDispatch();
 
@@ -55,18 +56,37 @@ export default function Boxes() {
 	const handleEmployerPosts = () => {
 		setAllUsers(employersData);
 	};
-	console.log(openWindow);
-
+	const handleFilterPosts = (city, category, type, variety) => {
+		const cityPosts = allUsers.filter((post) => post.city === city);
+		const categoryPosts = allUsers.filter((post) => post.category === category);
+		// const varietyPosts = allUsers.filter((post) => post.type === type);
+		// const typePosts = allUsers.filter((post) => post.variety === variety);
+		const mixedData = [
+			...cityPosts,
+			...categoryPosts,
+			// ...typePosts,
+			// ...varietyPosts,
+		];
+		const orderedData = mixedData.sort(
+			(a, b) =>
+				Number(a.lifeStamp.split(",").join("")) -
+				Number(b.lifeStamp.split(",").join(""))
+		);
+		setAllUsers(orderedData);
+	};
+	const cityPosts = allUsers.filter((post) => post.city === "tashkent");
+	console.log(cityPosts);
 	return (
 		<div>
 			<FilterNav
-			  openWindow={openWindow}
+				openWindow={openWindow}
 				setOpenWindow={setOpenWindow}
 				handleAllPosts={handleAllPosts}
 				handleWorkerPosts={handleWorkerPosts}
 				handleEmployerPosts={handleEmployerPosts}
+				handleFilterPosts={handleFilterPosts}
 			/>
-			<div className={` ${openWindow === true ? 'hidden' : ''} w-full mt-5`}>
+			<div className={` ${openWindow === true ? "hidden" : ""} w-full mt-5`}>
 				<div className="w-[75%] mx-auto grid grid-cols-3 grid-flow-row gap-3">
 					{isSuccess &&
 						cityData.map((item) =>
