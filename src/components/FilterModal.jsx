@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
-export default function FilterModal({ openWindow, setOpenWindow }) {
+export default function FilterModal({
+	openWindow,
+	setOpenWindow,
+	handleFilterPosts,
+}) {
 	const [city, setCity] = useState();
 	const [category, setCategory] = useState();
 	const [variety, setVariety] = useState();
 	const [type, setType] = useState();
-  const { theme, textColor, bgColor } = useSelector(
-		(state) => state.themeStates
-	);
+	const { textColor } = useSelector((state) => state.themeStates);
 	const { t } = useTranslation();
 
 	const handleCityChange = (e) => {
@@ -24,6 +26,7 @@ export default function FilterModal({ openWindow, setOpenWindow }) {
 	const handleTypeChange = (e) => {
 		setType(e.target.value);
 	};
+	useEffect(() => {}, [type, category, city, variety]);
 
 	return (
 		<>
@@ -36,11 +39,9 @@ export default function FilterModal({ openWindow, setOpenWindow }) {
 							X
 						</button>
 
-						<form className="pr-14 pl-14 py-1 z-50">
+						<div className="pr-14 pl-14 py-1 z-50">
 							<h1 className="font-bold mb-1">{"Edit Profile"}</h1>
-							<label htmlFor="city">
-								{t("city")}
-							</label>
+							<label htmlFor="city">{t("city")}</label>
 							<select
 								id="city"
 								value={city}
@@ -61,9 +62,7 @@ export default function FilterModal({ openWindow, setOpenWindow }) {
 								<option value="jizzakh">{t("jizzakh")}</option>
 								<option value="gulistan">{t("gulistan")}</option>
 							</select>
-							<label htmlFor="category">
-								{t("category")}
-							</label>
+							<label htmlFor="category">{t("category")}</label>
 							<select
 								id="category"
 								value={category}
@@ -79,9 +78,7 @@ export default function FilterModal({ openWindow, setOpenWindow }) {
 								<option value="Beauty/Health">{t("beautyHealth")}</option>
 								<option value="Other services">{t("otherServices")}</option>
 							</select>
-							<label htmlFor="profile-image">
-								{t("variety")}
-							</label>
+							<label htmlFor="profile-image">{t("variety")}</label>
 							<select
 								id="variety"
 								value={variety}
@@ -92,9 +89,7 @@ export default function FilterModal({ openWindow, setOpenWindow }) {
 								<option value="top-rated">{t("topRated")}</option>
 								<option value="new-posts">{t("newPosts")}</option>
 							</select>
-							<label htmlFor="type">
-								{t("type")}
-							</label>
+							<label htmlFor="type">{t("type")}</label>
 							<select
 								id="type"
 								value={type}
@@ -105,14 +100,18 @@ export default function FilterModal({ openWindow, setOpenWindow }) {
 							</select>
 							<input
 								id="profile-image"
-								type="submit"
+								type="button"
+								onClick={() => (
+									// eslint-disable-next-line no-sequences
+									setOpenWindow(false),
+									// window.location.reload(false),
+									handleFilterPosts(city, category, type, variety)
+								)}
 								value={"Submit"}
 								// onChange={(e) => setMyProfileImage(e.target.files[0])}
-								className={
-									`w-full rounded mb-[0.525rem] mt-[0.225rem] p-[14px] border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border ${textColor} font-bold`
-								}
+								className={`w-full rounded mb-[0.525rem] mt-[0.225rem] p-[14px] border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border ${textColor} font-bold`}
 							/>
-						</form>
+						</div>
 					</div>
 				</div>
 			)}
