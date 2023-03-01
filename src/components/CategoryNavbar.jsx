@@ -99,7 +99,7 @@ export default function CategoryNavbar() {
 					{t("technology")}
 				</div>
 				<div
-					onClick={() => handleCategoryPosts("Beauty/Health")}
+					onClick={() => handleCategoryPosts("Beauty")}
 					className={`${categoryStyles}`}>
 					<img
 						className="h-[1.2rem]"

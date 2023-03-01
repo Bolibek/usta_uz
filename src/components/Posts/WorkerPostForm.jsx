@@ -111,7 +111,7 @@ export default function WorkerPostForm() {
 									<option value="Design">{t("design")}</option>
 									<option value="Auto service">{t("autoService")}</option>
 									<option value="Technology">{t("technology")}</option>
-									<option value="Beauty/Health">{t("beautyHealth")}</option>
+									<option value="Beauty">{t("beautyHealth")}</option>
 									<option value="Other services">{t("otherServices")}</option>
 								</select>
 							</div>
