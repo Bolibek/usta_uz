@@ -16,7 +16,6 @@ export default function Boxes() {
 	const [employers, setEmployers] = useState([]);
 	//eslint-disable-next-line
 	const [allUsers, setAllUsers] = useState([]);
-	const [filteredPosts, setFilteredPosts] = useState([]);
 	const [openWindow, setOpenWindow] = useState(false);
 	const { city, category } = useSelector((state) => state.posts);
 	// const dispatch = useDispatch();
