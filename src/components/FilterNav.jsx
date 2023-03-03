@@ -1,8 +1,6 @@
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import FilterModal from "./FilterModal";
-import { handleWindow } from "../app/store";
 
 export default function FilterNav({
 	openWindow,
