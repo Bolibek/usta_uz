@@ -33,12 +33,12 @@ export default function WorkerCard(props) {
 					[photoLinks]
 						// .slice(0, 3)
 						.map((sample, index) => (
-							<img
-								key={index}
-								className=" w-screen h-[9.2rem] rounded-tl-[7px] rounded-tr-[7px]"
-								src={sample}
-								alt={`sample ${index}`}
-							/>
+							<div
+								className=" bg-cover  w-screen h-[9.2rem] rounded-tl-[7px] rounded-tr-[7px]"
+								style={{ backgroundImage: `url("${sample}")` }}>
+								<div className="mt-16 h-10 bg-gradient-to-b from-[#00000000] via-[#00000000] to-[#0000003b]"></div>
+								<div className=" h-11 flex flex-col justify-end bg-gradient-to-b from-[#0000003b] via-[#000000eb] to-[#000000]"></div>
+							</div>
 						))
 				) : (
 					<h3
@@ -46,8 +46,6 @@ export default function WorkerCard(props) {
 						No photos uploaded
 					</h3>
 				)}
-				{/* <div className=" h-10 bg-gradient-to-b from-[#00000000] via-[#00000000] to-[#0000003b]"></div>
-				<div className="  bg-transparent flex flex-col justify-end bg-gradient-to-b from-[#0000003b] via-[#000000eb] to-[#000000]"></div> */}
 			</div>
 			<div className="  px-[0.72rem] h-[15rem]">
 				<div className=" flex flex-col w-full relative bg-transparent">
@@ -60,7 +58,7 @@ export default function WorkerCard(props) {
 							/>
 						</div>
 						<div className="ml-5 text-xl text-center mt-[-11px]">
-							<h1 className={` font-bold ${textColor}`}>{userName}</h1>
+							<h1 className={` font-bold text-white`}>{userName}</h1>
 						</div>
 					</div>
 					<div className=" flex flex-row items-center">

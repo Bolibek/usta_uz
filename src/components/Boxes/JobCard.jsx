@@ -35,12 +35,12 @@ export default function JobCard(props) {
 					[photoLinks]
 						// .slice(0,3)
 						.map((sample, index) => (
-							<img
-								key={index}
-								className=" w-screen h-[9.2rem] rounded-tl-[7px] rounded-tr-[7px] "
-								src={sample}
-								alt={`sample ${index}`}
-							/>
+							<div
+								className=" bg-cover  w-screen h-[9.2rem] rounded-tl-[7px] rounded-tr-[7px]"
+								style={{ backgroundImage: `url("${sample}")` }}>
+								<div className="mt-16 h-10 bg-gradient-to-b from-[#00000000] via-[#00000000] to-[#0000003b]"></div>
+								<div className=" h-11 flex flex-col justify-end bg-gradient-to-b from-[#0000003b] via-[#000000eb] to-[#000000]"></div>
+							</div>
 						))
 				) : (
 					<h3
@@ -52,7 +52,7 @@ export default function JobCard(props) {
 			<div className=" mt-12 p-[0.7rem] h-[15rem]">
 				<div className=" flex flex-row w-full relative bg-transparent">
 					<div className=" flex flex-col">
-						<h1 className={` mt-[-5px] text-xl font-bold ${textColor}`}>
+						<h1 className={` mt-[-5px] text-xl font-bold text-white`}>
 							{jobName}
 						</h1>
 						<div className="mt-0.5 flex flex-row">

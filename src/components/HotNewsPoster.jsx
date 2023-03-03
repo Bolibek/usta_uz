@@ -39,7 +39,7 @@ export default function HotNewsPoster({
         <div
           className={`${
             isFirst ? 'h-[12rem] p-5' : 'w-[17rem] h-[155px]  p-2'
-          } bg-transparent flex flex-col justify-end bg-gradient-to-b from-[#0000003b] via-[#000000eb] to-[#000000]`}
+          }  flex flex-col justify-end bg-gradient-to-b from-[#0000003b] via-[#000000eb] to-[#000000]`}
         >
           <div
             className={`${

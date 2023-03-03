@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import WorkerCard from "./WorkerCard";
 import JobCard from "./JobCard";
 import FilterNav from "../FilterNav";
@@ -9,7 +9,6 @@ import {
 	useCityPostsQuery,
 	useCategoryPostsQuery,
 } from "../../services/invoiceApi";
-// import { handleWindow } from "../../app/store";
 
 export default function Boxes() {
 	const [workers, setWorkers] = useState([]);
@@ -18,7 +17,6 @@ export default function Boxes() {
 	const [allUsers, setAllUsers] = useState([]);
 	const [openWindow, setOpenWindow] = useState(false);
 	const { city, category } = useSelector((state) => state.posts);
-	// const dispatch = useDispatch();
 
 	const { data: workersData = [] } = useWorkerPostsQuery();
 	const { data: employersData = [] } = useEmployerPostsQuery();
@@ -29,7 +27,7 @@ export default function Boxes() {
 		if (workersData && employersData) {
 			setWorkers(workersData);
 			setEmployers(employersData);
-			const mixedData = [...workers, ...employers];
+			const mixedData = cityData.length? cityData : categoryData.length? categoryData : [...workers, ...employers];
 			const orderedData = mixedData.sort(
 				(a, b) =>
 					Number(a.lifeStamp.split(",").join("")) -
@@ -37,9 +35,8 @@ export default function Boxes() {
 			);
 			setAllUsers(orderedData);
 		}
-		// dispatch(handleWindow(openWindow));
 		//eslint-disable-next-line
-	}, [workers, employers]);
+	}, [workers, employers, city, category]);
 	const handleAllPosts = () => {
 		const mixedData = [...workers, ...employers];
 		const orderedData = mixedData.sort(
@@ -87,23 +84,7 @@ export default function Boxes() {
 			/>
 			<div className={` ${openWindow === true ? "hidden" : ""} w-full mt-5`}>
 				<div className="w-[75%] mx-auto grid grid-cols-3 grid-flow-row gap-3">
-					{isSuccess &&
-						cityData.map((item) =>
-							item.orientating === undefined ? (
-								<WorkerCard key={item.id} id={item.id} {...item} />
-							) : (
-								<JobCard key={item.id} id={item.id} {...item} />
-							)
-						)}
-					{isSuccessCategory &&
-						categoryData.map((item) =>
-							item.orientating === undefined ? (
-								<WorkerCard key={item.id} id={item.id} {...item} />
-							) : (
-								<JobCard key={item.id} id={item.id} {...item} />
-							)
-						)}
-					{(!isSuccess || !isSuccessCategory) &&
+					{
 						allUsers.map((item) =>
 							item.orientating === undefined ? (
 								<WorkerCard key={item.id} id={item.id} {...item} />
