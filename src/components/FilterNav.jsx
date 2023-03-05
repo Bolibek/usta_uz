@@ -6,13 +6,9 @@ export default function FilterNav({
 	openWindow,
 	setOpenWindow,
 	handleAllPosts,
-	handleWorkerPosts,
-	handleEmployerPosts,
 	handleFilterPosts,
 }) {
 	const { theme } = useSelector((state) => state.themeStates);
-	// const { openWindow } = useSelector((state) => state.posts);
-	// const dispatch = useDispatch()
 
 	const { t } = useTranslation();
 
@@ -56,13 +52,13 @@ export default function FilterNav({
 					<span className="mt-1 ml-1">{t("filter")}</span>
 				</div>
 				<div className=" mx-3 w-[30%] mt-1 flex flex-row items-center justify-around">
-					<div className=" cursor-pointer" onClick={handleAllPosts}>
+					<div className=" cursor-pointer" onClick={() => handleAllPosts("all")}>
 						All
 					</div>
-					<div className=" cursor-pointer" onClick={handleEmployerPosts}>
+					<div className=" cursor-pointer" onClick={() => handleAllPosts("employer")}>
 						Jobs
 					</div>
-					<div className=" cursor-pointer" onClick={handleWorkerPosts}>
+					<div className=" cursor-pointer" onClick={() => handleAllPosts("worker")}>
 						Workers
 					</div>
 				</div>

@@ -10,6 +10,7 @@ import { formatDate } from "../../utils/index";
 
 export default function EmployerPostForm() {
 	const [category, setCategory] = useState("");
+	const [city, setCity] = useState("");
 	const [extraInfo, setExtraInfo] = useState("");
 	const [comingHours, setComingHours] = useState("");
 	const [extraWishes, setExtraWishes] = useState("");
@@ -24,6 +25,9 @@ export default function EmployerPostForm() {
 
 	const handleCategory = (e) => {
 		setCategory(e.target.value);
+	};
+	const handleCityChange = (e) => {
+		setCity(e.target.value);
 	};
 	const handleExtraInfo = (e) => {
 		setExtraInfo(e.target.value);
@@ -117,7 +121,7 @@ export default function EmployerPostForm() {
 									<option value="Design">{t("design")}</option>
 									<option value="Auto service">{t("autoService")}</option>
 									<option value="Technology">{t("technology")}</option>
-									<option value="Beauty/Health">{t("beautyHealth")}</option>
+									<option value="Beauty">{t("beautyHealth")}</option>
 									<option value="Other services">{t("otherServices")}</option>
 								</select>
 							</div>
@@ -135,9 +139,7 @@ export default function EmployerPostForm() {
 						<div className=" flex flex-col w-full">
 							<label
 								htmlFor=""
-								className={`mt-3 font-spartan text-xs ${
-									theme === "light" ? " text-gray-900" : "text-white"
-								} font-medium mb-1`}>
+								className={`mt-3 font-spartan text-xs text-gray-900	font-medium mb-1`}>
 								{t("extraInfo")}
 							</label>
 							<textarea
@@ -225,12 +227,33 @@ export default function EmployerPostForm() {
 				</div>
 				<div>
 					<div className="flex flex-col">
-						<FormInput
-							labelText={t("city")}
-							className={"mt-3 "}
-							inputType={"text"}
-							inputValue={""}
-						/>
+						<label
+							className={`mt-5 mb-2 font-spartan text-xs flex flex-col ${
+								theme === "light" ? " text-gray-900" : "text-white"
+							} font-medium`}
+							htmlFor="city">
+							{t("city")}
+						</label>
+						<select
+							id="city"
+							value={city}
+							onChange={handleCityChange}
+							className={
+								"w-full rounded mb-[0.525rem] mt-[0.225rem] p-[14px] border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold"
+							}>
+							<option value="tashkent">{t("tashkent")}</option>
+							<option value="samarkand">{t("samarkand")}</option>
+							<option value="bukhara">{t("bukhara")}</option>
+							<option value="khvarezm">{t("khvarezm")}</option>
+							<option value="andijan">{t("andijan")}</option>
+							<option value="fergana">{t("fergana")}</option>
+							<option value="namangan">{t("namangan")}</option>
+							<option value="qarshi">{t("qarshi")}</option>
+							<option value="termiz">{t("termiz")}</option>
+							<option value="navai">{t("navai")}</option>
+							<option value="jizzakh">{t("jizzakh")}</option>
+							<option value="gulistan">{t("gulistan")}</option>
+						</select>
 					</div>
 					<div className="flex flex-col">
 						<FormInput

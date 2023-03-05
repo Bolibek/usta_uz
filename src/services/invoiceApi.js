@@ -59,6 +59,13 @@ export const invoiceApi = createApi({
 			}),
 			providesTags: ["City Posts"],
 		}),
+		allPosts: builder.query({
+			query: () => ({
+				url: `/allposts`,
+				headers: { Authorization: `Bekki ${localStorage.getItem("jwt")}` },
+			}),
+			providesTags: ["All Posts"],
+		}),
 		signedUserPosts: builder.query({
 			query: (userId) => ({
 				url: `/signeduserposts/${userId}`,
@@ -95,6 +102,7 @@ export const invoiceApi = createApi({
 
 			invalidatesTags: ["Employer Post"],
 		}),
+
 		// updateInvoice: builder.mutation({
 		//   query: ({id, ...rest}) => ({
 		//     url: `/invoice/${id}`,
@@ -121,6 +129,7 @@ export const {
 	useEmployerPostsQuery,
 	useCityPostsQuery,
 	useCategoryPostsQuery,
+	useAllPostsQuery,
 	useSignedUserPostsQuery,
 	useWorkerPostDetailsQuery,
 	useMyProfileQuery,
