@@ -6,7 +6,7 @@ const LatestNews = () => {
   const [lastIndex, setLastIndex] = useState(7)
   useEffect(() => {
     fetch(
-      `https://newsapi.org/v2/everything?domains=wsj.com&apiKey=dadd374343664362b5fc18ba22fb2755`,
+      `https://newsapi.org/v2/everything?q=tesla&apiKey=dadd374343664362b5fc18ba22fb2755`,
     )
       .then(response => response.json())
       .then(result => {

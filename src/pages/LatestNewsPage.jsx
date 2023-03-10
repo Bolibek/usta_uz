@@ -6,7 +6,7 @@ export default function HomePage() {
   const [hotNews, setHotNews] = useState([])
   useEffect(() => {
     fetch(
-      `https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=dadd374343664362b5fc18ba22fb2755`,
+      `https://newsapi.org/v2/top-headlines?q=tesla&apiKey=dadd374343664362b5fc18ba22fb2755`,
     )
       .then(response => response.json())
       .then(result => {

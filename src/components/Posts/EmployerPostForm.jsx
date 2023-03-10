@@ -282,9 +282,7 @@ export default function EmployerPostForm() {
 						<textarea
 							value={extraWishes}
 							onChange={handleExtraWishes}
-							className={`rounded p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border ${
-								theme === "light" ? " text-gray-900" : "text-white"
-							} font-bold `}
+							className={`rounded p-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border text-gray-900 font-bold `}
 						/>
 					</div>
 				</div>
