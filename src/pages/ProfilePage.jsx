@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Button from "../components/Button/Button.jsx";
 import WorkerCard from "../components/Boxes/WorkerCard.jsx";
+import JobCard from "../components/Boxes/JobCard.jsx";
 import {
 	useMyProfileQuery,
 	useSignedUserPostsQuery,
@@ -15,20 +16,19 @@ const Profile = () => {
 	const [error, setError] = useState(null);
 	const [myFirstName, setMyFirstName] = useState("");
 	const [myLastName, setMyLastName] = useState("");
-	const [allUserPosts, setAllUserPosts] = useState([]);
 	const buttonsRef = useRef(null);
 	const userId = JSON.parse(localStorage.getItem("userId"));
 	const { data = {}, isLoading } = useMyProfileQuery(userId);
 	const { data: userPosts } = useSignedUserPostsQuery(userId);
+	// eslint-disable-next-line
 	const [updateProfile] = useUpdateProfileMutation();
-	const { firstName, lastName, email, profileImage} = data;
+	const { firstName, lastName, email, profileImage } = data;
 	const { t } = useTranslation();
 
 	useEffect(() => {
 		if (data) {
 			setMyFirstName(firstName);
 			setMyLastName(lastName);
-			setAllUserPosts(userPosts);
 		}
 		// eslint-disable-next-line
 	}, []);
@@ -96,7 +96,6 @@ const Profile = () => {
 		);
 	}
 
-	console.log(updateProfile, data);
 	return (
 		<>
 			<div className={`mx-[8rem]  pt-14`}>
@@ -122,7 +121,9 @@ const Profile = () => {
 													/>
 												) : (
 													<img
-														src={"https://res.cloudinary.com/bolibekjnfjenfjnfjnfpjnfjnfenkjfwjf/image/upload/v1673886563/usta_uz_emposts/gahrpoldittuyaymtkaw.png"}
+														src={
+															"https://res.cloudinary.com/bolibekjnfjenfjnfjnfpjnfjnfenkjfwjf/image/upload/v1673886563/usta_uz_emposts/gahrpoldittuyaymtkaw.png"
+														}
 														alt="profile"
 														className="rounded-full w-60 h-60"
 													/>
@@ -140,8 +141,7 @@ const Profile = () => {
 									<div className="w-full flex justify-center my-5">
 										<button
 											className="bg-gray-200 px-5 py-2 rounded-lg text-black font-semibold"
-											onClick={() => setOpenWindow(true)}
-										>
+											onClick={() => setOpenWindow(true)}>
 											{t("editProfile")}
 										</button>
 									</div>
@@ -150,10 +150,14 @@ const Profile = () => {
 							<div className=" col-span-9 ">
 								<div className="mt-5">
 									<div className="w-full mx-auto grid grid-cols-2 grid-flow-row gap-3">
-										{allUserPosts &&
-											allUserPosts.map((item) => (
-												<WorkerCard key={item.id} {...item} />
-											))}
+										{userPosts &&
+											userPosts.map((item) =>
+												item.orientating === undefined ? (
+													<WorkerCard key={item.id} id={item.id} {...item} />
+												) : (
+													<JobCard key={item.id} id={item.id} {...item} />
+												)
+											)}
 									</div>
 								</div>
 							</div>
@@ -203,8 +207,7 @@ const Profile = () => {
 						</div>
 						<div
 							ref={buttonsRef}
-							className="mt-2.5 shadow-[0_-60px_70px_-15px_rgba(0,0,0,0.1)] bg-white py-8 pr-14 pl-40 rounded-br-[20px] rounded-tr-[20px] flex sticky bottom-0 justify-between"
-						>
+							className="mt-2.5 shadow-[0_-60px_70px_-15px_rgba(0,0,0,0.1)] bg-white py-8 pr-14 pl-40 rounded-br-[20px] rounded-tr-[20px] flex sticky bottom-0 justify-between">
 							<BottomModal />
 						</div>
 					</div>
