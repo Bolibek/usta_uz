@@ -18,6 +18,7 @@ export default function WorkerCard(props) {
 		wage,
 		extraConditions,
 		extraSkills,
+		city
 	} = props;
 	const skill = extraConditions
 		? extraConditions.slice(0, 4)
@@ -28,6 +29,8 @@ export default function WorkerCard(props) {
 			className={`w-full h-[15rem] mx-auto border-2 ${
 				theme === "light" ? "border-green-300" : "border-" + textColor + "-300"
 			}  rounded-md transform  `}>
+				<div className={` absolute left-3 top-3 bg-white text-black capitalize rounded-md px-3`}>{city}</div>
+				<div className=" absolute right-3 top-3 bg-red-700 text-white rounded-md px-3">Worker</div>
 			<div className=" flex flex-row w-full h-[4rem] justify-center">
 				{photoLinks ? (
 					[photoLinks]
