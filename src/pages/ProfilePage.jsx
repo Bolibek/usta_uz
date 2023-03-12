@@ -1,8 +1,10 @@
 import { useState, useRef, useEffect } from "react";
+import {Link} from "react-router-dom"
 import { useTranslation } from "react-i18next";
 import Button from "../components/Button/Button.jsx";
-import WorkerCard from "../components/Boxes/WorkerCard.jsx";
 import JobCard from "../components/Boxes/JobCard.jsx";
+// import SinglePostPage from "../pages/SinglePostPage.jsx";
+// import EmployerPosts from "../components/Posts/EmployerPostForm.jsx"
 import {
 	useMyProfileQuery,
 	useSignedUserPostsQuery,
@@ -151,13 +153,11 @@ const Profile = () => {
 								<div className="mt-5">
 									<div className="w-full mx-auto grid grid-cols-2 grid-flow-row gap-3">
 										{userPosts &&
-											userPosts.map((item) =>
-												item.orientating === undefined ? (
-													<WorkerCard key={item.id} id={item.id} {...item} />
-												) : (
+											userPosts.map((item) => (
+												<Link to={item.id}>
 													<JobCard key={item.id} id={item.id} {...item} />
-												)
-											)}
+												</Link>
+											))}
 									</div>
 								</div>
 							</div>

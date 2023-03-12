@@ -57,7 +57,7 @@
 	"dependOnWorker": "Depending on the time of the worker",
 	"dependOnEmployer": "Depending on the time of the employer",
 	"withinAWeek": "Within a week",
-	"comingHours": "What time do you come to work?",
+	"comingHours": "What time is to come to work?",
 	"phoneNumber": "Phone Number",
 	"submit": "Submit",
 	"extraInfo": "Extra Information (optional)",

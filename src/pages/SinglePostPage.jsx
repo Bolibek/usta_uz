@@ -3,10 +3,7 @@ import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Button from "../components/Button/Button.jsx";
 import Details from "../components/Details.jsx";
-import {
-	useMyProfileQuery,
-	useWorkerPostDetailsQuery,
-} from "../services/invoiceApi.js";
+import { usePostDetailsQuery } from "../services/invoiceApi.js";
 
 export default function SinglePostPage() {
 	const [openWindow, setOpenWindow] = useState(false);
@@ -19,10 +16,12 @@ export default function SinglePostPage() {
 	const { postId } = useParams();
 	// const [details, setDetails] = useState({});
 	const userId = JSON.parse(localStorage.getItem("userId"));
-	const { data = {} } = useMyProfileQuery(userId);
-	const { data: postDetails } = useWorkerPostDetailsQuery(postId);
-	const { firstName, lastName, email, profileImage } = data;
-	const { t} = useTranslation();
+	const { data = {}, isSuccess } = usePostDetailsQuery(postId);
+	// const { data: jobDetails } = useJobPostDetailsQuery(postId);
+	const { firstName, lastName, email, profileImage } = isSuccess && data.user;
+	const details = isSuccess && data.details;
+	const isWorker = details.orientating? false : true;
+	const { t } = useTranslation();
 
 	useEffect(() => {
 		setMyFirstName(firstName);
@@ -92,7 +91,7 @@ export default function SinglePostPage() {
 		);
 	}
 	return (
-		<div className={`mx-[13rem] ${data? "h-[100%]" : "h-[100vh]"}  pt-14`}>
+		<div className={`mx-[13rem] ${data ? "h-[100%]" : "h-[100vh]"}  pt-14`}>
 			<div>
 				<div className=" flex flex-row font-bold text-gray-500">
 					<span>Home</span>
@@ -101,7 +100,7 @@ export default function SinglePostPage() {
 						src="https://img.icons8.com/sf-black-filled/30/6B7280/forward.png"
 						alt="arrow"
 					/>
-					<span>Workers</span>
+					<span>{isWorker ? "Workers" : "Eployers"}</span>
 					<img
 						className=" w-3 h-3 mt-2"
 						src="https://img.icons8.com/sf-black-filled/30/6B7280/forward.png"
@@ -115,9 +114,7 @@ export default function SinglePostPage() {
 				<div className="mt-4 grid grid-cols-12 gap-5 text-[.8rem] ">
 					<div className="  col-span-3 ">
 						<div>
-							<div
-								className=" flex justify-center"
-							>
+							<div className=" flex justify-center">
 								<div className="flex flex-col">
 									<div className={`  `}>
 										{profileImage ? (
@@ -129,7 +126,9 @@ export default function SinglePostPage() {
 											/>
 										) : (
 											<img
-												src={'https://res.cloudinary.com/bolibekjnfjenfjnfjnfpjnfjnfenkjfwjf/image/upload/v1673886563/usta_uz_emposts/gahrpoldittuyaymtkaw.png'}
+												src={
+													"https://res.cloudinary.com/bolibekjnfjenfjnfjnfpjnfjnfenkjfwjf/image/upload/v1676981078/usta_uz_emposts/l6o7v92dvmwjyomhzegq.jpg"
+												}
 												alt="profile"
 												className="rounded-full w-60 h-60"
 											/>
@@ -178,18 +177,15 @@ export default function SinglePostPage() {
 										}
 									/>
 								</div>
-								<div>
-									+{postDetails && postDetails.phoneNumber}
-								</div>
+								<div>{details.phoneNumber}</div>
 								<div className=" text-sky-700 underline">{email}</div>
-								<hr className="full flex self              -center w-2/3 mt-2" />
+								<hr className="full flex self-center w-2/3 mt-2" />
 							</div>
 
 							<div className="w-full flex justify-center my-5">
 								<button
 									className="bg-gray-200 px-5 py-2 rounded-lg text-black font-semibold"
-									onClick={() => setOpenWindow(true)}
-								>
+									onClick={() => setOpenWindow(true)}>
 									{t("editButton")}
 								</button>
 							</div>
@@ -197,7 +193,7 @@ export default function SinglePostPage() {
 					</div>
 					<div className=" col-span-9 ">
 						<div className="mt-5">
-							{postDetails && <Details key={postDetails.id} {...postDetails} />}
+							{details && <Details key={details.id} {...details} isWorker={isWorker} />}
 						</div>
 					</div>
 					<div></div>
@@ -244,8 +240,7 @@ export default function SinglePostPage() {
 						</div>
 						<div
 							ref={buttonsRef}
-							className="mt-2.5 shadow-[0_-60px_70px_-15px_rgba(0,0,0,0.1)] bg-white py-8 pr-14 pl-40 rounded-br-[20px] rounded-tr-[20px] flex sticky bottom-0 justify-between"
-						>
+							className="mt-2.5 shadow-[0_-60px_70px_-15px_rgba(0,0,0,0.1)] bg-white py-8 pr-14 pl-40 rounded-br-[20px] rounded-tr-[20px] flex sticky bottom-0 justify-between">
 							<BottomModal />
 						</div>
 					</div>

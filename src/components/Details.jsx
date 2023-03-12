@@ -7,15 +7,13 @@ export default function Details(props) {
 	const {
 		status,
 		createdAt,
-		section,
 		category,
-		categoryType,
-		material,
 		photoLinks,
 		extraSkills,
 		startDate,
 		comingHours,
 		wage,
+		isWorker
 	} = props;
 
 	return (
@@ -49,17 +47,17 @@ export default function Details(props) {
 
 			<div className="my-1">
 				<span className=" font-bold text-xs">
-					{wage ? t("startTime4Wrk") : t("startTime4Emp")}
+					{isWorker ? t("startTime4Wrk") : t("startTime4Emp")}
 				</span>{" "}
-				{startDate[0].toUpperCase() + startDate.slice(1)}dan
+				{startDate[0].toUpperCase() + startDate.slice(1)}
 			</div>
 			<div>
 				<span className=" font-bold text-xs">{t("comingHours")} </span>{" "}
-				{comingHours}lar oralig'ida
+				{comingHours}
 			</div>
 			<div className="my-1">
 				{" "}
-				<span className=" font-bold text-xs">{t("wage")} :</span>{" "}
+				<span className=" font-bold text-xs">{isWorker? t("wage") : t("charge")} :</span>{" "}
 				{t("from") === "из"
 					? "из +" + wage + " сум"
 					: t("from") === "from"

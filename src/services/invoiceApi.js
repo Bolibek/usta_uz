@@ -74,12 +74,12 @@ export const invoiceApi = createApi({
 			providesTags: ["User"],
 		}),
 
-		workerPostDetails: builder.query({
+		postDetails: builder.query({
 			query: (postId) => ({
 				url: `/posts/${postId}`,
 				headers: { Authorization: `Bekki ${localStorage.getItem("jwt")}` },
 			}),
-			providesTags: ["Worker Post Details"],
+			providesTags: ["Post Details"],
 		}),
 
 		addWorkerPost: builder.mutation({
@@ -131,7 +131,7 @@ export const {
 	useCategoryPostsQuery,
 	useAllPostsQuery,
 	useSignedUserPostsQuery,
-	useWorkerPostDetailsQuery,
+	usePostDetailsQuery,
 	useMyProfileQuery,
 	useUpdateProfileMutation,
 	useAddUserMutation,
