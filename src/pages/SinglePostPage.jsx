@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Button from "../components/Button/Button.jsx";
 import Details from "../components/Details.jsx";
+import WorkerPostForm from "../components/Posts/WorkerPostForm.jsx";
+import EmployerPostForm from "../components/Posts/EmployerPostForm.jsx";
 import { usePostDetailsQuery } from "../services/invoiceApi.js";
 
 export default function SinglePostPage() {
@@ -20,7 +22,7 @@ export default function SinglePostPage() {
 	// const { data: jobDetails } = useJobPostDetailsQuery(postId);
 	const { firstName, lastName, email, profileImage } = isSuccess && data.user;
 	const details = isSuccess && data.details;
-	const isWorker = details.orientating? false : true;
+	const isWorker = details.orientating ? false : true;
 	const { t } = useTranslation();
 
 	useEffect(() => {
@@ -100,7 +102,7 @@ export default function SinglePostPage() {
 						src="https://img.icons8.com/sf-black-filled/30/6B7280/forward.png"
 						alt="arrow"
 					/>
-					<span>{isWorker ? "Workers" : "Eployers"}</span>
+					<span>{isWorker ? "Workers" : "Employers"}</span>
 					<img
 						className=" w-3 h-3 mt-2"
 						src="https://img.icons8.com/sf-black-filled/30/6B7280/forward.png"
@@ -110,7 +112,7 @@ export default function SinglePostPage() {
 				</div>
 				<div></div>
 			</div>
-			<div>
+			<div className={`${openWindow ? "hidden" : ""}`}>
 				<div className="mt-4 grid grid-cols-12 gap-5 text-[.8rem] ">
 					<div className="  col-span-3 ">
 						<div>
@@ -193,59 +195,76 @@ export default function SinglePostPage() {
 					</div>
 					<div className=" col-span-9 ">
 						<div className="mt-5">
-							{details && <Details key={details.id} {...details} isWorker={isWorker} />}
+							{details && (
+								<Details key={details.id} {...details} isWorker={isWorker} />
+							)}
 						</div>
 					</div>
 					<div></div>
 				</div>
 			</div>
 			{openWindow && (
-				<div className="absolute right-0 z-60 top-14 bg-white w-[950px] rounded-l-xl h-[91vh] overflow-auto ">
-					<div>
-						<div className="pr-14 pl-14 pt-14 pb-16 z-50">
-							<h1 className="font-bold">{"Edit Profile"}</h1>
-							<label htmlFor="firstname" className="my-5">
-								Firstname
-							</label>
-							<input
-								id="firstname"
-								value={myFirstName || firstName}
-								onChange={(e) => setMyFirstName(e.target.value)}
-								className={
-									"w-full mt-1 mb-4 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-								}
-							/>
-							<label htmlFor="lastname" className="my-5">
-								Lastname
-							</label>
-							<input
-								id="lastname"
-								value={myLastName || lastName}
-								onChange={(e) => setMyLastName(e.target.value)}
-								className={
-									"w-full mt-1 mb-4 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-								}
-							/>
-							<label htmlFor="profile-image" className="my-5">
-								Profile Image
-							</label>
-							<input
-								id="profile-image"
-								type="file"
-								onChange={(e) => setMyProfileImage(e.target.files[0])}
-								className={
-									"w-full mt-1 mb-4 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-								}
-							/>
-						</div>
-						<div
-							ref={buttonsRef}
-							className="mt-2.5 shadow-[0_-60px_70px_-15px_rgba(0,0,0,0.1)] bg-white py-8 pr-14 pl-40 rounded-br-[20px] rounded-tr-[20px] flex sticky bottom-0 justify-between">
-							<BottomModal />
-						</div>
-					</div>
+				<div onClick={() => setOpenWindow(true)}>
+					{isWorker ? (
+						<WorkerPostForm {...details} />
+					) : (
+						<EmployerPostForm {...details} />
+					)}
 				</div>
 			)}
+			<div
+				onClick={() => setOpenWindow(false)}
+				className={` ${
+					openWindow ? "absolute" : "hidden"
+				}  top-[11.8rem] right-[22.3rem] border-[.1rem] text-xs px-1 border-green-600 rounded-md`}>
+				X
+			</div>
 		</div>
 	);
 }
+
+// <div className="absolute right-0 z-60 top-14 bg-white w-[950px] rounded-l-xl h-[91vh] overflow-auto ">
+// 	<div>
+// 		<div className="pr-14 pl-14 pt-14 pb-16 z-50">
+// 			<h1 className="font-bold">{"Edit Profile"}</h1>
+// 			<label htmlFor="firstname" className="my-5">
+// 				Firstname
+// 			</label>
+// 			<input
+// 				id="firstname"
+// 				value={myFirstName || firstName}
+// 				onChange={(e) => setMyFirstName(e.target.value)}
+// 				className={
+// 					"w-full mt-1 mb-4 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+// 				}
+// 			/>
+// 			<label htmlFor="lastname" className="my-5">
+// 				Lastname
+// 			</label>
+// 			<input
+// 				id="lastname"
+// 				value={myLastName || lastName}
+// 				onChange={(e) => setMyLastName(e.target.value)}
+// 				className={
+// 					"w-full mt-1 mb-4 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+// 				}
+// 			/>
+// 			<label htmlFor="profile-image" className="my-5">
+// 				Profile Image
+// 			</label>
+// 			<input
+// 				id="profile-image"
+// 				type="file"
+// 				onChange={(e) => setMyProfileImage(e.target.files[0])}
+// 				className={
+// 					"w-full mt-1 mb-4 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+// 				}
+// 			/>
+// 		</div>
+// 		<div
+// 			ref={buttonsRef}
+// 			className="mt-2.5 shadow-[0_-60px_70px_-15px_rgba(0,0,0,0.1)] bg-white py-8 pr-14 pl-40 rounded-br-[20px] rounded-tr-[20px] flex sticky bottom-0 justify-between">
+// 			<BottomModal />
+// 		</div>
+// 	</div>
+// </div>

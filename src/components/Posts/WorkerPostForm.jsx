@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
@@ -8,15 +8,36 @@ import RadioInput from "../FormInputs/RadioInput";
 import { useAddWorkerPostMutation } from "../../services/invoiceApi";
 import { formatDate } from "../../utils/index";
 
-export default function WorkerPostForm() {
+export default function WorkerPostForm({
+	id: postId,
+	category: postCategory,
+	city: postCity,
+	comingHours: postComingHours,
+	extraSkills: postExtraSkills,
+	startingTime: postStartingTime,
+	photoLinks,
+	status,
+	lifeStamp,
+	wage,
+	phoneNumber
+}) {
+	const [id, setId] = useState("");
 	const [category, setCategory] = useState("");
 	const [city, setCity] = useState("");
 
 	const [comingHours, setComingHours] = useState("");
 	const [extraSkills, setExtraSkills] = useState("");
-	const [startingTime, setStartingTime] = useState("bugun");
+	const [startingTime, setStartingTime] = useState("");
 	const [image, setImage] = useState("");
 	const { theme } = useSelector((state) => state.themeStates);
+	useEffect(() => {
+		postId && setId(postId);
+		postCategory && setCategory(postCategory);
+		postCity && setCity(postCity);
+		postComingHours && setComingHours(postComingHours);
+		postExtraSkills && setExtraSkills(postExtraSkills);
+		postStartingTime? setStartingTime(postStartingTime) : setStartingTime("bugun")
+	}, []);
 
 	const navigate = useNavigate();
 	const [addWorkerPost] = useAddWorkerPostMutation();
