@@ -14,6 +14,7 @@ export default function WorkerCard(props) {
 		userName,
 		profileImage,
 		category,
+		serviceName,
 		photoLinks,
 		wage,
 		extraConditions,
@@ -72,7 +73,7 @@ export default function WorkerCard(props) {
 					<div className=" flex flex-row items-center">
 						<div>
 							<div className={`text-sm font-semibold ${textColor}`}>
-								{category}
+								{serviceName? serviceName : category}
 							</div>
 							<div className=" flex flex-row mb-1">
 								<img
