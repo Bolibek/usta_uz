@@ -14,12 +14,14 @@ export default function WorkerPostForm({
 	city: postCity,
 	comingHours: postComingHours,
 	extraSkills: postExtraSkills,
-	startingTime: postStartingTime,
+	startDate: postStartingTime,
 	photoLinks,
 	status,
 	lifeStamp,
 	wage,
-	phoneNumber
+	phoneNumber,
+	createdAt,
+	serviceName,
 }) {
 	const [id, setId] = useState("");
 	const [category, setCategory] = useState("");
@@ -27,7 +29,7 @@ export default function WorkerPostForm({
 
 	const [comingHours, setComingHours] = useState("");
 	const [extraSkills, setExtraSkills] = useState("");
-	const [startingTime, setStartingTime] = useState("");
+	const [startingTime, setStartingTime] = useState("bugun");
 	const [image, setImage] = useState("");
 	const { theme } = useSelector((state) => state.themeStates);
 	useEffect(() => {
@@ -36,7 +38,7 @@ export default function WorkerPostForm({
 		postCity && setCity(postCity);
 		postComingHours && setComingHours(postComingHours);
 		postExtraSkills && setExtraSkills(postExtraSkills);
-		postStartingTime? setStartingTime(postStartingTime) : setStartingTime("bugun")
+		// eslint-disable-next-line
 	}, []);
 
 	const navigate = useNavigate();
@@ -75,12 +77,15 @@ export default function WorkerPostForm({
 					let imageUrl = imageData.url;
 					imageUrl &&
 						addWorkerPost({
-							id: uuidv4(),
-							createdAt: formatDate(new Date()),
-							lifeStamp: new Date().getTime().toLocaleString(),
+							id: id ? id : uuidv4(),
+							createdAt: createdAt ? createdAt : formatDate(new Date()),
+							status: status ? status : "",
+							lifeStamp: lifeStamp
+								? lifeStamp
+								: new Date().getTime().toLocaleString(),
 							serviceName: e.target[0].value,
 							category: e.target[1].value,
-							photoLinks: imageUrl,
+							photoLinks: imageUrl ? imageUrl : photoLinks,
 							extraSkills: e.target[3].value,
 							startDate: startingTime,
 							comingHours: e.target[8].value,
@@ -100,7 +105,6 @@ export default function WorkerPostForm({
 			console.log(err);
 		}
 	};
-
 	return (
 		<div className="flex flex-col items-center ">
 			<h1> {t("fillWorkerForm")} </h1>
@@ -113,7 +117,7 @@ export default function WorkerPostForm({
 							labelText={t("serviceName")}
 							className={`mt-1 text-white`}
 							inputType={"text"}
-							inputValue={""}
+							inputValue={serviceName ? serviceName : ""}
 						/>
 					</div>
 					<div className=" flex flex-col">
@@ -184,25 +188,25 @@ export default function WorkerPostForm({
 						<RadioInput
 							label={t("today")}
 							value={t("today")}
-							checked={startingTime}
+							checked={postStartingTime ? postStartingTime : startingTime}
 							setter={setStartingTime}
 						/>
 						<RadioInput
 							label={t("tomorrow")}
 							value={t("tomorrow")}
-							checked={startingTime}
+							checked={postStartingTime ? postStartingTime : startingTime}
 							setter={setStartingTime}
 						/>
 						<RadioInput
 							label={t("dependOnEmployer")}
 							value={t("dependOnEmployer")}
-							checked={startingTime}
+							checked={postStartingTime ? postStartingTime : startingTime}
 							setter={setStartingTime}
 						/>
 						<RadioInput
 							label={t("withinAWeek")}
 							value={t("withinAWeek")}
-							checked={startingTime}
+							checked={postStartingTime ? postStartingTime : startingTime}
 							setter={setStartingTime}
 						/>
 					</div>
@@ -234,7 +238,7 @@ export default function WorkerPostForm({
 								labelText={t("wage")}
 								className={"mt-1 "}
 								inputType={"text"}
-								inputValue={""}
+								inputValue={wage ? wage : ""}
 							/>
 						</div>
 						<div className="flex flex-col w-[48%]">
@@ -242,7 +246,7 @@ export default function WorkerPostForm({
 								labelText={t("phoneNumber")}
 								className={"mt-1 "}
 								inputType={"text"}
-								inputValue={""}
+								inputValue={phoneNumber ? phoneNumber : ""}
 							/>
 						</div>
 					</div>
