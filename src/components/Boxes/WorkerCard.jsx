@@ -73,7 +73,7 @@ export default function WorkerCard(props) {
 					<div className=" flex flex-row items-center">
 						<div>
 							<div className={`text-sm font-semibold ${textColor}`}>
-								{serviceName? serviceName : category}
+								{serviceName? serviceName : t(`${category.toLowerCase()}`)}
 							</div>
 							<div className=" flex flex-row mb-1">
 								<img

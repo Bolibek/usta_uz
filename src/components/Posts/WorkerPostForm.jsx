@@ -39,7 +39,7 @@ export default function WorkerPostForm({
 		postComingHours && setComingHours(postComingHours);
 		postExtraSkills && setExtraSkills(postExtraSkills);
 		// eslint-disable-next-line
-	}, []);
+	}, [startingTime]);
 
 	const navigate = useNavigate();
 	const [addWorkerPost] = useAddWorkerPostMutation();
@@ -79,7 +79,7 @@ export default function WorkerPostForm({
 						addWorkerPost({
 							id: id ? id : uuidv4(),
 							createdAt: createdAt ? createdAt : formatDate(new Date()),
-							status: status ? status : "",
+							status: status ? "updated" : "",
 							lifeStamp: lifeStamp
 								? lifeStamp
 								: new Date().getTime().toLocaleString(),

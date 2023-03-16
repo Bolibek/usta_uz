@@ -103,16 +103,15 @@ export const invoiceApi = createApi({
 			invalidatesTags: ["Employer Post"],
 		}),
 
-		// updateInvoice: builder.mutation({
-		//   query: ({id, ...rest}) => ({
-		//     url: `/invoice/${id}`,
-		//     method: 'PUT',
-		//     headers: {Authorization: `Bekki ${localStorage.getItem('jwt')}`},
-		//     body: rest,
-		//   }),
-
-		//   invalidatesTags: ['Invoice'],
-		// }),
+		updateEmployerPost: builder.mutation({
+			query: ({ postId, ...rest }) => ({
+				url: `/employerposts/${postId}`,
+				method: "PUT",
+				headers: { Authorization: `Bekki ${localStorage.getItem("jwt")}` },
+				body: rest,
+			}),
+			invalidatesTags: ["Employer Post"],
+		}),
 		// deleteInvoice: builder.mutation({
 		//   query: id => ({
 		//     url: `/invoice/${id}`,
@@ -137,6 +136,6 @@ export const {
 	useAddUserMutation,
 	useAddWorkerPostMutation,
 	useAddEmployerPostMutation,
-	// useUpdateInvoiceMutation,
+	useUpdateEmployerPostMutation,
 	// useDeleteInvoiceMutation,
 } = invoiceApi;
