@@ -184,7 +184,10 @@ export default function SinglePostPage() {
 								<hr className="full flex self-center w-2/3 mt-2" />
 							</div>
 
-							<div className="w-full flex justify-center my-5">
+							<div
+								className={`${
+									details.userId !== userId ? "hidden" : ""
+								} w-full flex justify-center my-5`}>
 								<button
 									className="bg-gray-200 px-5 py-2 rounded-lg text-black font-semibold"
 									onClick={() => setOpenWindow(true)}>
@@ -222,4 +225,3 @@ export default function SinglePostPage() {
 		</div>
 	);
 }
-

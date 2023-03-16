@@ -106,7 +106,7 @@ export default function CategoryNavbar() {
 						alt="categoryimg"
 						src="https://img.icons8.com/parakeet/100/null/barbershop.png"
 					/>
-					{t("beautyHealth")}
+					{t("beauty")}
 				</div>
 				<div
 					onClick={() => handleCategoryPosts("Other services")}
