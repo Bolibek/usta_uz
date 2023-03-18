@@ -19,16 +19,13 @@ export default function EmployerPostForm({
 	comingHours: postComingHours,
 	extraInfo: postExtraInfo,
 	startDate: postStartingTime,
-	photoLinks,
-	status,
-	lifeStamp,
 	wage,
 	phoneNumber,
-	createdAt,
 	jobName,
 	employerAddress,
 	orientating,
 	extraConditions,
+	...rest
 }) {
 	//eslint-disable-next-line
 	const [id, setId] = useState("");
@@ -50,11 +47,12 @@ export default function EmployerPostForm({
 		postComingHours && setComingHours(postComingHours);
 		postExtraInfo && setExtraInfo(postExtraInfo);
 		extraConditions && setExtraWishes(extraConditions);
+		postStartingTime && setStartingTime(postStartingTime);
 		// eslint-disable-next-line
-	}, [startingTime]);
+	}, []);
 
 	const [addEmployerPost] = useAddEmployerPostMutation();
-	const [updateEmployerPost] = useUpdateEmployerPostMutation;
+	const [updateEmployerPost] = useUpdateEmployerPostMutation();
 	const { t } = useTranslation();
 
 	const handleCategory = (e) => {
@@ -73,7 +71,7 @@ export default function EmployerPostForm({
 		setExtraWishes(e.target.value);
 	};
 
-	const handleAddPost = async (e) => {
+	const handle = async (e) => {
 		e.preventDefault();
 		try {
 			const bgData = new FormData();
@@ -90,12 +88,10 @@ export default function EmployerPostForm({
 				.then((res) => res.json())
 				.then((imageData) => {
 					let imageUrl = imageData.url;
-					imageUrl &&
-						addEmployerPost({
-							id: uuidv4(),
-							createdAt: formatDate(new Date()),
-							status: "created",
-							lifeStamp: new Date().getTime().toLocaleString(),
+					if (objectId) {
+						updateEmployerPost({
+							_id: objectId,
+							status: "updated",
 							jobName: e.target[0].value,
 							category: e.target[1].value,
 							photoLinks: imageUrl,
@@ -108,52 +104,29 @@ export default function EmployerPostForm({
 							employerAddress: e.target[12].value,
 							orientating: e.target[13].value,
 							extraConditions: e.target[14].value,
+							...rest,
 						}).unwrap();
-				})
-				.catch((err) => {
-					console.log(err);
-				})
-				.finally(() => {
-					navigate("/");
-				});
-		} catch (err) {
-			// setError(err)
-			console.log(err);
-		}
-	};
-	const handleUpdatePost = async (e) => {
-		e.preventDefault();
-		try {
-			const bgData = new FormData();
-			bgData.append("file", image);
-			bgData.append("upload_preset", "usta_uz");
-			bgData.append("cloud_name", "bolibekjnfjenfjnfjnfpjnfjnfenkjfwjf");
-			fetch(
-				"https://api.cloudinary.com/v1_1/bolibekjnfjenfjnfjnfpjnfjnfenkjfwjf/image/upload",
-				{
-					method: "post",
-					body: bgData,
-				}
-			)
-				.then((res) => res.json())
-				.then((imageData) => {
-					let imageUrl = imageData.url;
-					updateEmployerPost({
-						_id: objectId,
-						status: "updated",
-						jobName: e.target[0].value,
-						category: e.target[1].value,
-						photoLinks: imageUrl,
-						extraInfo: e.target[3].value,
-						startDate: startingTime,
-						comingHours: e.target[8].value,
-						wage: e.target[9].value,
-						phoneNumber: e.target[10].value,
-						city: e.target[11].value,
-						employerAddress: e.target[12].value,
-						orientating: e.target[13].value,
-						extraConditions: e.target[14].value,
-					}).unwrap();
+					} else {
+						imageUrl &&
+							addEmployerPost({
+								id: uuidv4(),
+								createdAt: formatDate(new Date()),
+								status: "created",
+								lifeStamp: new Date().getTime().toLocaleString(),
+								jobName: e.target[0].value,
+								category: e.target[1].value,
+								photoLinks: imageUrl,
+								extraInfo: e.target[3].value,
+								startDate: startingTime,
+								comingHours: e.target[8].value,
+								wage: e.target[9].value,
+								phoneNumber: e.target[10].value,
+								city: e.target[11].value,
+								employerAddress: e.target[12].value,
+								orientating: e.target[13].value,
+								extraConditions: e.target[14].value,
+							}).unwrap();
+					}
 				})
 				.catch((err) => {
 					console.log(err);
@@ -170,7 +143,7 @@ export default function EmployerPostForm({
 		<div className="flex flex-col items-center ">
 			<h1>{t("fillEmployerForm")}</h1>
 			<form
-				onSubmit={objectId ? () => handleUpdatePost() : () => handleAddPost()}
+				onSubmit={handle}
 				className="mt-5 p-5 border-[0.1rem] border-green-600 rounded-md w-[45vw]">
 				<div className="mb-1.5">
 					<div className="flex flex-col">
@@ -234,7 +207,6 @@ export default function EmployerPostForm({
 						</div>
 					</div>
 				</div>
-
 				<div>
 					<label
 						className={`font-spartan text-xs ${
@@ -245,25 +217,25 @@ export default function EmployerPostForm({
 					<div className=" flex flex-row font-spartan text-xs text-gray-900 font-medium mt-0.5">
 						<RadioInput
 							label={t("today")}
-							value="bugun"
+							value={t("today")}
 							checked={startingTime}
 							setter={setStartingTime}
 						/>
 						<RadioInput
 							label={t("tomorrow")}
-							value="ertaga"
+							value={t("tomorrow")}
 							checked={startingTime}
 							setter={setStartingTime}
 						/>
 						<RadioInput
-							label={t("dependOnWorker")}
-							value="ustaning-vaqtiga-qarab"
+							label={t("dependOnEmployer")}
+							value={t("dependOnEmployer")}
 							checked={startingTime}
 							setter={setStartingTime}
 						/>
 						<RadioInput
 							label={t("withinAWeek")}
-							value="hafta-ichida"
+							value={t("withinAWeek")}
 							checked={startingTime}
 							setter={setStartingTime}
 						/>
@@ -370,32 +342,15 @@ export default function EmployerPostForm({
 						/>
 					</div>
 				</div>
-				{objectId ? (
-					<>
-						<div classNames={``}>
-							<button
-								className={`mt-3 px-5 rounded  py-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border ${
-									theme === "light" ? " text-gray-900" : "text-white"
-								} font-bold`}
-								type="submit">
-								{/* {t("submit")} */}
-								Update
-							</button>
-						</div>
-					</>
-				) : (
-					<>
-						<div classNames={``}>
-							<button
-								className={`mt-3 px-5 rounded  py-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border ${
-									theme === "light" ? " text-gray-900" : "text-white"
-								} font-bold`}
-								type="submit">
-								{t("submit")}
-							</button>
-						</div>
-					</>
-				)}
+				<div classNames={``}>
+					<button
+						className={`mt-3 px-5 rounded  py-3 border border-green-600 outline outline-0 focus:outline-1 focus:outline-solid focus:outline-green-400 text-xs box-border ${
+							theme === "light" ? " text-gray-900" : "text-white"
+						} font-bold`}
+						type="submit">
+						{objectId ? "Update" : t("submit")}
+					</button>
+				</div>
 			</form>
 		</div>
 	);
