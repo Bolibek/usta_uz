@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { toggle } from "../app/store";
+import { toggle } from "../app/store.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	// faSearch,

@@ -8,7 +8,7 @@ import {
 	faCaretDown, // faSignOut,
 } from "@fortawesome/free-solid-svg-icons";
 import ThemeToggler from "./ThemeToggler";
-import { handleCity } from "../app/store";
+import { handleCity } from "../app/store.ts";
 
 export default function Navbar() {
 	const [displayCity, setDisplayCity] = useState("hidden");
