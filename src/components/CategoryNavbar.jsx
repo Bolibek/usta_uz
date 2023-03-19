@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { handleCategory } from "../app/store";
+import { handleCategory } from "../app/store.ts";
 
 export default function CategoryNavbar() {
 	const theme = useSelector((state) => state.themeStates.theme);

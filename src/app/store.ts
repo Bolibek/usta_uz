@@ -1,5 +1,5 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
-import stringMiddleware from "../middleWare/stringMiddleWare";
+import stringMiddleware from "../middleWare/stringMiddleWare.ts";
 import { invoiceApi } from "../services/invoiceApi";
 
 const initialState = { city: "", category: "", openWindow: false };
