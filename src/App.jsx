@@ -4,11 +4,11 @@ import MainRoutes from "./routes/MainRoutes";
 import { useSelector } from "react-redux";
 import "./App.css";
 
-function App() {
+const App = () => {
 	const [isSignedIn, setIsSignedIn] = useState();
 	const [display, setDisplayNavbar] = useState("");
 	const { bgColor, textColor } = useSelector((state) => state.themeStates);
-	const bodyRef = useRef(null);
+	const bodyRef= useRef(null);
 	useEffect(() => {
 		const root = bodyRef.current.parentElement;
 		bgColor === "bg-white"
@@ -18,7 +18,8 @@ function App() {
 		setIsSignedIn(false);
 	}, [isSignedIn, bgColor]);
 	return (
-		<div ref={bodyRef} className={`App ${bgColor + " " + textColor} `}>
+	
+			<div ref={bodyRef} className={`App ${bgColor + " " + textColor} `}>
 			<Navbar
 				status={isSignedIn}
 				display={display}
@@ -26,6 +27,7 @@ function App() {
 			/>
 			<MainRoutes setIsSignedIn={setIsSignedIn} />
 		</div>
+		
 	);
 }
 

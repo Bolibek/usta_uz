@@ -1,7 +1,7 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import Button from "../components/Button/Button.jsx";
+// import Button from "../components/Button/Button.jsx";
 import Details from "../components/Details.jsx";
 import WorkerPostForm from "../components/Posts/WorkerPostForm.jsx";
 import EmployerPostForm from "../components/Posts/EmployerPostForm.jsx";
@@ -9,17 +9,15 @@ import { usePostDetailsQuery } from "../services/invoiceApi.js";
 
 export default function SinglePostPage() {
 	const [openWindow, setOpenWindow] = useState(false);
-	const [myProfileImage, setMyProfileImage] = useState(null);
+	// const [myProfileImage, setMyProfileImage] = useState(null);
 	// eslint-disable-next-line
 	const [error, setError] = useState(null);
 	const [myFirstName, setMyFirstName] = useState("");
 	const [myLastName, setMyLastName] = useState("");
-	const buttonsRef = useRef(null);
+	// const buttonsRef = useRef(null);
 	const { postId } = useParams();
-	// const [details, setDetails] = useState({});
 	const userId = JSON.parse(localStorage.getItem("userId"));
 	const { data = {}, isSuccess } = usePostDetailsQuery(postId);
-	// const { data: jobDetails } = useJobPostDetailsQuery(postId);
 	const { firstName, lastName, email, profileImage } = isSuccess && data.user;
 	const details = isSuccess && data.details;
 	const isWorker = details.orientating ? false : true;
@@ -28,70 +26,71 @@ export default function SinglePostPage() {
 	useEffect(() => {
 		setMyFirstName(firstName);
 		setMyLastName(lastName);
+		// setMyProfileImage(profileImage);
 		// eslint-disable-next-line
 	}, []);
 
-	const handleUpdate = () => {
-		try {
-			const bgData = new FormData();
-			bgData.append("file", myProfileImage);
-			bgData.append("upload_preset", "usta_uz");
-			bgData.append("cloud_name", "bolibekjnfjenfjnfjnfpjnfjnfenkjfwjf");
-			fetch(
-				"https://api.cloudinary.com/v1_1/bolibekjnfjenfjnfjnfpjnfjnfenkjfwjf/image/upload",
-				{
-					method: "post",
-					body: bgData,
-				}
-			)
-				.then((res) => res.json())
-				.then((imgData) => {
-					let fetchedUrl = imgData.url;
-					const newData = {
-						...data,
-						firstName: myFirstName,
-						lastName: myLastName,
-						profileImage: fetchedUrl,
-					};
-					fetch(`http://localhost:8080/user/${userId}`, {
-						method: "put",
-						headers: {
-							"Content-Type": "application/json",
-							Authorization: `Bekki ${localStorage.getItem("jwt")}`,
-						},
-						body: JSON.stringify(newData),
-					})
-						.then((res) => res.json())
-						.then((result) => {
-							console.log(imgData, result);
-						});
-					window.location.reload(false);
-				});
-		} catch (err) {
-			setError(err);
-		}
-	};
+	// const handleUpdate = () => {
+	// 	try {
+	// 		const bgData = new FormData();
+	// 		bgData.append("file", myProfileImage);
+	// 		bgData.append("upload_preset", "usta_uz");
+	// 		bgData.append("cloud_name", "bolibekjnfjenfjnfjnfpjnfjnfenkjfwjf");
+	// 		fetch(
+	// 			"https://api.cloudinary.com/v1_1/bolibekjnfjenfjnfjnfpjnfjnfenkjfwjf/image/upload",
+	// 			{
+	// 				method: "post",
+	// 				body: bgData,
+	// 			}
+	// 		)
+	// 			.then((res) => res.json())
+	// 			.then((imgData) => {
+	// 				let fetchedUrl = imgData.url;
+	// 				const newData = {
+	// 					...data,
+	// 					firstName: myFirstName,
+	// 					lastName: myLastName,
+	// 					profileImage: fetchedUrl,
+	// 				};
+	// 				fetch(`http://localhost:8080/user/${userId}`, {
+	// 					method: "put",
+	// 					headers: {
+	// 						"Content-Type": "application/json",
+	// 						Authorization: `Bekki ${localStorage.getItem("jwt")}`,
+	// 					},
+	// 					body: JSON.stringify(newData),
+	// 				})
+	// 					.then((res) => res.json())
+	// 					.then((result) => {
+	// 						console.log(imgData, result);
+	// 					});
+	// 				window.location.reload(false);
+	// 			});
+	// 	} catch (err) {
+	// 		setError(err);
+	// 	}
+	// };
 
-	function BottomModal() {
-		return (
-			<div className="flex justify-between w-[30rem] ml-1">
-				<Button
-					onClick={() => setOpenWindow(false)}
-					buttonKind={"cancel"}
-					type={"button"}
-				/>
-				<Button
-					buttonKind={"saveChanges"}
-					type={"submit"}
-					className={"ml-2"}
-					onClick={(e) => {
-						e.preventDefault();
-						handleUpdate();
-					}}
-				/>
-			</div>
-		);
-	}
+	// function BottomModal() {
+	// 	return (
+	// 		<div className="flex justify-between w-[30rem] ml-1">
+	// 			<Button
+	// 				onClick={() => setOpenWindow(false)}
+	// 				buttonKind={"cancel"}
+	// 				type={"button"}
+	// 			/>
+	// 			<Button
+	// 				buttonKind={"saveChanges"}
+	// 				type={"submit"}
+	// 				className={"ml-2"}
+	// 				onClick={(e) => {
+	// 					e.preventDefault();
+	// 					handleUpdate();
+	// 				}}
+	// 			/>
+	// 		</div>
+	// 	);
+	// }
 	return (
 		<div className={`mx-[13rem] ${data ? "h-[100%]" : "h-[100vh]"}  pt-14`}>
 			<div>

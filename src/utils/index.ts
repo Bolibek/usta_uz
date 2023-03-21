@@ -1,4 +1,4 @@
-export const formatDate = convertData =>
+export const formatDate = (convertData: string | number | Date) =>
   `${new Intl.DateTimeFormat('en-UK', {
     year: 'numeric',
     month: 'short',
